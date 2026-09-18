@@ -148,7 +148,7 @@ struct ConversationDetailView: View {
             .overlay(RoundedRectangle(cornerRadius: ThubanMetrics.controlRadius, style: .continuous).strokeBorder(theme.line2Color, lineWidth: ThubanMetrics.hairline))
             HStack(spacing: 10) {
                 if !app.settings.writesEnabled {
-                    Text("Sending to Canvas is turned off in Settings.").font(ThubanFont.small).foregroundStyle(theme.inkDimColor)
+                    Text("Sending to Canvas is turned off in Settings › Connection.").font(ThubanFont.small).foregroundStyle(theme.inkDimColor)
                 } else if let error = sendError, !confirmingReply {
                     Text(error).font(ThubanFont.small).foregroundStyle(theme.negTextColor).lineLimit(1)
                 }
@@ -218,7 +218,7 @@ private struct MessageCard: View {
                     if let date = message.createdAt {
                         Text(DueFormatter.relative(date))
                             .font(.system(size: 12 * textScale))
-                            .foregroundStyle(theme.inkFaintColor)
+                            .foregroundStyle(theme.inkDimColor)
                             .help(date.formatted(date: .long, time: .shortened))
                     }
                 }

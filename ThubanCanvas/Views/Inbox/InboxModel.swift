@@ -131,8 +131,8 @@ extension Conversation {
         return CourseNaming.shorten(text) ?? text
     }
 
-    /// True when any cached message carries an attachment.
-    var hasAttachments: Bool { messages?.contains { !($0.attachments ?? []).isEmpty } ?? false }
+    /// True when any cached message carries an attachment (list rows use the core `hasAttachments`, from `properties`).
+    var hasCachedAttachments: Bool { messages?.contains { !($0.attachments ?? []).isEmpty } ?? false }
 
     /// Messages newest first.
     var messagesNewestFirst: [ConversationMessage] {

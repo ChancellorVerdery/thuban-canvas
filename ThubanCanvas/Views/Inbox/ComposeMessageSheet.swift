@@ -313,8 +313,9 @@ private struct FlowChips: View {
             ForEach(items, id: \.id) { item in
                 HStack(spacing: 5) {
                     Text(item.name).lineLimit(1)
-                    Button { remove(item.id) } label: { Glyph(.close, size: 11) }
+                    Button { remove(item.id) } label: { Glyph(.close, size: 11).frame(width: 24, height: 24).contentShape(Rectangle()) }
                         .buttonStyle(.plain)
+                        .padding(.trailing, -6)
                         .accessibilityLabel("Remove \(item.name)")
                 }
                 .thubanChip(kind: .accent)

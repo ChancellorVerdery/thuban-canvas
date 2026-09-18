@@ -12,6 +12,7 @@ struct InboxView: View {
     @State private var selected: CanvasID?
     @State private var composing = false
     @State private var pendingAction: InboxAction?
+    @State private var isWorking = false
     @State private var writeError: String?
 
     var body: some View {
@@ -30,17 +31,16 @@ struct InboxView: View {
             if selected == nil { selected = model.resource(for: scope).value?.first?.id }
         }
         .sheet(isPresented: $composing) { ComposeMessageSheet(model: model) }
-        .confirmationDialog(pendingAction?.title ?? "", isPresented: Binding(get: { pendingAction != nil }, set: { if !$0 { pendingAction = nil } }),
-                            titleVisibility: .visible, presenting: pendingAction) { action in
-            Button(action.buttonLabel) { perform(action) }
-            Button("Cancel", role: .cancel) { pendingAction = nil }
-        } message: { action in
-            Text(action.message)
-        }
-        .alert("Couldn’t update the conversation", isPresented: Binding(get: { writeError != nil }, set: { if !$0 { writeError = nil } })) {
-            Button("OK") { writeError = nil }
-        } message: {
-            Text(writeError ?? "")
+        .sheet(item: $pendingAction) { action in
+            ConfirmWriteSheet(
+                title: action.title,
+                message: action.message,
+                actionLabel: action.buttonLabel,
+                isWorking: isWorking,
+                error: writeError,
+                confirm: { perform(action) },
+                cancel: { pendingAction = nil; writeError = nil }
+            )
         }
     }
 
@@ -105,12 +105,14 @@ struct InboxView: View {
         model.resource(for: scope).value?.first { $0.id == id }
     }
 
-    // MARK: Writes (read state, star) — confirmed by the dialog above
+    // MARK: Writes (read state, star) — confirmed by the ConfirmWriteSheet above
 
     private func perform(_ action: InboxAction) {
-        pendingAction = nil
-        guard app.settings.writesEnabled, let client = app.client else { return }
+        guard app.settings.writesEnabled, let client = app.client, !isWorking else { return }
+        isWorking = true
+        writeError = nil
         Task {
+            defer { isWorking = false }
             do {
                 switch action {
                 case .markRead(let id, let read):
@@ -121,6 +123,7 @@ struct InboxView: View {
                     model.update(id, app: app) { $0.starred = starred }
                 }
                 await app.refreshUnreadCount()
+                pendingAction = nil
             } catch {
                 writeError = error.localizedDescription
             }
@@ -129,9 +132,16 @@ struct InboxView: View {
 }
 
 /// A context-menu write awaiting confirmation.
-enum InboxAction: Hashable {
+enum InboxAction: Hashable, Identifiable {
     case markRead(CanvasID, read: Bool)
     case star(CanvasID, starred: Bool)
+
+    var id: String {
+        switch self {
+        case .markRead(let id, let read): return "markRead/\(id)/\(read)"
+        case .star(let id, let starred): return "star/\(id)/\(starred)"
+        }
+    }
 
     var title: String {
         switch self {
@@ -166,6 +176,7 @@ private struct ConversationList: View {
     var search: String
     @Binding var selected: CanvasID?
     @Binding var pendingAction: InboxAction?
+    @FocusState private var listFocused: Bool
 
     var body: some View {
         let resource = model.resource(for: scope)
@@ -180,7 +191,7 @@ private struct ConversationList: View {
                         LazyVStack(spacing: 0) {
                             ForEach(rows) { conversation in
                                 ConversationRow(conversation: conversation, isSelected: conversation.id == selected,
-                                                hasAttachments: conversation.hasAttachments || (model.details[conversation.id]?.hasAttachments ?? false)) {
+                                                hasAttachments: conversation.hasAttachments || (model.details[conversation.id]?.hasCachedAttachments ?? false)) {
                                     selected = conversation.id
                                 }
                                 .id(conversation.id)
@@ -189,7 +200,13 @@ private struct ConversationList: View {
                         }
                     }
                     .focusable()
+                    .focused($listFocused)
                     .focusEffectDisabled()
+                    .overlay(alignment: .leading) {
+                        Rectangle().fill(theme.accentColor).frame(width: 2).opacity(listFocused ? 1 : 0)
+                            .accessibilityHidden(true)
+                    }
+                    .onAppear { listFocused = true }
                     .onKeyPress(.downArrow) { move(1, in: rows, proxy: proxy) }
                     .onKeyPress(.upArrow) { move(-1, in: rows, proxy: proxy) }
                 }
@@ -283,7 +300,7 @@ private struct ConversationRow: View {
                         }
                         Text(inboxDate(conversation.lastMessageAt))
                             .font(.system(size: 12 * textScale))
-                            .foregroundStyle(conversation.isUnread ? theme.brassInkColor : theme.inkFaintColor)
+                            .foregroundStyle(conversation.isUnread ? theme.brassInkColor : theme.inkDimColor)
                             .monospacedDigit()
                     }
                     Text(conversation.participantSummary(excluding: app.user?.id))
@@ -293,7 +310,7 @@ private struct ConversationRow: View {
                     if let course = conversationCourseName(conversation, app: app) {
                         Text(course)
                             .font(.system(size: 12 * textScale))
-                            .foregroundStyle(theme.inkFaintColor)
+                            .foregroundStyle(theme.inkDimColor)
                             .lineLimit(1)
                     }
                     if let preview = conversation.lastMessage, !preview.isEmpty {
