@@ -112,6 +112,8 @@ final class AppModel {
         isLoaded = true
         await loadCourses()
         startRefreshTimer()
+        MenuBarController.shared.configure(app: self)
+        NotificationScheduler.configure(app: self)
         SmokeHarness.startIfEnabled(app: self)
     }
 
