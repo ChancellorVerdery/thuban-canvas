@@ -23,7 +23,7 @@ struct HomeGPACard: View {
                 .accessibilityElement(children: .combine)
 
                 if courses.isEmpty {
-                    HomeEmptyRow(symbol: "star", text: "Star courses in Canvas to estimate a GPA.")
+                    HomeEmptyRow(symbol: "star", text: "Star courses in Canvas to estimate a GPA.", inset: false)
                 } else {
                     VStack(spacing: 6) {
                         ForEach(courses) { course in
@@ -32,11 +32,9 @@ struct HomeGPACard: View {
                     }
                 }
 
-                Text(note(result))
-                    .font(ThubanFont.small)
-                    .foregroundStyle(theme.inkFaintColor)
-                    .fixedSize(horizontal: false, vertical: true)
+                SettingsNote(text: note(result))
             }
+            .padding(14)
         }
     }
 

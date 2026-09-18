@@ -49,7 +49,7 @@ struct HomeGradeCard: View {
                     if let letter = session.displayLetter {
                         Chip.letter(letter)
                         if session.canvasLetter == nil || !session.whatIf.isEmpty {
-                            Text("est.").font(ThubanFont.micro).foregroundStyle(theme.inkFaintColor)
+                            Text("est.").font(ThubanFont.micro).foregroundStyle(theme.inkDimColor)
                         }
                     }
                     Spacer(minLength: 0)
@@ -103,7 +103,7 @@ struct HomeGradeCard: View {
     private var accessibilityText: String {
         var text = session.displayName
         if let score { text += ", \(DueFormatter.percent(score))" } else { text += ", no grade yet" }
-        if let letter = session.displayLetter { text += ", \(letter)" }
+        if let letter = session.displayLetter { text += (session.canvasLetter == nil || !session.whatIf.isEmpty) ? ", \(letter) estimated" : ", \(letter)" }
         if !session.whatIf.isEmpty { text += ", what-if active" }
         text += ". \(dueLine). Opens grades."
         return text

@@ -46,7 +46,8 @@ struct HomeUpcomingCard: View {
                             Text(HomeSummary.dayTitle(group.day, now: now).uppercased())
                                 .font(ThubanFont.micro)
                                 .kerning(0.5)
-                                .foregroundStyle(theme.inkFaintColor)
+                                .foregroundStyle(theme.inkDimColor)
+                                .padding(.horizontal, 14)
                                 .padding(.bottom, 2)
                             HomeRowList(data: group.items) { item in
                                 HomeRow(label: rowLabel(item, now: now), action: { open(item) }) {
@@ -65,6 +66,7 @@ struct HomeUpcomingCard: View {
                         }
                     }
                 }
+                .padding(.vertical, 10)
             }
         }
     }
@@ -144,7 +146,7 @@ struct HomeOverdueCard: View {
                             Button("Dismiss") { app.dismissOverdue(item) }
                                 .buttonStyle(GhostButtonStyle(height: 26, horizontalPadding: 8))
                                 .accessibilityLabel("Dismiss \(item.title) from overdue")
-                                .padding(.trailing, 8)
+                                .padding(.trailing, 14)
                         }
                     }
                 }
@@ -153,7 +155,8 @@ struct HomeOverdueCard: View {
                         Text("Dismissed".uppercased())
                             .font(ThubanFont.micro)
                             .kerning(0.5)
-                            .foregroundStyle(theme.inkFaintColor)
+                            .foregroundStyle(theme.inkDimColor)
+                            .padding(.horizontal, 14)
                             .padding(.bottom, 2)
                         HomeRowList(data: hidden) { row in
                             HStack(spacing: 8) {
@@ -172,10 +175,11 @@ struct HomeOverdueCard: View {
                                     .buttonStyle(GhostButtonStyle(height: 24, tinted: true, horizontalPadding: 6))
                                     .accessibilityLabel("Restore \(row.title) to overdue")
                             }
-                            .padding(.horizontal, 8)
+                            .padding(.horizontal, 14)
                             .padding(.vertical, 5)
                         }
                     }
+                    .padding(.vertical, 10)
                 }
             }
         }
