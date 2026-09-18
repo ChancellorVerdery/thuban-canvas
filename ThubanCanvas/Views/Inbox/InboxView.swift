@@ -180,7 +180,7 @@ private struct ConversationList: View {
                         LazyVStack(spacing: 0) {
                             ForEach(rows) { conversation in
                                 ConversationRow(conversation: conversation, isSelected: conversation.id == selected,
-                                                hasAttachments: model.details[conversation.id]?.hasAttachments ?? false) {
+                                                hasAttachments: conversation.hasAttachments || (model.details[conversation.id]?.hasAttachments ?? false)) {
                                     selected = conversation.id
                                 }
                                 .id(conversation.id)

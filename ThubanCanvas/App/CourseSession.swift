@@ -160,7 +160,7 @@ final class CourseSession: Identifiable {
             switch section {
             case .overview, .assignments, .grades: return true
             case .modules: return course.hasTab("modules") && !modules.unavailable
-            case .files: return course.hasTab("files") && !files.unavailable
+            case .files: return (course.hasTab("files") && !files.unavailable) || hasModuleFiles
             case .announcements: return course.hasTab("announcements") && !announcements.unavailable
             case .discussions: return course.hasTab("discussions") && !discussions.unavailable
             case .pages: return course.hasTab("pages") && !pages.unavailable
@@ -168,6 +168,11 @@ final class CourseSession: Identifiable {
             case .people: return course.hasTab("people") && !people.unavailable
             }
         }
+    }
+
+    /// Modules link to files even when the Files tab is disabled (common in this account's courses).
+    var hasModuleFiles: Bool {
+        (modules.value ?? []).contains { ($0.items ?? []).contains { $0.type == "File" } }
     }
 
     /// All assignments across groups.

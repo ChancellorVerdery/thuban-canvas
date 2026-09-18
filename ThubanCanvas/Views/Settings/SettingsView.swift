@@ -16,6 +16,15 @@ struct SettingsView: View {
         .background(theme.bgColor)
         .environment(\.thubanTheme, theme)
         .preferredColorScheme(theme.isDark ? .dark : .light)
+        .onAppear(perform: consumeRequestedPane)
+        .onChange(of: app.settingsRequest) { _, _ in consumeRequestedPane() }
+    }
+
+    private func consumeRequestedPane() {
+        if let raw = app.settingsPane, let requested = SettingsPane(rawValue: raw) {
+            pane = requested
+            app.settingsPane = nil
+        }
     }
 }
 

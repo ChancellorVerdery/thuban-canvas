@@ -47,6 +47,14 @@ final class AppModel {
     var panel: UtilityPanel?
     var isPresentingSettings = false
     var settingsRequest = 0
+    /// Pane to show when Settings opens next (a `SettingsPane` raw value); consumed by `SettingsView`.
+    var settingsPane: String?
+
+    /// Opens the Settings window on a pane.
+    func openSettings(pane: String? = nil) {
+        settingsPane = pane
+        settingsRequest += 1
+    }
 
     /// Starred courses in the user's order (drag to reorder), one tab each.
     var orderedSessions: [CourseSession] {
@@ -212,7 +220,9 @@ final class AppModel {
             group.addTask { await self.todo.load(app: self, force: force) { try await $0.todo() } }
             group.addTask { await self.missing.load(app: self, force: force) { try await $0.missingSubmissions() } }
             group.addTask { await self.planner.load(app: self, force: force) { try await $0.plannerItems(from: horizonStart, to: horizonEnd) } }
-            group.addTask { await self.announcements.load(app: self, force: force) { try await $0.announcements(courses: ids) } }
+            if !ids.isEmpty {
+                group.addTask { await self.announcements.load(app: self, force: force) { try await $0.announcements(courses: ids) } }
+            }
             group.addTask { await self.refreshUnreadCount() }
         }
     }

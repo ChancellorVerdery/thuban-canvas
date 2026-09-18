@@ -23,7 +23,7 @@ if [[ -n "${CANVAS_TOKEN:-}" ]]; then
   printf '{"host":"%s","token":"%s"}' "${CANVAS_HOST:-https://instructure.charlotte.edu}" "$CANVAS_TOKEN" > "$HOME_DIR/credentials.json"
   chmod 600 "$HOME_DIR/credentials.json"
 fi
-pkill -f "Thuban Canvas.app/Contents/MacOS" 2>/dev/null
+pkill -f "$APP" 2>/dev/null
 echo "Smoke home: $HOME_DIR"
 echo "Output:     $OUT"
 THUBAN_CANVAS_SMOKE="$OUT" THUBAN_CANVAS_HOME="$HOME_DIR" "$APP" > "$LOG" 2>&1 &

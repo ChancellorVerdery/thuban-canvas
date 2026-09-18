@@ -552,8 +552,11 @@ public struct Conversation: Codable, Identifiable, Equatable, Sendable {
     public var participants: [ConversationParticipant]?
     public var audience: [CanvasID]?
     public var messages: [ConversationMessage]?
+    /// "last_author", "attachments", "media_objects" flags from the list payload.
+    public var properties: [String]?
 
     public var isUnread: Bool { workflowState == "unread" }
+    public var hasAttachments: Bool { properties?.contains("attachments") == true }
 }
 
 public struct ConversationParticipant: Codable, Identifiable, Equatable, Sendable {

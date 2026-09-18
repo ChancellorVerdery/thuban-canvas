@@ -10,7 +10,7 @@ struct HomeGPACard: View {
         let result = app.gpa
         let courses = app.gpaCourses
         HomeCard("GPA") {
-            Button("Edit credits & scale") { app.settingsRequest += 1 }
+            Button("Edit credits & scale") { app.openSettings(pane: SettingsPane.grades.rawValue) }
                 .buttonStyle(GhostButtonStyle(height: 24, tinted: true, horizontalPadding: 6))
                 .accessibilityLabel("Edit credits and letter scale in Settings")
         } content: {
