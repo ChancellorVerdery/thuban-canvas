@@ -12,6 +12,8 @@ public enum ThemeResolver {
     public static let inkFaintTarget = 3.2
     /// `*Text` variants must reach this ratio on bg.
     public static let textTarget = 4.5
+    /// Hyperlinks in body text must reach this ratio on bg.
+    public static let linkTarget = 7.0
 
     static let panel2Mix = 0.06
     static let lineMix = 0.08
@@ -47,6 +49,7 @@ public enum ThemeResolver {
             inkFaint: inks.inkFaint.hex,
             accent: accent.fill.hex,
             accentText: accent.text.hex,
+            accentStrong: ColorMath.legible(slots.accent, on: slots.bg, target: linkTarget).hex,
             accentDeep: ColorMath.shade(slots.accent, deepShade).hex,
             accentTint: ColorMath.mix(slots.panel, slots.accent, tintMix).hex,
             onAccent: ColorMath.onAccent(accent.fill).hex,

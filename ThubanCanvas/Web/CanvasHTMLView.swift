@@ -208,8 +208,11 @@ private struct CanvasWebView: NSViewRepresentable {
         h1, h2, h3, h4 { font-family: "New York", "Iowan Old Style", Georgia, serif; font-weight: 600; line-height: 1.25; color: var(--ink); margin: 1.4em 0 .5em; }
         h1 { font-size: 1.6em; } h2 { font-size: 1.35em; } h3 { font-size: 1.15em; } h4 { font-size: 1em; }
         p { margin: 0 0 .9em; }
-        a { color: var(--accent-text); text-decoration: none; border-bottom: 1px solid var(--accent-tint); }
-        a:hover { border-bottom-color: var(--accent-text); }
+        /* Links: the AAA-contrast accent, weight 600 and a real underline, so they read inside long passages. */
+        a { color: var(--accent-strong); font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px;
+            text-underline-offset: 2px; text-decoration-color: var(--accent-strong); }
+        a:hover { text-decoration-thickness: 2px; }
+        a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
         img, video, iframe { max-width: 100%; height: auto; border-radius: 8px; }
         iframe { min-height: 320px; width: 100%; border: 1px solid var(--line); }
         table { border-collapse: collapse; margin: 1em 0; max-width: 100%; }
@@ -231,7 +234,7 @@ private struct CanvasWebView: NSViewRepresentable {
         /* Find matches and text selection: the scheme's accent fill with its on-accent ink, so a match stands out in
            every scheme and in both modes (the tint was too close to the page). */
         ::selection { background: var(--accent); color: var(--on-accent); }
-        a::selection, a *::selection { color: var(--on-accent); border-bottom-color: transparent; }
+        a::selection, a *::selection { color: var(--on-accent); text-decoration-color: var(--on-accent); }
         img::selection { background: var(--accent); }
         </style></head><body>\(heading)\(body)</body></html>
         """

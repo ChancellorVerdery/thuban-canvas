@@ -76,6 +76,8 @@ extension ResolvedTheme {
     var inkFaintColor: Color { Color(hex: inkFaint) }
     var accentColor: Color { Color(hex: accent) }
     var accentTextColor: Color { Color(hex: accentText) }
+    /// Hyperlink color: accent pushed to ≥ 7:1 on bg.
+    var accentStrongColor: Color { Color(hex: accentStrong) }
     var accentDeepColor: Color { Color(hex: accentDeep) }
     var accentTintColor: Color { Color(hex: accentTint) }
     var onAccentColor: Color { Color(hex: onAccent) }

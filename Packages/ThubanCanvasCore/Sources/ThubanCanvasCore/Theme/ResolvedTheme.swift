@@ -23,6 +23,8 @@ public struct ResolvedTheme: Sendable, Equatable {
     public var accent: String
     /// Accent for text and icons, ≥ 4.5:1 on bg.
     public var accentText: String
+    /// Accent for hyperlinks in body text, ≥ 7:1 on bg (AAA), so links read against long passages.
+    public var accentStrong: String
     /// Accent shaded ×0.72 (pressed states, dashed tutor graph rows).
     public var accentDeep: String
     /// Accent at 14% over panel (hover / selection).
@@ -57,7 +59,7 @@ public struct ResolvedTheme: Sendable, Equatable {
 
     public init(bg: String, panel: String, panel2: String, line: String, line2: String,
                 ink: String, inkDim: String, inkFaint: String,
-                accent: String, accentText: String, accentDeep: String, accentTint: String, onAccent: String,
+                accent: String, accentText: String, accentStrong: String? = nil, accentDeep: String, accentTint: String, onAccent: String,
                 signal: String, signalText: String, pos: String, posText: String, neg: String, negText: String,
                 posSoft: String, negSoft: String, warnSoft: String, signalSoft: String,
                 isDark: Bool, inkRGB: String, accentRGB: String, schemeId: String) {
@@ -71,6 +73,7 @@ public struct ResolvedTheme: Sendable, Equatable {
         self.inkFaint = inkFaint
         self.accent = accent
         self.accentText = accentText
+        self.accentStrong = accentStrong ?? accentText
         self.accentDeep = accentDeep
         self.accentTint = accentTint
         self.onAccent = onAccent
@@ -93,7 +96,7 @@ public struct ResolvedTheme: Sendable, Equatable {
     /// Kebab-case CSS custom property names in emission order (without the `--` prefix), one per color token.
     public static let cssTokenNames: [String] = [
         "bg", "panel", "panel-2", "line", "line-2", "ink", "ink-dim", "ink-faint",
-        "accent", "accent-text", "accent-deep", "accent-tint", "on-accent",
+        "accent", "accent-text", "accent-strong", "accent-deep", "accent-tint", "on-accent",
         "signal", "signal-text", "pos", "pos-text", "neg", "neg-text",
         "pos-soft", "neg-soft", "warn-soft", "signal-soft",
     ]
@@ -103,7 +106,7 @@ public struct ResolvedTheme: Sendable, Equatable {
         [
             ("bg", bg), ("panel", panel), ("panel-2", panel2), ("line", line), ("line-2", line2),
             ("ink", ink), ("ink-dim", inkDim), ("ink-faint", inkFaint),
-            ("accent", accent), ("accent-text", accentText), ("accent-deep", accentDeep),
+            ("accent", accent), ("accent-text", accentText), ("accent-strong", accentStrong), ("accent-deep", accentDeep),
             ("accent-tint", accentTint), ("on-accent", onAccent),
             ("signal", signal), ("signal-text", signalText), ("pos", pos), ("pos-text", posText),
             ("neg", neg), ("neg-text", negText),
