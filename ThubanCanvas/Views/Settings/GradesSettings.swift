@@ -18,7 +18,7 @@ struct GradesSettings: View {
                         VStack(alignment: .trailing, spacing: 4) {
                             Text("Not counted yet".uppercased()).font(ThubanFont.micro).kerning(0.5).foregroundStyle(theme.inkDimColor)
                             ForEach(result.skipped, id: \.self) { name in
-                                Text(name).font(ThubanFont.small).foregroundStyle(theme.inkFaintColor).lineLimit(1)
+                                Text(name).font(ThubanFont.small).foregroundStyle(theme.inkDimColor).lineLimit(1)
                             }
                         }
                         .frame(maxWidth: 240, alignment: .trailing)

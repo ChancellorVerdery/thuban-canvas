@@ -1,7 +1,8 @@
 import SwiftUI
 import ThubanCanvasCore
 
-/// A Home card: eyebrow header (title · count · optional accessory) above the content, in a panel.
+/// A Home card: eyebrow header (title · count · optional accessory) above a 0-padding panel holding the content,
+/// the same idiom as a course Overview column. Rows inside are full-bleed (`HomeRow`, `HomeEmptyRow`).
 struct HomeCard<Content: View, Accessory: View>: View {
     var title: String
     var count: Int?
@@ -16,12 +17,13 @@ struct HomeCard<Content: View, Accessory: View>: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 10) {
             SectionHeader(title, count: count, accessory: accessory)
-            content()
+                .padding(.horizontal, 4)
+            VStack(spacing: 0) { content() }
+                .thubanPanel(padding: 0)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .thubanPanel(padding: 16)
     }
 }
 
@@ -31,8 +33,7 @@ extension HomeCard where Accessory == EmptyView {
     }
 }
 
-/// A list of rows inside a card, separated by hairlines. Rows sit 8 pt outside the card's text margin so their
-/// hover highlight lines up with the header.
+/// A list of full-bleed rows inside a card, separated by hairlines.
 struct HomeRowList<Data: RandomAccessCollection, Row: View>: View where Data.Element: Identifiable {
     @Environment(\.thubanTheme) private var theme
     var data: Data
@@ -45,19 +46,19 @@ struct HomeRowList<Data: RandomAccessCollection, Row: View>: View where Data.Ele
                 row(element)
             }
         }
-        .padding(.horizontal, -8)
     }
 }
 
-/// A 1 px `line` separator between rows.
+/// A 1 px `line` separator between rows, inset to the row's text margin like `CardRow`.
 struct HomeHairline: View {
     @Environment(\.thubanTheme) private var theme
     var body: some View {
-        Rectangle().fill(theme.lineColor).frame(height: ThubanMetrics.hairline).padding(.horizontal, 8)
+        Rectangle().fill(theme.lineColor).frame(height: ThubanMetrics.hairline).padding(.leading, 14)
     }
 }
 
-/// A clickable row inside a card: hover highlight (`panel2`, radius 6), plain button, one accessibility label.
+/// A clickable full-bleed row inside a card: hover highlight (`panel2`, edge to edge like `CardRow`), plain button,
+/// one accessibility label.
 struct HomeRow<Content: View>: View {
     @Environment(\.thubanTheme) private var theme
     var label: String
@@ -68,11 +69,11 @@ struct HomeRow<Content: View>: View {
     var body: some View {
         Button(action: action) {
             content()
-                .padding(.horizontal, 8)
-                .padding(.vertical, 8)
+                .padding(.horizontal, 14)
+                .padding(.vertical, 10)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(hovering ? theme.panel2Color : .clear, in: RoundedRectangle(cornerRadius: ThubanMetrics.chipRadius, style: .continuous))
-                .contentShape(RoundedRectangle(cornerRadius: ThubanMetrics.chipRadius, style: .continuous))
+                .background(hovering ? theme.panel2Color : .clear)
+                .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
         .onHover { hovering = $0 }
@@ -81,18 +82,22 @@ struct HomeRow<Content: View>: View {
     }
 }
 
-/// A quiet one-line empty state for a card ("Nothing due in the next 14 days").
+/// A quiet one-line empty state for a card ("Nothing due in the next 14 days"), inset like an Overview column note.
+/// Pass `inset: false` when the surrounding content already pads the panel.
 struct HomeEmptyRow: View {
     @Environment(\.thubanTheme) private var theme
     var symbol: String
     var text: String
+    var inset = true
 
     var body: some View {
         HStack(spacing: 8) {
             Image(systemName: symbol).font(.system(size: 13, weight: .semibold)).foregroundStyle(theme.brassInkColor)
             Text(text).font(ThubanFont.body(14)).foregroundStyle(theme.inkDimColor)
         }
-        .padding(.vertical, 6)
+        .padding(.horizontal, inset ? 14 : 0)
+        .padding(.vertical, inset ? 18 : 0)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .accessibilityElement(children: .combine)
     }
 }
