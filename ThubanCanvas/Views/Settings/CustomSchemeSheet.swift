@@ -236,7 +236,7 @@ private struct SchemePreviewColumn: View {
             HStack(spacing: 8) {
                 Button("Derive from accent") { model.deriveFromAccent() }
                     .buttonStyle(SecondaryButtonStyle(height: 32))
-                    .help("Set Highlight, Gain and Loss from the accent's hue family")
+                    .help("Set Highlight, Gain and Loss from the accent’s hue family")
                 Button("Reset to Brass") { model.resetToBrass() }
                     .buttonStyle(GhostButtonStyle(height: 32))
                 Spacer(minLength: 0)

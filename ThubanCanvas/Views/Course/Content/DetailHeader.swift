@@ -56,6 +56,7 @@ struct DetailHeader<Subtitle: View, Actions: View, Below: View>: View {
                         .lineLimit(titleLineLimit)
                         .fixedSize(horizontal: false, vertical: true)
                         .textSelection(.enabled)
+                        .accessibilityAddTraits(.isHeader)
                     if let meta, !meta.isEmpty {
                         Text(meta)
                             .font(ThubanFont.small)

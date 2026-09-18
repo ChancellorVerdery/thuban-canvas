@@ -16,7 +16,7 @@ struct AboutSettings: View {
                             .fixedSize(horizontal: false, vertical: true)
                     }
                     Rectangle().fill(theme.lineColor).frame(height: 1)
-                    Text("Reads your Canvas through its public REST API with your own access token. Anything that writes to Canvas (submitting, replying, messaging) asks for confirmation first. Nothing is sent anywhere but your school's Canvas server.")
+                    Text("Reads your Canvas through its public REST API with your own access token. Anything that writes to Canvas (submitting, replying, messaging) asks for confirmation first. Nothing is sent anywhere but your school’s Canvas server.")
                         .font(ThubanFont.small)
                         .foregroundStyle(theme.inkDimColor)
                         .fixedSize(horizontal: false, vertical: true)

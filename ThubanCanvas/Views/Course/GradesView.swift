@@ -16,7 +16,7 @@ struct GradesView: View {
             groups.allSatisfy { ($0.assignments ?? []).isEmpty }
         }, retry: { await session.loadGroups(force: true) }) { groups in
             let grade = session.computedGrade
-            SectionPage(maxWidth: 1180) {
+            SectionPage {
                 GradeSummaryCard(session: session, grade: grade, showAverages: $showAverages)
                 if let grade, grade.groups.filter({ $0.possible > 0 || ($0.weight ?? 0) > 0 }).count > 1 {
                     GroupBreakdown(grade: grade)

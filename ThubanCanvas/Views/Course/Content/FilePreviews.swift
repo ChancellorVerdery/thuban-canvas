@@ -88,7 +88,12 @@ struct ImagePreview: View {
                     .padding(24)
             }
         }
-        .task(id: url) { image = NSImage(contentsOf: url) }
+        .task(id: url) {
+            let loaded = await Task.detached(priority: .userInitiated) {
+                NSImage(contentsOf: url)
+            }.value
+            if !Task.isCancelled { image = loaded }
+        }
     }
 }
 
@@ -118,10 +123,16 @@ struct TextPreview: View {
         }
         .task(id: url) {
             let limit = 200 * 1024
-            guard let data = try? Data(contentsOf: url) else { text = "This file could not be read."; return }
-            truncated = data.count > limit
-            let slice = truncated ? data.prefix(limit) : data[...]
-            text = String(decoding: slice, as: UTF8.self)
+            let result: (text: String, truncated: Bool)? = await Task.detached(priority: .userInitiated) {
+                guard let handle = try? FileHandle(forReadingFrom: url) else { return nil }
+                defer { try? handle.close() }
+                guard let head = try? handle.read(upToCount: limit + 1) else { return nil }
+                let truncated = head.count > limit
+                return (String(decoding: head.prefix(limit), as: UTF8.self), truncated)
+            }.value
+            guard let result else { text = "This file could not be read."; return }
+            text = result.text
+            truncated = result.truncated
         }
     }
 }

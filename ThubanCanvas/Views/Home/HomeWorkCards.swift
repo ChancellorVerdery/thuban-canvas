@@ -34,7 +34,7 @@ struct HomeUpcomingCard: View {
         let upcoming = WorkItemBuilder.upcoming(items, now: now, within: window.days)
         let days = WorkItemBuilder.groupedByDay(upcoming)
         HomeCard("Upcoming", count: upcoming.count) {
-            SegmentedPicker(selection: $window, options: HomeUpcomingWindow.allCases.map { SegmentOption($0, $0.label) }, segmentHeight: 22)
+            SegmentedPicker(selection: $window, options: HomeUpcomingWindow.allCases.map { SegmentOption($0, $0.label) }, segmentHeight: SegmentedPickerHeight.card)
                 .accessibilityLabel("Upcoming window")
         } content: {
             if upcoming.isEmpty {

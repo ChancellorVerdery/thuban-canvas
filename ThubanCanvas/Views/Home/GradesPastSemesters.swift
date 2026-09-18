@@ -9,7 +9,7 @@ struct GradesPastSemesters: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             if app.settings.pastSemesters.isEmpty {
-                SettingsNote(text: "None yet. Add each finished semester's GPA and credit hours from your transcript.")
+                SettingsNote(text: "None yet. Add each finished semester’s GPA and credit hours from your transcript.")
             } else {
                 HStack(spacing: 10) {
                     header("Semester").frame(maxWidth: .infinity, alignment: .leading)

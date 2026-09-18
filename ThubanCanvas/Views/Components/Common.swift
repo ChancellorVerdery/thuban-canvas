@@ -40,7 +40,7 @@ struct PageTitle: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(title).font(ThubanFont.display(28)).foregroundStyle(theme.inkColor)
+            Text(title).font(ThubanFont.display(28)).foregroundStyle(theme.inkColor).accessibilityAddTraits(.isHeader)
             if let subtitle {
                 Text(subtitle).font(ThubanFont.body(14)).foregroundStyle(theme.inkDimColor)
             }
