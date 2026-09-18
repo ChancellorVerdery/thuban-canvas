@@ -10,7 +10,7 @@ struct CourseOverviewView: View {
     @Bindable var session: CourseSession
 
     var body: some View {
-        ScrollView {
+        SectionPage {
             VStack(alignment: .leading, spacing: 24) {
                 OverviewHeader(session: session)
                 HStack(alignment: .top, spacing: 16) {
@@ -19,11 +19,6 @@ struct CourseOverviewView: View {
                     GradeColumn(session: session)
                 }
             }
-            .padding(.horizontal, 24)
-            .padding(.top, 20)
-            .padding(.bottom, 32)
-            .frame(maxWidth: 1240, alignment: .leading)
-            .frame(maxWidth: .infinity, alignment: .leading)
         }
         .task(id: session.id) {
             CourseContentSmoke.registerIfNeeded(app: app)
@@ -314,7 +309,7 @@ private struct AnnouncementsColumn: View {
                                     .foregroundStyle(theme.inkColor)
                                     .lineLimit(2)
                                 Spacer(minLength: 0)
-                                if let posted = topic.postedAt { MetaText(ContentDates.short(posted), faint: true) }
+                                if let posted = topic.postedAt { MetaText(ContentDates.short(posted)) }
                             }
                             let preview = CanvasHTML.plainText(topic.message, limit: 140)
                             if !preview.isEmpty {
@@ -396,7 +391,7 @@ private struct GradeColumn: View {
                     .lineLimit(1)
                 Spacer(minLength: 6)
                 if weighted, let weight = group.weight {
-                    MetaText("\(DueFormatter.points(weight))%", faint: true)
+                    MetaText("\(DueFormatter.points(weight))%")
                         .frame(width: 44, alignment: .trailing)
                 }
                 Text(group.percent.map { DueFormatter.percent($0) } ?? "—")

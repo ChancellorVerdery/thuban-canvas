@@ -60,8 +60,7 @@ struct FilesView: View {
                 if let error = session.files.error, session.files.hasValue {
                     OfflineBanner(text: "Showing saved data — \(error.localizedDescription)", retry: { await session.loadFiles(force: true) })
                 }
-                toolbar
-                list
+                SectionPage(toolbar: { toolbar }) { list }
             }
         }
         .task(id: session.id) {
@@ -87,15 +86,11 @@ struct FilesView: View {
                 .foregroundStyle(theme.inkDimColor)
                 .monospacedDigit()
             Spacer()
-            SegmentedPicker(selection: $sort, options: FileSort.allCases.map { SegmentOption($0, $0.label) }, segmentHeight: 24)
+            SegmentedPicker(selection: $sort, options: FileSort.allCases.map { SegmentOption($0, $0.label) }, segmentHeight: SegmentedPickerHeight.toolbar)
                 .accessibilityLabel("Sort files")
             SymbolToggleChip(label: "Group by folder", symbol: "folder", isOn: $groupByFolder)
                 .disabled(files.isEmpty)
         }
-        .padding(.horizontal, 24)
-        .padding(.vertical, 14)
-        .frame(maxWidth: 1240, alignment: .leading)
-        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     private var countLabel: String {
@@ -113,35 +108,29 @@ struct FilesView: View {
         return Group {
             if visible.isEmpty && moduleFiles.isEmpty {
                 EmptyState(title: "No matches", message: "No file name contains “\(needle)”.")
+                    .frame(minHeight: 240)
             } else {
-                ScrollView {
-                    LazyVStack(alignment: .leading, spacing: 8) {
-                        if groupByFolder {
-                            ForEach(grouped(visible), id: \.path) { group in
-                                SectionHeader(group.path, count: group.files.count)
-                                    .padding(.horizontal, 4)
-                                    .padding(.top, 8)
-                                ForEach(group.files) { file in row(file) }
-                            }
-                        } else {
-                            ForEach(visible) { file in row(file) }
-                        }
-                        if !moduleFiles.isEmpty {
-                            SectionHeader("Files in modules", count: moduleFiles.count)
+                LazyVStack(alignment: .leading, spacing: 8) {
+                    if groupByFolder {
+                        ForEach(grouped(visible), id: \.path) { group in
+                            SectionHeader(group.path, count: group.files.count)
                                 .padding(.horizontal, 4)
-                                .padding(.top, visible.isEmpty ? 0 : 12)
-                            ForEach(moduleFiles) { item in
-                                ModuleFileRow(item: item, scale: scale) {
-                                    if let id = item.contentId { session.path.append(.file(id)) }
-                                }
+                                .padding(.top, 8)
+                            ForEach(group.files) { file in row(file) }
+                        }
+                    } else {
+                        ForEach(visible) { file in row(file) }
+                    }
+                    if !moduleFiles.isEmpty {
+                        SectionHeader("Files in modules", count: moduleFiles.count)
+                            .padding(.horizontal, 4)
+                            .padding(.top, visible.isEmpty ? 0 : 12)
+                        ForEach(moduleFiles) { item in
+                            ModuleFileRow(item: item, scale: scale) {
+                                if let id = item.contentId { session.path.append(.file(id)) }
                             }
                         }
                     }
-                    .padding(.horizontal, 24)
-                    .padding(.top, 4)
-                    .padding(.bottom, 32)
-                    .frame(maxWidth: 1240, alignment: .leading)
-                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }
         }
@@ -222,7 +211,7 @@ private struct FileRow: View {
                             Text(folderPath).lineLimit(1).truncationMode(.middle)
                         }
                         .font(ThubanFont.small)
-                        .foregroundStyle(theme.inkFaintColor)
+                        .foregroundStyle(theme.inkDimColor)
                     }
                 }
                 Spacer(minLength: 12)
@@ -233,7 +222,7 @@ private struct FileRow: View {
                         .help(file.lockExplanation ?? "Locked")
                         .accessibilityLabel(file.lockExplanation ?? "Locked")
                 }
-                MetaText(file.sizeLabel ?? "—", faint: true)
+                MetaText(file.sizeLabel ?? "—", faint: file.sizeLabel == nil)
                     .frame(width: 64, alignment: .trailing)
                 MetaText(file.displayDate.map { ContentDates.short($0) } ?? "")
                     .frame(width: 60, alignment: .trailing)

@@ -71,7 +71,7 @@ struct NotificationSettings: View {
             .disabled(!app.settings.notifications.enabled)
             .opacity(app.settings.notifications.enabled ? 1 : 0.55)
 
-            SettingsGroup("Menu bar", caption: "The Thuban mark in the menu bar shows how many items are due today and lists what is due next, what is overdue and every course's grade.") {
+            SettingsGroup("Menu bar", caption: "The Thuban mark in the menu bar shows how many items are due today and lists what is due next, what is overdue and every course’s grade.") {
                 SettingsRow("Show in the menu bar") {
                     ThubanToggle(isOn: Binding(
                         get: { app.settings.menuBarEnabled },

@@ -69,7 +69,7 @@ struct CalendarView: View {
                 ProgressView().controlSize(.small).accessibilityLabel("Loading events")
             }
             Spacer(minLength: 12)
-            SegmentedPicker(selection: $mode, options: CalendarMode.allCases.map { SegmentOption($0, $0.label) })
+            SegmentedPicker(selection: $mode, options: CalendarMode.allCases.map { SegmentOption($0, $0.label) }, segmentHeight: SegmentedPickerHeight.toolbar)
                 .accessibilityLabel("Calendar view")
             Button("Close") { app.panel = nil }
                 .buttonStyle(GhostButtonStyle(height: 30))

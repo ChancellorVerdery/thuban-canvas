@@ -11,7 +11,7 @@ struct SyllabusView: View {
 
     var body: some View {
         if syllabus.isEmpty {
-            EmptyState(title: "No syllabus posted", message: "Your instructor has not written a syllabus here. Canvas's syllabus page may still list the schedule.") {
+            EmptyState(title: "No syllabus posted", message: "Your instructor has not written a syllabus here. Canvas’s syllabus page may still list the schedule.") {
                 if let url = session.canvasURL("assignments/syllabus") {
                     Button("Open in Canvas") { NSWorkspace.shared.open(url) }
                         .buttonStyle(.thubanSecondary)

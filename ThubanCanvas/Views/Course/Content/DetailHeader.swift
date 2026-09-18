@@ -31,6 +31,7 @@ struct DetailHeader<Actions: View>: View {
                     .foregroundStyle(theme.inkColor)
                     .lineLimit(2)
                     .textSelection(.enabled)
+                    .accessibilityAddTraits(.isHeader)
                 if let meta, !meta.isEmpty {
                     Text(meta)
                         .font(ThubanFont.small)

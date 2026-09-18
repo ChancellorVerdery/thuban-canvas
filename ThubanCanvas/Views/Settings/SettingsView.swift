@@ -280,5 +280,3 @@ extension View {
         modifier(ThubanFieldStyle(invalid: invalid, mono: mono, height: height))
     }
 }
-
-/// A bordered danger button: `neg` text and border on `panel`, filled `negSoft` on hover.

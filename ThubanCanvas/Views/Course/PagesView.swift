@@ -13,7 +13,7 @@ struct PagesView: View {
         ResourceStateView(resource: session.pages, emptyTitle: "No pages", emptyMessage: "This course has no pages yet.", isEmpty: { $0.isEmpty },
                           retry: { await session.loadPages(force: true) }) { pages in
             let visible = sorted(pages)
-            VStack(spacing: 0) {
+            SectionPage {
                 HStack(spacing: 12) {
                     SearchField(text: $query, placeholder: "Search pages")
                         .frame(maxWidth: 320)
@@ -24,24 +24,15 @@ struct PagesView: View {
                         .monospacedDigit()
                     Spacer()
                 }
-                .padding(.horizontal, 24)
-                .padding(.vertical, 14)
-                .frame(maxWidth: 1240, alignment: .leading)
-                .frame(maxWidth: .infinity, alignment: .leading)
+            } content: {
                 if visible.isEmpty {
                     EmptyState(title: "No matches", message: "No page title contains “\(query)”.")
+                        .frame(minHeight: 240)
                 } else {
-                    ScrollView {
-                        LazyVStack(spacing: 8) {
-                            ForEach(visible) { page in
-                                PageRow(page: page, scale: scale) { session.path.append(.page(slug: page.url)) }
-                            }
+                    LazyVStack(spacing: 8) {
+                        ForEach(visible) { page in
+                            PageRow(page: page, scale: scale) { session.path.append(.page(slug: page.url)) }
                         }
-                        .padding(.horizontal, 24)
-                        .padding(.top, 4)
-                        .padding(.bottom, 32)
-                        .frame(maxWidth: 1240, alignment: .leading)
-                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
                 }
             }

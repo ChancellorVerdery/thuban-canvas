@@ -56,7 +56,7 @@ struct InboxView: View {
                 Chip(app.unreadInbox == 1 ? "1 unread" : "\(app.unreadInbox) unread", kind: .accent)
                     .accessibilityLabel("\(app.unreadInbox) unread messages")
             }
-            SegmentedPicker(selection: $scope, options: InboxScope.allCases.map { SegmentOption($0, $0.label) })
+            SegmentedPicker(selection: $scope, options: InboxScope.allCases.map { SegmentOption($0, $0.label) }, segmentHeight: SegmentedPickerHeight.toolbar)
                 .padding(.leading, 6)
                 .accessibilityLabel("Mailbox")
             SearchField(text: $search, placeholder: "Search messages")

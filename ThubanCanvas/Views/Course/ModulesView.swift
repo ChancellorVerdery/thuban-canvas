@@ -17,24 +17,17 @@ struct ModulesView: View {
             ResourceStateView(resource: session.modules, emptyTitle: "No modules", emptyMessage: "This course has no modules yet.", isEmpty: { $0.isEmpty },
                               retry: { await session.loadModules(force: true) }) { modules in
                 let visible = filtered(modules)
-                VStack(spacing: 0) {
-                    toolbar(modules: modules)
+                SectionPage(toolbar: { toolbar(modules: modules) }) {
                     if visible.isEmpty {
                         EmptyState(title: "No matches", message: "Nothing in the modules matches “\(query)”.")
+                            .frame(minHeight: 240)
                     } else {
-                        ScrollView {
-                            LazyVStack(spacing: 12) {
-                                ForEach(visible, id: \.module.id) { entry in
-                                    ModuleCard(session: session, module: entry.module, items: entry.items,
-                                               isCollapsed: query.isEmpty && collapsed.contains(entry.module.id),
-                                               toggle: { toggle(entry.module.id) })
-                                }
+                        LazyVStack(spacing: 12) {
+                            ForEach(visible, id: \.module.id) { entry in
+                                ModuleCard(session: session, module: entry.module, items: entry.items,
+                                           isCollapsed: query.isEmpty && collapsed.contains(entry.module.id),
+                                           toggle: { toggle(entry.module.id) })
                             }
-                            .padding(.horizontal, 24)
-                            .padding(.top, 4)
-                            .padding(.bottom, 32)
-                            .frame(maxWidth: 1240, alignment: .leading)
-                            .frame(maxWidth: .infinity, alignment: .leading)
                         }
                     }
                 }
@@ -62,10 +55,6 @@ struct ModulesView: View {
             .disabled(!query.isEmpty)
             .accessibilityLabel(allCollapsed ? "Expand all modules" : "Collapse all modules")
         }
-        .padding(.horizontal, 24)
-        .padding(.vertical, 14)
-        .frame(maxWidth: 1240, alignment: .leading)
-        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     private func filtered(_ modules: [Module]) -> [(module: Module, items: [ModuleItem])] {
@@ -220,7 +209,7 @@ struct ModuleItemRow: View {
                 MetaText("Due \(DueFormatter.relative(due))")
             }
             if let points = details?.pointsPossible, points > 0 {
-                MetaText("\(DueFormatter.points(points)) pts", faint: true)
+                MetaText("\(DueFormatter.points(points)) pts")
                     .frame(minWidth: 44, alignment: .trailing)
             }
             if item.type == "ExternalUrl" || item.type == "ExternalTool" {
@@ -248,9 +237,13 @@ struct ModuleItemRow: View {
 
     private var accessibilityLabel: String {
         var parts = [item.type == "ExternalUrl" ? "Link" : item.type, item.title]
+        if item.published == false { parts.append("unpublished") }
         if let due = details?.dueAt { parts.append("due \(DueFormatter.relative(due))") }
         if let points = details?.pointsPossible, points > 0 { parts.append("\(DueFormatter.points(points)) points") }
-        if item.isLocked { parts.append("locked") }
+        if item.isLocked { parts.append(details?.lockExplanation ?? "locked") }
+        if let requirement = item.completionRequirement {
+            parts.append(requirement.completed == true ? "completed" : (item.requirementLabel ?? "required"))
+        }
         return parts.joined(separator: ", ")
     }
 

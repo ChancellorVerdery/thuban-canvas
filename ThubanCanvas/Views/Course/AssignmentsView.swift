@@ -42,7 +42,7 @@ struct AssignmentsView: View {
 
     private var toolbar: some View {
         HStack(spacing: 12) {
-            SegmentedPicker(selection: $grouping, options: [SegmentOption(.date, "By date"), SegmentOption(.group, "By group")])
+            SegmentedPicker(selection: $grouping, options: [SegmentOption(.date, "By date"), SegmentOption(.group, "By group")], segmentHeight: SegmentedPickerHeight.toolbar)
                 .accessibilityLabel("Grouping")
             Spacer()
             SearchField(text: $query, placeholder: "Search assignments")

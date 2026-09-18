@@ -192,22 +192,45 @@ struct InlineNote: View {
     }
 }
 
-/// The standard frame for a scrolling course section: 24 pt gutters, content capped at a readable width.
-struct SectionPage<Content: View>: View {
-    var maxWidth: CGFloat = 1080
+/// The standard frame for a course section: 24 pt gutters, 20 pt above the first row, content capped at one
+/// shared width. Pass a `toolbar` to pin a search / sort row above the scrolling content; without one the whole
+/// section scrolls (put the toolbar first in `content`).
+struct SectionPage<Toolbar: View, Content: View>: View {
+    /// One width for all ten sections, so switching tabs never shifts the content edge.
+    static var maxWidth: CGFloat { 1240 }
+
+    @ViewBuilder var toolbar: () -> Toolbar
     @ViewBuilder var content: () -> Content
 
+    private var pinsToolbar: Bool { Toolbar.self != EmptyView.self }
+
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 18) {
-                content()
+        VStack(spacing: 0) {
+            if pinsToolbar {
+                toolbar()
+                    .padding(.horizontal, 24)
+                    .padding(.top, 20)
+                    .padding(.bottom, 14)
+                    .frame(maxWidth: Self.maxWidth, alignment: .leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .padding(.horizontal, 24)
-            .padding(.top, 20)
-            .padding(.bottom, 32)
-            .frame(maxWidth: maxWidth, alignment: .leading)
-            .frame(maxWidth: .infinity, alignment: .leading)
+            ScrollView {
+                VStack(alignment: .leading, spacing: 18) {
+                    content()
+                }
+                .padding(.horizontal, 24)
+                .padding(.top, pinsToolbar ? 4 : 20)
+                .padding(.bottom, 32)
+                .frame(maxWidth: Self.maxWidth, alignment: .leading)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+}
+
+extension SectionPage where Toolbar == EmptyView {
+    init(@ViewBuilder content: @escaping () -> Content) {
+        self.init(toolbar: { EmptyView() }, content: content)
     }
 }
