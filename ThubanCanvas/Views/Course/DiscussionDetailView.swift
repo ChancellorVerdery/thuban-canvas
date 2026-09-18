@@ -245,7 +245,7 @@ struct DiscussionDetailView: View {
             confirming = false
             successNote = "Reply posted · " + WorkText.full(entry.createdAt ?? Date())
             // The list rows and eyebrow show reply counts from the cached topic list; refresh it.
-            if topic.isAnnouncement == true || session.announcements.value?.contains { $0.id == topic.id } == true {
+            if topic.isAnnouncement == true || session.announcements.value?.contains(where: { $0.id == topic.id }) == true {
                 await session.loadAnnouncements(force: true)
             } else {
                 await session.loadDiscussions(force: true)
