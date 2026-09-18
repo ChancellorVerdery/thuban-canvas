@@ -240,14 +240,19 @@ struct HomeRecentlyGradedCard: View {
         return app.sessions[course]?.assignment(id)?.scoreStatistics?.mean
     }
 
-    /// "class mean 90.6 · Sep 17"
+    /// "class mean 90.6 · graded Sep 17"
     private func detail(_ item: WorkItem) -> String {
         var parts: [String] = []
         if let mean = mean(item) { parts.append("class mean \(Self.oneDecimal(mean))") }
-        if let due = item.dueAt {
-            parts.append(Calendar.current.isDateInToday(due) ? "today" : due.formatted(.dateTime.month(.abbreviated).day()))
-        }
+        if let date = dateLabel(item) { parts.append(date) }
         return parts.joined(separator: " · ")
+    }
+
+    /// "graded Sep 17" (or "due Sep 17" when Canvas gives no graded date).
+    private func dateLabel(_ item: WorkItem) -> String? {
+        guard let date = item.gradedAt ?? item.dueAt else { return nil }
+        let day = Calendar.current.isDateInToday(date) ? "today" : date.formatted(.dateTime.month(.abbreviated).day())
+        return (item.gradedAt != nil ? "graded " : "due ") + day
     }
 
     private static func oneDecimal(_ value: Double) -> String {
@@ -257,6 +262,7 @@ struct HomeRecentlyGradedCard: View {
     private func rowLabel(_ item: WorkItem) -> String {
         var text = "\(item.title), \(item.courseName), \(DueFormatter.points(item.score)) of \(DueFormatter.points(item.pointsPossible))"
         if let mean = mean(item) { text += ", class mean \(Self.oneDecimal(mean))" }
+        if let date = dateLabel(item) { text += ", \(date)" }
         return text
     }
 

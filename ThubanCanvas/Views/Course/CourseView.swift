@@ -56,16 +56,20 @@ struct CourseSectionBar: View {
                 } label: {
                     HStack(spacing: 4) {
                         Glyph(.chevronLeft, size: 14)
-                        Text(session.section.label)
+                        Text(session.section.label).lineLimit(1).fixedSize(horizontal: true, vertical: false)
                     }
                 }
                 .buttonStyle(GhostButtonStyle(height: 30, tinted: true, horizontalPadding: 8))
                 .keyboardShortcut("[", modifiers: .command)
             }
-            SegmentedPicker(
-                selection: Binding(get: { session.section }, set: { session.section = $0; session.path = [] }),
-                options: session.availableSections.map { SegmentOption($0, $0.label) }
-            )
+            // Extra sections scroll (as the tab strip does) instead of squeezing the labels or the grade.
+            ScrollView(.horizontal, showsIndicators: false) {
+                SegmentedPicker(
+                    selection: Binding(get: { session.section }, set: { session.section = $0; session.path = [] }),
+                    options: session.availableSections.map { SegmentOption($0, $0.label) }
+                )
+            }
+            .scrollBounceBehavior(.basedOnSize)
             Spacer()
             if let score = session.displayScore {
                 HStack(spacing: 6) {
@@ -76,8 +80,9 @@ struct CourseSectionBar: View {
                     if let letter = session.displayLetter { Chip(letter, kind: .accent) }
                     if !session.whatIf.isEmpty { Chip("What-if", kind: .warn) }
                 }
+                .layoutPriority(1)
                 .accessibilityElement(children: .combine)
-                .accessibilityLabel("Current grade \(DueFormatter.percent(score))")
+                .accessibilityLabel(gradeAccessibilityLabel(score))
             }
         }
         .padding(.leading, 20)
@@ -86,6 +91,14 @@ struct CourseSectionBar: View {
         .frame(maxWidth: .infinity)
         .background(theme.bgColor)
         .thubanHairline(.bottom, color: theme.lineColor)
+    }
+
+    /// "Current grade 91.2%, letter A-, what-if active" — mirrors GradesView.accessibilitySummary.
+    private func gradeAccessibilityLabel(_ score: Double) -> String {
+        var parts = ["Current grade \(DueFormatter.percent(score))"]
+        if let letter = session.displayLetter { parts.append("letter \(letter)") }
+        if !session.whatIf.isEmpty { parts.append("what-if active") }
+        return parts.joined(separator: ", ")
     }
 }
 

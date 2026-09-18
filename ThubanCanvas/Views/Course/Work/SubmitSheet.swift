@@ -79,9 +79,9 @@ struct SubmitSheet: View {
                     .font(ThubanFont.small).foregroundStyle(theme.inkFaintColor)
                 Spacer()
                 Button("Cancel", action: dismiss).buttonStyle(.thubanSecondary).keyboardShortcut(.cancelAction)
+                // Not the default action (matches ComposeMessageSheet): Return in a field must not start a submission.
                 Button("Submit…") { sendError = nil; confirming = true }
                     .buttonStyle(.thubanPrimary)
-                    .keyboardShortcut(.defaultAction)
                     .disabled(!isValid || isSending)
                     .accessibilityLabel("Submit to Canvas")
             }

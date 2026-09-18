@@ -5,7 +5,6 @@ struct DataSettings: View {
     @Environment(AppModel.self) private var app
     @Environment(\.thubanTheme) private var theme
     @State private var cacheBytes = 0
-    @State private var refreshMinutes = 15
 
     var body: some View {
         VStack(alignment: .leading, spacing: 28) {
@@ -15,11 +14,12 @@ struct DataSettings: View {
                         .buttonStyle(.thubanSecondary)
                 }
                 SettingsRow("Background refresh", detail: "How often grades and due dates are re-fetched while the app runs.") {
-                    Picker("", selection: Binding(get: { app.settings.refreshMinutes }, set: { app.settings.refreshMinutes = $0 })) {
-                        Text("5 min").tag(5); Text("15 min").tag(15); Text("30 min").tag(30); Text("60 min").tag(60)
-                    }
-                    .labelsHidden()
-                    .frame(width: 110)
+                    SegmentedPicker(
+                        selection: Binding(get: { app.settings.refreshMinutes }, set: { app.settings.refreshMinutes = $0 }),
+                        options: [5, 15, 30, 60].map { SegmentOption($0, "\($0) min") },
+                        segmentHeight: 24
+                    )
+                    .accessibilityLabel("Background refresh interval")
                 }
             }
             SettingsGroup("Location") {

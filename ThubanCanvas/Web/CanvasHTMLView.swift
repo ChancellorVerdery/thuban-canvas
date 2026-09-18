@@ -21,6 +21,8 @@ struct CanvasHTMLView: NSViewRepresentable {
             configuration.setURLSchemeHandler(CanvasSchemeHandler(client: client), forURLScheme: CanvasHTML.scheme)
         }
         configuration.preferences.isElementFullscreenEnabled = true
+        // `sanitize` already strips scripts from the document; make sure nothing proxied in can run either.
+        configuration.defaultWebpagePreferences.allowsContentJavaScript = false
         let webView = WKWebView(frame: .zero, configuration: configuration)
         webView.navigationDelegate = context.coordinator
         webView.setValue(false, forKey: "drawsBackground")
@@ -34,11 +36,14 @@ struct CanvasHTMLView: NSViewRepresentable {
         load(into: webView, context: context)
     }
 
+    /// Compares a cheap key first so unrelated `app.settings` writes do not re-sanitize the fragment on every update.
     private func load(into webView: WKWebView, context: Context) {
+        let key = Coordinator.Key(html: html, title: title, css: theme.cssVariables, textScale: textScale, host: app.host,
+                                  dyslexia: app.settings.dyslexiaFont, reduceMotion: app.settings.reduceMotion)
+        guard key != context.coordinator.lastKey else { return }
+        context.coordinator.lastKey = key
         let document = Self.document(html: html, title: title, theme: theme, textScale: textScale, host: app.host,
-                                     dyslexia: app.settings.dyslexiaFont, reduceMotion: app.settings.reduceMotion)
-        guard document != context.coordinator.lastDocument else { return }
-        context.coordinator.lastDocument = document
+                                     dyslexia: key.dyslexia, reduceMotion: key.reduceMotion)
         webView.loadHTMLString(document, baseURL: URL(string: app.host))
     }
 
@@ -94,7 +99,18 @@ struct CanvasHTMLView: NSViewRepresentable {
     final class Coordinator: NSObject, WKNavigationDelegate {
         let app: AppModel
         weak var webView: WKWebView?
-        var lastDocument: String?
+        var lastKey: Key?
+
+        /// Everything the rendered document depends on.
+        struct Key: Equatable {
+            var html: String
+            var title: String?
+            var css: String
+            var textScale: Double
+            var host: String
+            var dyslexia: Bool
+            var reduceMotion: Bool
+        }
 
         init(app: AppModel) { self.app = app }
 

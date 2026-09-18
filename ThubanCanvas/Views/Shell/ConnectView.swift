@@ -73,6 +73,7 @@ struct LabeledField: View {
                 .font(ThubanFont.micro)
                 .kerning(0.5)
                 .foregroundStyle(theme.inkDimColor)
+                .accessibilityHidden(true)
             Group {
                 if secure {
                     SecureField(placeholder, text: $text)
@@ -81,6 +82,7 @@ struct LabeledField: View {
                 }
             }
             .textFieldStyle(.plain)
+            .accessibilityLabel(label)
             .font(ThubanFont.body(14))
             .foregroundStyle(theme.inkColor)
             .padding(.horizontal, 10)

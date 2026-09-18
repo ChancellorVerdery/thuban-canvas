@@ -18,6 +18,7 @@ final class AppModel {
             guard settings != oldValue else { return }
             persistSettings()
             if settings.theme != oldValue.theme { recomputeTheme() }
+            if settings.refreshMinutes != oldValue.refreshMinutes, isLoaded { startRefreshTimer() }
         }
     }
     private(set) var credentials: CanvasCredentials?
@@ -91,6 +92,7 @@ final class AppModel {
     @ObservationIgnored private var appearanceObservation: NSKeyValueObservation?
     @ObservationIgnored private var refreshTimer: Timer?
     @ObservationIgnored private var saveTask: Task<Void, Never>?
+    @ObservationIgnored private var terminateObserver: NSObjectProtocol?
 
     var themeSelection: ThemeSelection { settings.theme }
 
@@ -98,6 +100,10 @@ final class AppModel {
         settings = SettingsStore.load()
         systemIsDark = Self.currentSystemIsDark()
         theme = ThemeResolver.resolve(settings.theme, systemIsDark: systemIsDark)
+        // The debounced settings write would be lost on ⌘Q within 300 ms; flush it at quit.
+        terminateObserver = NotificationCenter.default.addObserver(forName: NSApplication.willTerminateNotification, object: nil, queue: .main) { [weak self] _ in
+            MainActor.assumeIsolated { self?.flushSettings() }
+        }
     }
 
     // MARK: Lifecycle
@@ -148,7 +154,7 @@ final class AppModel {
         }
     }
 
-    /// Forgets the token and every cached payload.
+    /// Forgets the token, every cached payload and every downloaded course file.
     func disconnect() async {
         try? CredentialStore.clear()
         credentials = nil
@@ -160,6 +166,8 @@ final class AppModel {
         authenticationFailed = false
         connectionError = nil
         await cache.clear()
+        try? FileManager.default.removeItem(at: AppPaths.downloadsDirectory)
+        try? AppPaths.ensureDirectories()
     }
 
     func noteUnauthorized() {
@@ -193,7 +201,7 @@ final class AppModel {
         }
         sessions = next
         if case .course(let id) = selectedTab, sessions[id] == nil { selectedTab = .home }
-        if !fetched.isEmpty, coursesResource.fromCache == false { lastRefresh = Date() }
+        if !fetched.isEmpty, coursesResource.error == nil, coursesResource.fromCache == false { lastRefresh = Date() }
     }
 
     /// Refreshes courses, every session's assignment groups and the cross-course resources.
@@ -206,7 +214,8 @@ final class AppModel {
             for session in sessions.values { group.addTask { await session.refreshLoaded() } }
             group.addTask { await self.loadHomeResources(force: true) }
         }
-        lastRefresh = Date()
+        // A failed refresh keeps the previous stamp so saved data is not labelled "Updated just now".
+        if coursesError == nil { lastRefresh = Date() }
         NotificationCenter.default.post(name: .thubanDataRefreshed, object: nil)
     }
 
@@ -288,6 +297,14 @@ final class AppModel {
             guard !Task.isCancelled else { return }
             do { try SettingsStore.save(snapshot) } catch { Self.logger.error("settings save failed: \(error.localizedDescription, privacy: .public)") }
         }
+    }
+
+    /// Writes any pending debounced settings change synchronously (called at quit).
+    func flushSettings() {
+        guard let pending = saveTask else { return }
+        pending.cancel()
+        saveTask = nil
+        do { try SettingsStore.save(settings) } catch { Self.logger.error("settings flush failed: \(error.localizedDescription, privacy: .public)") }
     }
 
     func dismissOverdue(_ item: WorkItem) { settings.dismissedOverdue.insert(item.dismissKey) }

@@ -16,6 +16,22 @@ struct AppearanceSettings: View {
                 )
             }
 
+            SettingsGroup("Text size", caption: "Scales body text on every screen and inside Canvas pages.") {
+                SegmentedPicker(
+                    selection: Binding(get: { app.settings.textSize }, set: { app.settings.textSize = $0 }),
+                    options: TextSize.allCases.map { SegmentOption($0, $0.label) }
+                )
+            }
+
+            SettingsGroup("Accessibility", caption: "Applied to Thuban screens and to Canvas page content.") {
+                SettingsRow("Reduce motion", detail: "Turns off spinning and sliding animations.") {
+                    ThubanToggle(isOn: Binding(get: { app.settings.reduceMotion }, set: { app.settings.reduceMotion = $0 }), label: "Reduce motion")
+                }
+                SettingsRow("Dyslexia-friendly font", detail: "Uses a wider, more distinct typeface in Canvas pages.") {
+                    ThubanToggle(isOn: Binding(get: { app.settings.dyslexiaFont }, set: { app.settings.dyslexiaFont = $0 }), label: "Dyslexia-friendly font")
+                }
+            }
+
             SettingsGroup("Scheme", caption: "Colors only. Every card uses the same Thuban layout; the ninth is yours.") {
                 let columns = Array(repeating: GridItem(.flexible(), spacing: 12), count: 3)
                 LazyVGrid(columns: columns, spacing: 12) {
@@ -150,7 +166,7 @@ struct SplitGroundSwatch: View {
 
 // MARK: - Preview card
 
-/// A mini class tab bar, primary/secondary buttons, a selected chip, and Gain / Loss lines.
+/// A mini class tab bar, primary/secondary buttons, status chips, and due / overdue lines.
 struct ThemePreviewCard: View {
     @Environment(\.thubanTheme) private var theme
 
@@ -173,29 +189,30 @@ struct ThemePreviewCard: View {
 
             VStack(alignment: .leading, spacing: 12) {
                 HStack(spacing: 10) {
-                    Button("Check answers") {}
+                    Button("Submit") {}
                         .buttonStyle(.thubanPrimary)
-                    Button("Regenerate numbers") {}
+                    Button("Open in Canvas") {}
                         .buttonStyle(.thubanSecondary)
                     Spacer(minLength: 0)
-                    Chip("Regenerated · seed 4f2a", kind: .accent, icon: .mathEngine)
+                    Chip("Graded", kind: .signal)
+                    Chip("What-if", kind: .warn)
                 }
                 .allowsHitTesting(false)
                 HStack(spacing: 18) {
                     HStack(spacing: 6) {
                         Circle().fill(theme.posColor).frame(width: 8, height: 8)
-                        Text("+12 mastered")
+                        Text("3 due this week")
                             .font(ThubanFont.body(14, weight: .semibold))
                             .foregroundStyle(theme.posTextColor)
                     }
                     HStack(spacing: 6) {
                         Circle().fill(theme.negColor).frame(width: 8, height: 8)
-                        Text("−3 needs review")
+                        Text("1 overdue")
                             .font(ThubanFont.body(14, weight: .semibold))
                             .foregroundStyle(theme.negTextColor)
                     }
                     Spacer(minLength: 0)
-                    Text("Question 7 of 24")
+                    Text("Problem Set 4 · due Fri 11:59 PM")
                         .font(ThubanFont.small)
                         .foregroundStyle(theme.inkDimColor)
                 }

@@ -32,7 +32,7 @@ struct SegmentedPicker<Value: Hashable>: View {
                 } label: {
                     HStack(spacing: 6) {
                         if let icon = option.icon { Icon(icon, size: 16) }
-                        Text(option.label)
+                        Text(option.label).lineLimit(1).fixedSize(horizontal: true, vertical: false)
                     }
                     .font(.system(size: 13, weight: .semibold))
                     .foregroundStyle(active ? theme.inkColor : theme.inkDimColor)

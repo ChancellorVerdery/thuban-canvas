@@ -133,8 +133,10 @@ public extension CanvasClient {
         return try await getAll("conversations", query: query)
     }
 
+    /// Canvas marks a conversation read on GET by default (`auto_mark_as_read`); viewing must not be a silent write,
+    /// so opt out here and let the confirmed `markConversation` path do it.
     func conversation(_ id: CanvasID) async throws -> Conversation {
-        try await get("conversations/\(id)")
+        try await get("conversations/\(id)", query: [q("auto_mark_as_read", "false")])
     }
 
     func unreadConversationCount() async throws -> Int {
@@ -166,11 +168,15 @@ public struct UploadedFile: Codable, Sendable {
 public extension CanvasClient {
     /// Marks a to-do item ignored (`ignore` = until it changes, `ignore_permanently` = forever).
     func ignoreTodo(_ item: TodoItem, permanently: Bool) async throws {
-        guard let raw = permanently ? item.ignorePermanently : item.ignore, let url = URL(string: raw) else { return }
-        var request = URLRequest(url: url)
-        request.httpMethod = "DELETE"
-        request.setValue("Bearer \(credentials.token)", forHTTPHeaderField: "Authorization")
-        _ = try await data(for: url)
+        guard let raw = permanently ? item.ignorePermanently : item.ignore,
+              let components = URLComponents(string: raw) else {
+            throw ThubanError.unavailable("This item cannot be ignored")
+        }
+        // Canvas gives an absolute URL like https://host/api/v1/users/self/todo/<asset>/<purpose>?permanent=1;
+        // strip the /api/v1/ prefix because makeURL re-adds it.
+        var path = components.path
+        if let range = path.range(of: "/api/v1/") { path = String(path[range.upperBound...]) }
+        try await sendIgnoringResponse(.delete, path, query: components.queryItems ?? [], body: nil)
     }
 
     /// Text-entry submission.

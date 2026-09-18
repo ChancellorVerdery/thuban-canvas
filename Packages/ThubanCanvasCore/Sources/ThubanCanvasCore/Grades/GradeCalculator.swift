@@ -51,7 +51,8 @@ public enum GradeCalculator {
         for group in groups.sorted(by: { ($0.position ?? 0) < ($1.position ?? 0) }) {
             var entries: [(id: CanvasID, score: Double, possible: Double)] = []
             for assignment in group.assignments ?? [] where assignment.countsTowardGrade {
-                guard let possible = assignment.pointsPossible, possible > 0 else { continue }
+                // 0-point (extra credit) assignments count: a score adds to earned with nothing added to possible.
+                let possible = max(assignment.pointsPossible ?? 0, 0)
                 if let override = whatIf.scores[assignment.id] {
                     switch override {
                     case .score(let score): entries.append((assignment.id, score, possible))
@@ -78,12 +79,13 @@ public enum GradeCalculator {
         let possible = results.reduce(0) { $0 + $1.possible }
         let percent: Double?
         if weighted {
-            // Canvas: Σ(weight × group %) over groups that have possible points, divided by those groups' total weight.
+            // Canvas: Σ(weight × group %) over groups that have possible points. It only rescales when the active
+            // weights total less than 100; weights over 100 (extra-credit groups) are left alone, so 105 is possible.
             let active = results.filter { $0.possible > 0 && ($0.weight ?? 0) > 0 }
             let totalWeight = active.reduce(0) { $0 + ($1.weight ?? 0) }
             if totalWeight > 0 {
                 let sum = active.reduce(0.0) { $0 + ($1.weight ?? 0) * ($1.percent ?? 0) }
-                percent = sum / totalWeight
+                percent = totalWeight < 100 ? sum / totalWeight : sum / 100
             } else {
                 percent = possible > 0 ? earned / possible * 100 : nil
             }

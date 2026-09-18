@@ -18,7 +18,10 @@ struct ShellView: View {
                 ConnectView()
             } else {
                 ZStack {
+                    // Inert while a panel covers it, so its Escape / ⌘Return / ⌘[ shortcuts cannot fire underneath.
                     content
+                        .disabled(app.panel != nil)
+                        .accessibilityHidden(app.panel != nil)
                     if let panel = app.panel {
                         UtilityPanelHost(panel: panel)
                     }
@@ -166,6 +169,10 @@ struct UtilityButton: View {
 private struct RefreshButton: View {
     @Environment(AppModel.self) private var app
     @Environment(\.thubanTheme) private var theme
+    @Environment(\.accessibilityReduceMotion) private var systemReduceMotion
+    @State private var hovering = false
+
+    private var reduceMotion: Bool { systemReduceMotion || app.settings.reduceMotion }
 
     var body: some View {
         Button {
@@ -175,12 +182,19 @@ private struct RefreshButton: View {
                 .font(.system(size: 14, weight: .medium))
                 .foregroundStyle(theme.inkDimColor)
                 .frame(width: 34, height: 34)
-                .rotationEffect(.degrees(app.isRefreshing ? 360 : 0))
-                .animation(app.isRefreshing ? .linear(duration: 1).repeatForever(autoreverses: false) : .default, value: app.isRefreshing)
+                .rotationEffect(.degrees(app.isRefreshing && !reduceMotion ? 360 : 0))
+                .animation(app.isRefreshing && !reduceMotion ? .linear(duration: 1).repeatForever(autoreverses: false) : nil, value: app.isRefreshing)
+                // With motion reduced, a dimmed icon still shows that a refresh is in progress.
+                .opacity(app.isRefreshing && reduceMotion ? 0.5 : 1)
+                .background(hovering && !app.isRefreshing ? theme.panel2Color : .clear,
+                            in: RoundedRectangle(cornerRadius: ThubanMetrics.controlRadius, style: .continuous))
+                .contentShape(RoundedRectangle(cornerRadius: ThubanMetrics.controlRadius, style: .continuous))
         }
         .buttonStyle(.plain)
+        .onHover { hovering = $0 }
         .disabled(app.isRefreshing)
         .accessibilityLabel("Refresh")
+        .accessibilityValue(app.isRefreshing ? "Refreshing" : "")
         .help(app.lastRefresh.map { "Refreshed \(DueFormatter.countdown($0))" } ?? "Refresh")
     }
 }
@@ -190,20 +204,21 @@ struct ConnectionChip: View {
     @Environment(AppModel.self) private var app
     @Environment(\.openWindow) private var openWindow
 
+    private var state: (text: String, kind: ChipKind) {
+        if app.authenticationFailed { return ("Token rejected", .neg) }
+        if app.client != nil { return (app.user?.shortName ?? "Connected", .pos) }
+        return ("Not connected", .neutral)
+    }
+
     var body: some View {
         Button {
             openWindow(id: "settings")
         } label: {
-            if app.authenticationFailed {
-                Chip("Token rejected", kind: .neg, dot: true)
-            } else if app.client != nil {
-                Chip(app.user?.shortName ?? "Connected", kind: .pos, dot: true)
-            } else {
-                Chip("Not connected", kind: .neutral, dot: true)
-            }
+            Chip(state.text, kind: state.kind, dot: true)
         }
         .buttonStyle(.plain)
-        .accessibilityLabel("Canvas connection. Open Settings")
+        .accessibilityLabel("Canvas connection: \(state.text)")
+        .accessibilityHint("Opens Settings")
     }
 }
 
@@ -221,11 +236,13 @@ struct TabStrip: View {
             }
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 4) {
-                    ForEach(app.orderedSessions) { session in
-                        ShellTab(title: app.orderedSessions.count > 4 ? session.compactTitle : session.tabTitle, symbol: nil,
+                    let sessions = app.orderedSessions
+                    ForEach(Array(sessions.enumerated()), id: \.element.id) { index, session in
+                        ShellTab(title: sessions.count > 4 ? session.compactTitle : session.tabTitle, symbol: nil,
                                  isActive: app.selectedTab == .course(session.id) && app.panel == nil,
                                  tint: session.preferences.tint.map { Color(hex: $0) },
-                                 compact: app.orderedSessions.count > 4) {
+                                 compact: sessions.count > 4,
+                                 accessibilityLabel: "\(session.course.name), tab \(index + 1) of \(sessions.count)") {
                             app.select(.course(session.id))
                         }
                         .help("\(session.course.name) · \(session.shortCode)")
@@ -257,6 +274,8 @@ struct ShellTab: View {
     var isActive: Bool
     var tint: Color?
     var compact: Bool = false
+    /// Full name for VoiceOver when `title` is a compact course code.
+    var accessibilityLabel: String? = nil
     var action: () -> Void
     @State private var hovering = false
 
@@ -287,6 +306,7 @@ struct ShellTab: View {
         }
         .buttonStyle(.plain)
         .onHover { hovering = $0 }
+        .accessibilityLabel(accessibilityLabel ?? title)
         .accessibilityAddTraits(isActive ? [.isSelected] : [])
     }
 }

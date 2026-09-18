@@ -188,12 +188,15 @@ public actor CanvasClient {
     }
 
     private func send(request: URLRequest, attempt: Int = 0) async throws -> (Data, HTTPURLResponse) {
+        // Only GETs are retried after a dropped connection or a 5xx: Canvas may already have committed a write
+        // (a 502 from the edge after the POST was processed), and a re-send would double-post / double-submit.
+        let isIdempotentRead = (request.httpMethod ?? "GET") == "GET"
         let data: Data
         let response: URLResponse
         do {
             (data, response) = try await session.data(for: request)
         } catch {
-            if attempt < 1, (error as? URLError)?.code == .networkConnectionLost {
+            if attempt < 1, isIdempotentRead, (error as? URLError)?.code == .networkConnectionLost {
                 return try await send(request: request, attempt: attempt + 1)
             }
             throw ThubanError.network(error.localizedDescription)
@@ -209,7 +212,7 @@ public actor CanvasClient {
             return try await send(request: request, attempt: attempt + 1)
         case 403, 404:
             throw ThubanError.unavailable(Self.message(from: data) ?? (http.statusCode == 404 ? "Not found" : "Not available to you"))
-        case 500..<600 where attempt < 1:
+        case 500..<600 where attempt < 1 && isIdempotentRead:
             try await Task.sleep(nanoseconds: 800_000_000)
             return try await send(request: request, attempt: attempt + 1)
         default:

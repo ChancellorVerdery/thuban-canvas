@@ -12,6 +12,8 @@ public struct WorkItem: Identifiable, Equatable, Sendable, Hashable {
     public var courseName: String
     public var title: String
     public var dueAt: Date?
+    /// When the grade was entered (or posted), for "recently graded" ordering.
+    public var gradedAt: Date?
     public var pointsPossible: Double?
     public var score: Double?
     public var status: Status
@@ -37,6 +39,7 @@ public struct WorkItem: Identifiable, Equatable, Sendable, Hashable {
         self.courseName = courseName
         title = assignment.name
         dueAt = assignment.dueAt
+        gradedAt = assignment.submission?.gradedAt ?? assignment.submission?.postedAt
         pointsPossible = assignment.pointsPossible
         score = assignment.submission?.score
         htmlUrl = assignment.htmlUrl
@@ -54,11 +57,12 @@ public struct WorkItem: Identifiable, Equatable, Sendable, Hashable {
         let submission = assignment.submission
         if submission?.excused == true { return .excused }
         if submission?.isGraded == true { return .graded }
+        // Canvas flags "missing" on graded-but-unposted / late-policy zeros too; nothing handed in is never "submitted".
+        if submission?.missing == true, submission?.isSubmitted != true { return .overdue }
         if submission?.isSubmitted == true { return .submitted }
         guard let due = assignment.dueAt else { return .noDate }
         if due > now { return .upcoming }
         // Past due and nothing handed in. Paper / in-class work is only "overdue" when Canvas flags it missing.
-        if submission?.missing == true { return .overdue }
         if assignment.isOnPaperOrNone || assignment.submissionTypes?.contains("external_tool") == true { return .noDate }
         return .overdue
     }
@@ -90,9 +94,11 @@ public enum WorkItemBuilder {
             .sorted { ($0.dueAt ?? .distantPast) > ($1.dueAt ?? .distantPast) }
     }
 
-    /// Graded or submitted, most recent activity first.
+    /// Graded, most recently graded first (falling back to the due date when Canvas gives no graded_at).
     public static func recentlyGraded(_ items: [WorkItem], limit: Int = 8) -> [WorkItem] {
-        Array(items.filter { $0.status == .graded }.sorted { ($0.dueAt ?? .distantPast) > ($1.dueAt ?? .distantPast) }.prefix(limit))
+        Array(items.filter { $0.status == .graded }
+            .sorted { ($0.gradedAt ?? $0.dueAt ?? .distantPast) > ($1.gradedAt ?? $1.dueAt ?? .distantPast) }
+            .prefix(limit))
     }
 
     /// Groups by calendar day (local), preserving order.

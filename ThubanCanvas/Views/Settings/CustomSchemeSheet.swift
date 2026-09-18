@@ -264,32 +264,32 @@ private struct SchemePreviewColumn: View {
 
     private func previewBlock(title: String, resolved: ResolvedTheme) -> some View {
         VStack(alignment: .leading, spacing: 6) {
-            MiniStudyCard()
+            MiniCoursePreview()
                 .environment(\.thubanTheme, resolved)
             ContrastReadout(title: title, resolved: resolved)
         }
     }
 }
 
-/// A miniature study card drawn entirely with the resolved theme in its environment.
-struct MiniStudyCard: View {
+/// A miniature assignment card drawn entirely with the resolved theme in its environment.
+struct MiniCoursePreview: View {
     @Environment(\.thubanTheme) private var t
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                Text("Question 7 of 24")
+                Text("Assignments · 3 due this week")
                     .font(.system(size: 11))
                     .foregroundStyle(t.inkDimColor)
                 Spacer()
-                Chip("Regenerated", kind: .accent)
+                Chip("What-if", kind: .warn)
             }
-            Text("Find fₓ(1, 2) for f(x, y) = x²y + 3xy³ − 2y.")
+            Text("Problem Set 4 · Partial derivatives")
                 .font(ThubanFont.display(13, weight: .medium))
                 .foregroundStyle(t.inkColor)
                 .lineLimit(2)
             HStack(spacing: 8) {
-                Text("28")
+                Text("Tomorrow · 11:59 PM")
                     .font(ThubanFont.mono(12))
                     .foregroundStyle(t.inkColor)
                 Spacer()
@@ -301,23 +301,23 @@ struct MiniStudyCard: View {
             .background(t.panelColor, in: RoundedRectangle(cornerRadius: 6, style: .continuous))
             .overlay(RoundedRectangle(cornerRadius: 6, style: .continuous).strokeBorder(t.accentColor, lineWidth: 1))
             HStack(spacing: 6) {
-                Button("Check answers") {}
+                Button("Submit") {}
                     .buttonStyle(PrimaryButtonStyle(height: 26))
-                Button("Hint") {}
+                Button("Open in Canvas") {}
                     .buttonStyle(SecondaryButtonStyle(height: 26))
                 Spacer()
-                Chip("Mastered", kind: .pos)
+                Chip("Graded", kind: .signal)
             }
             .allowsHitTesting(false)
             HStack(spacing: 8) {
-                Text("+12 mastered")
+                Text("Submitted")
                     .font(.system(size: 11, weight: .semibold))
                     .foregroundStyle(t.posTextColor)
-                Text("−3 needs review")
+                Text("1 overdue")
                     .font(.system(size: 11, weight: .semibold))
                     .foregroundStyle(t.negTextColor)
                 Spacer()
-                Text("Source: HW 4 · Q3")
+                Text("92.4% · A-")
                     .font(.system(size: 11))
                     .foregroundStyle(t.brassInkColor)
             }
@@ -540,6 +540,7 @@ private struct SlotEditorStrip: View {
 struct HueBar: View {
     @Environment(\.thubanTheme) private var theme
     @Binding var hue: Double
+    @FocusState private var isFocused: Bool
 
     private var stops: [Color] {
         (0...12).map { Color(hex: ColorMath.hslToHex(ColorMath.HSL(h: Double($0) * 30, s: 0.9, l: 0.55))) }
@@ -553,6 +554,7 @@ struct HueBar: View {
                 LinearGradient(colors: stops, startPoint: .leading, endPoint: .trailing)
                     .clipShape(Capsule())
                     .overlay(Capsule().strokeBorder(theme.lineColor, lineWidth: ThubanMetrics.hairline))
+                    .overlay(Capsule().strokeBorder(theme.accentColor, lineWidth: 2).opacity(isFocused ? 1 : 0))
                 Circle()
                     .fill(Color(hex: ColorMath.hslToHex(ColorMath.HSL(h: hue, s: 0.9, l: 0.55))))
                     .frame(width: 18, height: 18)
@@ -569,6 +571,12 @@ struct HueBar: View {
                     }
             )
         }
+        // Keyboard: Tab to focus, ← / → move 5°.
+        .focusable()
+        .focusEffectDisabled()
+        .focused($isFocused)
+        .onKeyPress(.leftArrow) { hue = max(0, hue - 5); return .handled }
+        .onKeyPress(.rightArrow) { hue = min(360, hue + 5); return .handled }
         .accessibilityElement()
         .accessibilityLabel("Hue")
         .accessibilityValue("\(Int(hue.rounded())) degrees")

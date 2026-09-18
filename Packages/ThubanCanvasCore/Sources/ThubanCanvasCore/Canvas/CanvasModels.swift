@@ -129,7 +129,11 @@ public struct Submission: Codable, Identifiable, Equatable, Sendable {
 
     /// Graded and the score is visible to the student.
     public var isGraded: Bool { workflowState == "graded" && score != nil && excused != true }
-    public var isSubmitted: Bool { submittedAt != nil || (workflowState != nil && workflowState != "unsubmitted") }
+    /// Something was actually handed in. A "graded" state alone is not enough: Canvas also sets it when an
+    /// instructor (or a late policy) grades a missing assignment with nothing submitted.
+    public var isSubmitted: Bool {
+        submittedAt != nil || (attempt ?? 0) > 0 || workflowState == "submitted" || workflowState == "pending_review"
+    }
 }
 
 public struct SubmissionComment: Codable, Identifiable, Equatable, Sendable {
@@ -184,7 +188,9 @@ public struct Assignment: Codable, Identifiable, Equatable, Sendable {
         guard let types = submissionTypes else { return false }
         return types.allSatisfy { $0 == "none" || $0 == "on_paper" || $0 == "not_graded" }
     }
-    public var countsTowardGrade: Bool { omitFromFinalGrade != true && gradingType != "not_graded" && (pointsPossible ?? 0) > 0 }
+    /// Canvas counts every non-omitted assignment, including 0-point (extra credit) ones: their score goes into the
+    /// numerator with nothing added to the denominator.
+    public var countsTowardGrade: Bool { omitFromFinalGrade != true && gradingType != "not_graded" }
 }
 
 public struct AssignmentGroup: Codable, Identifiable, Equatable, Sendable {

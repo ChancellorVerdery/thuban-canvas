@@ -48,7 +48,8 @@ final class Resource<Value: Codable & Sendable> {
     func load(app: AppModel, force: Bool = false, fetch: @escaping @Sendable (CanvasClient) async throws -> Value) async {
         if let inflight { await inflight.value; return }
         await prime(cache: app.cache)
-        guard force || (isStale && !unavailable) || value == nil else { return }
+        // 403/404 (`unavailable`) is not retried on every visit; only `force` (Retry / refresh) re-asks Canvas.
+        guard force || (!unavailable && (isStale || value == nil)) else { return }
         guard let client = app.client else {
             error = .notConnected
             hasAttempted = true

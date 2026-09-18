@@ -179,7 +179,14 @@ struct SearchField: View {
             Glyph(.search, size: 14).foregroundStyle(theme.inkFaintColor)
             TextField(placeholder, text: $text).textFieldStyle(.plain).font(ThubanFont.body(13)).foregroundStyle(theme.inkColor)
             if !text.isEmpty {
-                Button { text = "" } label: { Glyph(.close, size: 12).foregroundStyle(theme.inkDimColor) }.buttonStyle(.plain)
+                Button { text = "" } label: {
+                    Glyph(.close, size: 12)
+                        .foregroundStyle(theme.inkDimColor)
+                        .frame(width: 24, height: 24)
+                        .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel("Clear search")
             }
         }
         .padding(.horizontal, 10)
@@ -208,7 +215,8 @@ struct ConfirmWriteSheet: View {
             HStack {
                 Spacer()
                 Button("Cancel", action: cancel).buttonStyle(.thubanSecondary).keyboardShortcut(.cancelAction).disabled(isWorking)
-                Button(isWorking ? "Sending…" : actionLabel, action: confirm).buttonStyle(.thubanPrimary).keyboardShortcut(.defaultAction).disabled(isWorking)
+                // Deliberately not the default action: Return must not be able to confirm a write to Canvas.
+                Button(isWorking ? "Sending…" : actionLabel, action: confirm).buttonStyle(.thubanPrimary).disabled(isWorking)
             }
         }
         .padding(24)

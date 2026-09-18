@@ -98,6 +98,56 @@ final class ModelDecodingTests: XCTestCase {
         XCTAssertEqual(upcoming, upcoming.sorted { ($0.dueAt ?? .distantFuture) < ($1.dueAt ?? .distantFuture) })
     }
 
+    /// Decodes an inline Canvas-shaped JSON snippet with the package decoder.
+    func decodeJSON<T: Decodable>(_ type: T.Type, _ json: String) throws -> T {
+        try CanvasClient.decoder.decode(T.self, from: Data(json.utf8))
+    }
+
+    func testMissingGradedAssignmentIsOverdueNotSubmitted() throws {
+        // Real shape: a late policy graded a missing assignment while the grade is unposted.
+        let missing = try decodeJSON(Assignment.self, """
+        {"id": 1, "name": "HW 3", "due_at": "2026-09-10T03:59:00Z", "points_possible": 10, "submission_types": ["online_upload"],
+         "submission": {"workflow_state": "graded", "score": null, "submitted_at": null, "attempt": null, "missing": true}}
+        """)
+        let now = try XCTUnwrap(CanvasClient.parseDate("2026-09-17T18:00:00Z"))
+        XCTAssertFalse(try XCTUnwrap(missing.submission).isSubmitted)
+        XCTAssertEqual(WorkItem.status(for: missing, now: now), .overdue)
+
+        let handedIn = try decodeJSON(Submission.self, """
+        {"workflow_state": "graded", "score": null, "submitted_at": "2026-09-09T20:00:00Z", "attempt": 1}
+        """)
+        XCTAssertTrue(handedIn.isSubmitted)
+    }
+
+    func testWeightedGradeIsNotRescaledWhenWeightsExceed100() throws {
+        func groups(_ weights: [Double]) throws -> [AssignmentGroup] {
+            try weights.enumerated().map { index, weight in
+                try decodeJSON(AssignmentGroup.self, """
+                {"id": \(index + 1), "name": "G\(index + 1)", "position": \(index + 1), "group_weight": \(weight),
+                 "assignments": [{"id": \(100 + index), "name": "A", "points_possible": 10,
+                                  "submission": {"workflow_state": "graded", "score": 10}}]}
+                """)
+            }
+        }
+        // Canvas leaves Σ weight × percent alone when the active weights total 100 or more (extra-credit groups).
+        XCTAssertEqual(try XCTUnwrap(GradeCalculator.compute(groups: try groups([60, 45]), weighted: true).percent), 105, accuracy: 1e-9)
+        // … and only rescales when they total less than 100.
+        XCTAssertEqual(try XCTUnwrap(GradeCalculator.compute(groups: try groups([60, 20]), weighted: true).percent), 100, accuracy: 1e-9)
+    }
+
+    func testZeroPointExtraCreditCountsTowardGrade() throws {
+        let group = try decodeJSON(AssignmentGroup.self, """
+        {"id": 1, "name": "Quizzes", "assignments": [
+            {"id": 1, "name": "Quiz 1", "points_possible": 10, "submission": {"workflow_state": "graded", "score": 10}},
+            {"id": 2, "name": "Extra credit quiz", "points_possible": 0, "submission": {"workflow_state": "graded", "score": 5}}
+        ]}
+        """)
+        XCTAssertTrue(try XCTUnwrap(group.assignments?[1]).countsTowardGrade)
+        XCTAssertEqual(try XCTUnwrap(GradeCalculator.compute(groups: [group], weighted: false).percent), 150, accuracy: 1e-9)
+        let whatIf = GradeCalculator.compute(groups: [group], weighted: false, whatIf: WhatIf(scores: [2: .score(3)]))
+        XCTAssertEqual(try XCTUnwrap(whatIf.percent), 130, accuracy: 1e-9)
+    }
+
     func testLinkHeader() throws {
         let response = try XCTUnwrap(HTTPURLResponse(url: URL(string: "https://x.instructure.com/api/v1/courses")!, statusCode: 200, httpVersion: nil, headerFields: [
             "Link": "<https://x.instructure.com/api/v1/courses?page=2&per_page=10>; rel=\"next\",<https://x.instructure.com/api/v1/courses?page=1&per_page=10>; rel=\"first\"",
