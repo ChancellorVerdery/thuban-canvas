@@ -77,7 +77,7 @@ struct GradesSettings: View {
     private var defaultCredits: Binding<Double?> {
         Binding(
             get: { app.settings.defaultCredits },
-            set: { app.settings.defaultCredits = max(0, $0 ?? 3) }
+            set: { app.settings.defaultCredits = min(30, max(0, ($0 ?? 3).isFinite ? ($0 ?? 3) : 3)) }
         )
     }
 }

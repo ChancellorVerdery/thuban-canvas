@@ -81,12 +81,12 @@ private struct GradesPastSemesterRow: View {
                 .thubanField(height: 30)
                 .frame(maxWidth: .infinity)
                 .accessibilityLabel("Semester name")
-            TextField("0.00", value: binding(\.gpa), format: .number.precision(.fractionLength(0...3)))
+            TextField("0.00", value: binding(\.gpa, clamp: 0...10), format: .number.precision(.fractionLength(0...3)))
                 .thubanField(invalid: semester.gpa < 0 || semester.gpa > 4.5, mono: true, height: 30)
                 .multilineTextAlignment(.center)
                 .frame(width: 84)
                 .accessibilityLabel("GPA for \(semester.name)")
-            TextField("0", value: binding(\.credits), format: .number.precision(.fractionLength(0...2)))
+            TextField("0", value: binding(\.credits, clamp: 0...1000), format: .number.precision(.fractionLength(0...2)))
                 .thubanField(invalid: semester.credits < 0, mono: true, height: 30)
                 .multilineTextAlignment(.center)
                 .frame(width: 84)
@@ -107,6 +107,15 @@ private struct GradesPastSemesterRow: View {
                 guard let index = app.settings.pastSemesters.firstIndex(where: { $0.id == semester.id }) else { return }
                 app.settings.pastSemesters[index][keyPath: keyPath] = value
             }
+        )
+    }
+
+    /// Numeric fields are clamped so unbounded typed values never reach the formatters.
+    private func binding(_ keyPath: WritableKeyPath<PastSemester, Double>, clamp range: ClosedRange<Double>) -> Binding<Double> {
+        let raw = binding(keyPath)
+        return Binding(
+            get: { raw.wrappedValue },
+            set: { value in raw.wrappedValue = value.isFinite ? min(range.upperBound, max(range.lowerBound, value)) : range.lowerBound }
         )
     }
 }

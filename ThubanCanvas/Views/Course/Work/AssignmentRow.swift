@@ -63,7 +63,16 @@ struct AssignmentRow: View {
         if item.lockedForUser { parts.append("locked") }
         if let score = item.score { parts.append("score \(DueFormatter.points(score)) of \(DueFormatter.points(item.pointsPossible))") }
         else if let possible = item.pointsPossible { parts.append("\(DueFormatter.points(possible)) points") }
-        parts.append(item.status.rawValue)
+        switch item.status {
+        case .overdue: parts.append(item.late ? "overdue, late" : "overdue")
+        case .upcoming:
+            if item.late { parts.append("late") }
+            else if let due = item.dueAt, due.timeIntervalSinceNow < 86_400 { parts.append("due soon") }
+        case .submitted: parts.append(item.late ? "submitted late" : "submitted")
+        case .graded: parts.append(item.late ? "graded, late" : "graded")
+        case .excused: parts.append("excused")
+        case .noDate: break
+        }
         return parts.joined(separator: ", ")
     }
 }

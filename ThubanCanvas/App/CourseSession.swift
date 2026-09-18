@@ -229,11 +229,18 @@ final class CourseSession: Identifiable {
         return canvasScore ?? computedGrade?.percent
     }
 
-    /// Letter to display for `displayScore`.
+    /// Letter to display for `displayScore`. Canvas's own letter wins whenever the shown score is still Canvas's
+    /// number — including a what-if that merely re-types the real score — so the chip and GPA don't flip because
+    /// the app's fallback scale disagrees with a course scheme it can't read.
     var displayLetter: String? {
-        if whatIf.isEmpty, let letter = canvasLetter, preferences.customCutoffs == nil { return letter }
+        if let letter = canvasLetter, preferences.customCutoffs == nil, whatIf.isEmpty || matchesCanvasScore { return letter }
         guard let score = displayScore else { return nil }
         return gradingScheme.letter(for: score)
+    }
+
+    private var matchesCanvasScore: Bool {
+        guard let canvas = canvasScore, let percent = computedGrade?.percent else { return false }
+        return abs(percent - canvas) < 0.005
     }
 
     /// The letter used for GPA (Canvas's letter when it has one, else derived).

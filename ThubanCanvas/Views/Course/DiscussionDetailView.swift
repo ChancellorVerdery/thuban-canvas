@@ -62,11 +62,6 @@ struct DiscussionDetailView: View {
     private func content(_ topic: DiscussionTopic) -> some View {
         VStack(spacing: 0) {
             header(topic)
-                .padding(.horizontal, 24)
-                .padding(.top, 18)
-                .padding(.bottom, 16)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .thubanHairline(.bottom, color: theme.lineColor)
             CanvasHTMLView(html: DiscussionThreadHTML.compose(topic: topic, thread: thread))
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             replyArea(topic)
@@ -75,46 +70,37 @@ struct DiscussionDetailView: View {
 
     private func header(_ topic: DiscussionTopic) -> some View {
         let author = topic.author?.displayName ?? topic.userName
-        return VStack(alignment: .leading, spacing: 12) {
-            HStack(alignment: .top, spacing: 16) {
-                VStack(alignment: .leading, spacing: 6) {
-                    Text(eyebrow(topic)).font(ThubanFont.micro).kerning(0.5).foregroundStyle(theme.inkDimColor)
-                    Text(topic.title)
-                        .font(ThubanFont.display(26))
-                        .foregroundStyle(theme.inkColor)
-                        .lineLimit(3)
-                        .fixedSize(horizontal: false, vertical: true)
-                    HStack(spacing: 10) {
-                        if let author {
-                            HStack(spacing: 8) {
-                                AvatarView(name: author, url: topic.author?.avatarImageUrl, size: 26)
-                                Text(author).font(ThubanFont.body(14, weight: .semibold)).foregroundStyle(theme.inkColor)
-                            }
-                            .accessibilityElement(children: .combine)
-                            .accessibilityLabel("Posted by \(author)")
-                        }
-                        if let posted = topic.postedAt {
-                            Text(WorkText.full(posted)).font(ThubanFont.body(13.5)).foregroundStyle(theme.inkDimColor)
-                        } else if let delayed = topic.delayedPostUntil {
-                            Text("Scheduled for " + WorkText.full(delayed)).font(ThubanFont.body(13.5)).foregroundStyle(theme.inkDimColor)
-                        }
-                        if let unread = topic.unreadCount, unread > 0 { Chip("\(unread) unread", kind: .accent) }
-                        else if topic.readState == "unread" { Chip("Unread", kind: .accent) }
-                        if topic.assignmentId != nil { Chip("Graded", kind: .signal) }
-                        if topic.locked == true || topic.lockedForUser == true { Chip("Locked", kind: .neutral) }
+        return DetailHeader(eyebrow: eyebrow(topic), title: topic.title, titleLineLimit: 3) {
+            HStack(spacing: 10) {
+                if let author {
+                    HStack(spacing: 8) {
+                        AvatarView(name: author, url: topic.author?.avatarImageUrl, size: 26)
+                        Text(author).font(ThubanFont.body(14, weight: .semibold)).foregroundStyle(theme.inkColor)
                     }
+                    .accessibilityElement(children: .combine)
+                    .accessibilityLabel("Posted by \(author)")
                 }
-                Spacer(minLength: 16)
-                HStack(spacing: 8) {
-                    if let assignmentId = topic.assignmentId {
-                        Button("Assignment") { session.path.append(.assignment(assignmentId)) }.buttonStyle(.thubanGhostTinted)
-                    }
-                    Button("Open in Canvas") { CanvasBrowser.open(topic.htmlUrl) }
-                        .buttonStyle(.thubanGhostTinted)
-                        .disabled(topic.htmlUrl == nil)
-                        .accessibilityLabel("Open in Canvas (opens your browser)")
+                if let posted = topic.postedAt {
+                    Text(WorkText.full(posted)).font(ThubanFont.body(13.5)).foregroundStyle(theme.inkDimColor)
+                } else if let delayed = topic.delayedPostUntil {
+                    Text("Scheduled for " + WorkText.full(delayed)).font(ThubanFont.body(13.5)).foregroundStyle(theme.inkDimColor)
                 }
+                if let unread = topic.unreadCount, unread > 0 { Chip("\(unread) unread", kind: .accent) }
+                else if topic.readState == "unread" { Chip("Unread", kind: .accent) }
+                if topic.assignmentId != nil { Chip("Graded", kind: .signal) }
+                if topic.locked == true || topic.lockedForUser == true { Chip("Locked", kind: .neutral) }
             }
+        } actions: {
+            HStack(spacing: 8) {
+                if let assignmentId = topic.assignmentId {
+                    Button("Assignment") { session.path.append(.assignment(assignmentId)) }.buttonStyle(.thubanGhostTinted)
+                }
+                Button("Open in Canvas") { CanvasBrowser.open(topic.htmlUrl) }
+                    .buttonStyle(.thubanGhostTinted)
+                    .disabled(topic.htmlUrl == nil)
+                    .accessibilityLabel("Open in Canvas (opens your browser)")
+            }
+        } below: {
             if let attachments = topic.attachments, !attachments.isEmpty {
                 HStack(spacing: 6) {
                     ForEach(attachments) { file in
@@ -258,6 +244,12 @@ struct DiscussionDetailView: View {
             isReplying = false
             confirming = false
             successNote = "Reply posted · " + WorkText.full(entry.createdAt ?? Date())
+            // The list rows and eyebrow show reply counts from the cached topic list; refresh it.
+            if topic.isAnnouncement == true || session.announcements.value?.contains { $0.id == topic.id } == true {
+                await session.loadAnnouncements(force: true)
+            } else {
+                await session.loadDiscussions(force: true)
+            }
         } catch {
             sendError = error.localizedDescription
         }

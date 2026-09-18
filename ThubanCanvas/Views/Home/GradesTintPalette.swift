@@ -88,7 +88,7 @@ struct GradesNumberField: View {
     var body: some View {
         HStack(spacing: 4) {
             stepButton(symbol: "minus", label: "Decrease \(label)") { adjust(-step) }
-            TextField(placeholder, value: $value, format: .number.precision(.fractionLength(0...2)))
+            TextField(placeholder, value: clampedValue, format: .number.precision(.fractionLength(0...2)))
                 .thubanField(height: 30)
                 .multilineTextAlignment(.center)
                 .frame(width: width)
@@ -103,6 +103,14 @@ struct GradesNumberField: View {
         }
         .buttonStyle(GhostButtonStyle(height: 28, horizontalPadding: 7))
         .accessibilityLabel(label)
+    }
+
+    /// Typed values are clamped to `range` like the ± buttons, so nothing unbounded reaches the formatters.
+    private var clampedValue: Binding<Double?> {
+        Binding(
+            get: { value },
+            set: { new in value = new.map { $0.isFinite ? min(range.upperBound, max(range.lowerBound, $0)) : range.lowerBound } }
+        )
     }
 
     private func adjust(_ delta: Double) {

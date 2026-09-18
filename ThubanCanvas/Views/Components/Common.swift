@@ -120,6 +120,7 @@ struct CourseDot: View {
 /// Points and score in the "8 / 10" form with tabular digits.
 struct ScoreText: View {
     @Environment(\.thubanTheme) private var theme
+    @Environment(\.thubanTextScale) private var textScale
     var score: Double?
     var possible: Double?
     var size: CGFloat = 14
@@ -129,7 +130,7 @@ struct ScoreText: View {
             Text(DueFormatter.points(score)).foregroundStyle(score == nil ? theme.inkFaintColor : theme.inkColor)
             Text("/ \(DueFormatter.points(possible))").foregroundStyle(theme.inkDimColor)
         }
-        .font(.system(size: size, weight: .medium))
+        .font(.system(size: size * textScale, weight: .medium))
         .monospacedDigit()
     }
 }

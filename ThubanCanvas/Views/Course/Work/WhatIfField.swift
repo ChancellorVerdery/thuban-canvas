@@ -5,6 +5,7 @@ import ThubanCanvasCore
 /// blur, plus an × that pretends the assignment is ungraded. An accent border marks an active override.
 struct WhatIfField: View {
     @Environment(\.thubanTheme) private var theme
+    @Environment(\.thubanTextScale) private var textScale
     var assignment: Assignment
     var override: WhatIfScore?
     /// `.score` / `.ungraded` to set, nil to clear the override.
@@ -17,7 +18,7 @@ struct WhatIfField: View {
         HStack(spacing: 4) {
             TextField(placeholder, text: $text)
                 .textFieldStyle(.plain)
-                .font(ThubanFont.mono(12.5))
+                .font(ThubanFont.mono(12.5 * textScale))
                 .monospacedDigit()
                 .multilineTextAlignment(.trailing)
                 .foregroundStyle(isActive ? theme.brassInkColor : theme.inkColor)
@@ -31,10 +32,11 @@ struct WhatIfField: View {
                 .focused($focused)
                 .onSubmit(commit)
                 .onChange(of: focused) { _, isFocused in if !isFocused { commit() } }
+                .onKeyPress(.escape) { sync(); focused = false; return .handled }
                 .onChange(of: override) { _, _ in sync() }
                 .onAppear(perform: sync)
                 .accessibilityLabel("What-if score for \(assignment.name)")
-                .accessibilityValue(text.isEmpty ? placeholder : text)
+                .accessibilityValue(spokenValue)
                 .help("Type a hypothetical score out of \(DueFormatter.points(assignment.pointsPossible)); Return or Tab applies it")
             if case .ungraded = override {
                 IconButton(glyph: .reset, label: "Use the real score for \(assignment.name)", size: 24, iconSize: 12, tinted: true) {
@@ -65,6 +67,16 @@ struct WhatIfField: View {
         return "—"
     }
 
+    /// VoiceOver never hears the "—" glyph: it gets the hypothetical, "pretending ungraded", the real score or "no score".
+    private var spokenValue: String {
+        if !text.isEmpty { return "hypothetical \(text)" }
+        if case .ungraded = override { return "pretending ungraded" }
+        if let score = assignment.submission?.score, assignment.submission?.isGraded == true {
+            return "real score \(DueFormatter.points(score))"
+        }
+        return "no score"
+    }
+
     private func sync() {
         if case .score(let value) = override { text = DueFormatter.points(value) } else { text = "" }
     }
@@ -76,8 +88,10 @@ struct WhatIfField: View {
             return
         }
         if let value = Double(trimmed), value >= 0, value.isFinite {
-            if case .score(let current) = override, current == value { return }
-            onCommit(.score(value))
+            let cap = max((assignment.pointsPossible ?? 0) * 10, 1000)
+            let clamped = min(value, cap)
+            if case .score(let current) = override, current == clamped { sync(); return }
+            onCommit(.score(clamped))
         } else {
             sync()
         }

@@ -81,7 +81,7 @@ struct ScoreRangeBar: View {
 
     private func legend(_ label: String, _ value: Double?) -> some View {
         VStack(alignment: .leading, spacing: 1) {
-            Text(label.uppercased()).font(.system(size: 10, weight: .semibold)).kerning(0.4).foregroundStyle(theme.inkFaintColor)
+            Text(label.uppercased()).font(ThubanFont.micro).kerning(0.5).foregroundStyle(theme.inkDimColor)
             Text(Self.number(value)).font(ThubanFont.mono(12)).foregroundStyle(theme.inkDimColor)
         }
     }
@@ -93,7 +93,7 @@ struct ScoreRangeBar: View {
                 else if square { RoundedRectangle(cornerRadius: 2).fill(color).frame(width: 12, height: 8) }
                 else { Rectangle().fill(color).frame(width: 2, height: 10) }
             }
-            Text(label).font(.system(size: 11)).foregroundStyle(theme.inkFaintColor)
+            Text(label).font(ThubanFont.small).foregroundStyle(theme.inkDimColor)
         }
     }
 

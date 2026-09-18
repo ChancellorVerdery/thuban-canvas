@@ -147,6 +147,7 @@ public enum DueFormatter {
 
     public static func points(_ value: Double?) -> String {
         guard let value else { return "—" }
+        guard abs(value) < 1e15 else { return String(format: "%.0f", value) }
         return value == value.rounded() ? String(Int(value)) : String(format: "%.2f", value)
     }
 
