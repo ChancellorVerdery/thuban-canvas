@@ -221,7 +221,7 @@ private struct CourseFilterChip: View {
                 Text(title).lineLimit(1)
             }
             .font(.system(size: 12, weight: .semibold))
-            .foregroundStyle(isOn ? theme.inkColor : theme.inkFaintColor)
+            .foregroundStyle(isOn ? theme.inkColor : theme.inkDimColor)
             .padding(.horizontal, 9)
             .frame(height: 26)
             .background(isOn ? theme.panelColor : (hovering ? theme.panel2Color : .clear), in: RoundedRectangle(cornerRadius: ThubanMetrics.chipRadius, style: .continuous))
@@ -312,7 +312,9 @@ private struct MonthDayCell: View {
                 EntryPill(entry: entry)
             }
             if entries.count > maxPills {
-                Button("+\(entries.count - maxPills) more") { showingAll = true }
+                Button { showingAll = true } label: {
+                    Text("+\(entries.count - maxPills) more").frame(minHeight: 24).contentShape(Rectangle())
+                }
                     .buttonStyle(.plain)
                     .font(.system(size: 11, weight: .semibold))
                     .foregroundStyle(theme.brassInkColor)
@@ -364,8 +366,10 @@ private struct EntryPill: View {
             .padding(.horizontal, 5)
             .frame(height: 20)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(hovering ? theme.panel2Color : theme.panel2Color.opacity(0.55), in: RoundedRectangle(cornerRadius: 4, style: .continuous))
-            .contentShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
+            .background(hovering ? theme.panel2Color : theme.panel2Color.opacity(0.55), in: RoundedRectangle(cornerRadius: ThubanMetrics.chipRadius, style: .continuous))
+            .padding(.vertical, 2)
+            .frame(minHeight: 24)
+            .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
         .onHover { hovering = $0 }
@@ -395,7 +399,15 @@ private func entryHelp(_ entry: CalendarEntry, app: AppModel) -> String {
     let course = app.sessions[entry.courseId ?? 0]?.displayName ?? entry.event?.contextName ?? entry.workItem?.courseName ?? ""
     let when: String
     if entry.isAllDay { when = "All day" } else if let date = entry.date { when = DueFormatter.relative(date) } else { when = "" }
-    return [entry.title, course, when].filter { !$0.isEmpty }.joined(separator: " · ")
+    let status: String
+    switch entry.workItem?.status {
+    case .overdue: status = "Overdue"
+    case .submitted: status = entry.workItem?.late == true ? "Submitted late" : "Submitted"
+    case .graded: status = entry.workItem?.late == true ? "Graded, late" : "Graded"
+    case .excused: status = "Excused"
+    case .upcoming, .noDate, .none: status = ""
+    }
+    return [entry.title, course, when, status].filter { !$0.isEmpty }.joined(separator: " · ")
 }
 
 /// Work items open their assignment (and close the panel); events toggle their popover.
@@ -607,7 +619,7 @@ private struct WeekEntryCard: View {
                 if let course = app.sessions[entry.courseId ?? 0]?.compactTitle, !(entry.event != nil && entry.title.hasPrefix(course)) {
                     Text(course)
                         .font(.system(size: 11 * textScale))
-                        .foregroundStyle(theme.inkFaintColor)
+                        .foregroundStyle(theme.inkDimColor)
                         .lineLimit(1)
                 }
             }
@@ -716,7 +728,7 @@ private struct AgendaRow: View {
                     if let points = item.pointsPossible, points > 0 {
                         Text("\(DueFormatter.points(points)) pts")
                             .font(.system(size: 12 * textScale))
-                            .foregroundStyle(theme.inkFaintColor)
+                            .foregroundStyle(theme.inkDimColor)
                             .monospacedDigit()
                     }
                     if let chip = Chip.status(item) { chip }

@@ -31,6 +31,16 @@ struct ConnectionSettings: View {
                 if let error = app.connectionError { SettingsNote(text: error, tone: .negative) }
             }
 
+            SettingsGroup("Sending", caption: "When off, submit, reply, message, star and mark-read controls are hidden. Every send still asks first.") {
+                HStack(spacing: 10) {
+                    Text("Allow sending to Canvas").font(ThubanFont.body(14)).foregroundStyle(theme.inkColor)
+                    Spacer()
+                    ThubanToggle(isOn: Binding(get: { app.settings.writesEnabled }, set: { app.settings.writesEnabled = $0 }), label: "Allow sending to Canvas")
+                }
+                .padding(14)
+                .thubanPanel(padding: 0)
+            }
+
             SettingsGroup(app.client == nil ? "Connect" : "Replace token", caption: "Canvas → Account → Settings → + New Access Token. Tokens can expire; paste a new one here when the chip turns red.") {
                 VStack(alignment: .leading, spacing: 12) {
                     LabeledField(label: "Canvas address", placeholder: "school.instructure.com", text: $host)
@@ -54,7 +64,7 @@ struct ConnectionSettings: View {
                     }
                     ForEach(app.orderedSessions) { session in
                         HStack(spacing: 10) {
-                            Circle().fill(session.preferences.tint.map { Color(hex: $0) } ?? theme.accentColor).frame(width: 8, height: 8)
+                            CourseDot(tint: session.preferences.tint)
                             Text(session.displayName).font(ThubanFont.body(14, weight: .semibold)).foregroundStyle(theme.inkColor)
                             Text(session.shortCode).font(ThubanFont.small).foregroundStyle(theme.inkDimColor)
                             Spacer()
