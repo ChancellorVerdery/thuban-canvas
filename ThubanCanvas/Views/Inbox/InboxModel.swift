@@ -102,6 +102,13 @@ final class InboxModel {
         return nil
     }
 
+    /// Re-fetches every scope that has been loaded (after archive / unarchive / delete moved rows between them).
+    func reloadLoadedScopes(app: AppModel) async {
+        for scope in scopes.keys where scopes[scope]?.hasValue == true {
+            await load(scope: scope, app: app, force: true)
+        }
+    }
+
     /// Drops conversations from every cached scope (after archive / delete) and the detail cache.
     func remove(_ ids: Set<CanvasID>, app: AppModel) {
         for id in ids { details[id] = nil }

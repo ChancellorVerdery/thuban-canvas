@@ -119,7 +119,7 @@ struct InboxView: View {
     // MARK: Writes
 
     /// Entry point for row menus and the bulk bar: reversible events run immediately; archive / delete confirm.
-    private func request(_ event: ConversationBatchEvent, ids: Set<CanvasID>) {
+    private func request(_ event: InboxEvent, ids: Set<CanvasID>) {
         guard app.settings.writesEnabled, !ids.isEmpty else { return }
         let action = InboxAction(event: event, ids: ids)
         if action.needsConfirmation { pendingAction = action } else { perform(action) }
@@ -133,7 +133,11 @@ struct InboxView: View {
         Task {
             defer { isWorking = false }
             do {
-                try await client.batchUpdateConversations(ids, event: action.event)
+                if action.event == .unarchive {
+                    for id in ids { try await client.unarchiveConversation(id) }
+                } else {
+                    try await client.batchUpdateConversations(ids, event: action.event.batchEvent)
+                }
                 switch action.event {
                 case .markAsRead:
                     for id in ids { model.update(id, app: app) { $0.workflowState = "read" } }
@@ -143,14 +147,15 @@ struct InboxView: View {
                     for id in ids { model.update(id, app: app) { $0.starred = true } }
                 case .unstar:
                     for id in ids { model.update(id, app: app) { $0.starred = false } }
-                case .archive, .destroy:
+                case .archive, .unarchive, .destroy:
                     model.remove(Set(ids), app: app)
                     selection.clear()
                 }
                 await app.refreshUnreadCount()
                 pendingAction = nil
-                if action.event == .archive || action.event == .destroy {
-                    await model.load(scope: scope, app: app, force: true)
+                if action.event.movesBetweenScopes {
+                    // Rows changed mailbox: every loaded scope (Inbox, Archived, …) must be re-fetched, not just this one.
+                    await model.reloadLoadedScopes(app: app)
                 }
             } catch {
                 writeError = error.localizedDescription
@@ -190,19 +195,41 @@ struct InboxSelection: Equatable {
     }
 }
 
-/// A write to one or more conversations. Read/star changes are reversible and run without a sheet; archive and
-/// delete are confirmed first.
+/// What the inbox can do to a set of conversations. Everything but `unarchive` maps onto Canvas's batch events;
+/// unarchive is a per-conversation state change (Canvas has no batch event for it).
+enum InboxEvent: String, Hashable {
+    case markAsRead, markAsUnread, star, unstar, archive, unarchive, destroy
+
+    var batchEvent: ConversationBatchEvent {
+        switch self {
+        case .markAsRead: return .markAsRead
+        case .markAsUnread: return .markAsUnread
+        case .star: return .star
+        case .unstar: return .unstar
+        case .archive: return .archive
+        case .destroy: return .destroy
+        case .unarchive: return .markAsRead // never used: unarchive goes through `unarchiveConversation`
+        }
+    }
+
+    /// Rows leave one mailbox for another (or vanish), so every loaded scope needs a refresh.
+    var movesBetweenScopes: Bool { self == .archive || self == .unarchive || self == .destroy }
+}
+
+/// A write to one or more conversations. Read/star changes are reversible and run without a sheet; archive,
+/// unarchive and delete are confirmed first.
 struct InboxAction: Hashable, Identifiable {
-    var event: ConversationBatchEvent
+    var event: InboxEvent
     var ids: Set<CanvasID>
 
     var id: String { event.rawValue + "/" + ids.sorted().map(String.init).joined(separator: ",") }
-    var needsConfirmation: Bool { event == .archive || event == .destroy }
+    var needsConfirmation: Bool { event.movesBetweenScopes }
     private var noun: String { ids.count == 1 ? "this conversation" : "\(ids.count) conversations" }
 
     var title: String {
         switch event {
         case .archive: return "Archive \(noun)?"
+        case .unarchive: return "Move \(noun) back to the inbox?"
         case .destroy: return "Delete \(noun)?"
         case .markAsRead: return "Mark \(noun) as read?"
         case .markAsUnread: return "Mark \(noun) as unread?"
@@ -214,6 +241,7 @@ struct InboxAction: Hashable, Identifiable {
     var buttonLabel: String {
         switch event {
         case .archive: return "Archive"
+        case .unarchive: return "Unarchive"
         case .destroy: return "Delete"
         case .markAsRead: return "Mark as read"
         case .markAsUnread: return "Mark as unread"
@@ -224,7 +252,8 @@ struct InboxAction: Hashable, Identifiable {
 
     var message: String {
         switch event {
-        case .archive: return "Archived conversations leave your inbox in Canvas; find them under Archived."
+        case .archive: return "Archived conversations leave your inbox in Canvas but are kept — find them under Archived here or in Canvas. Nothing is deleted."
+        case .unarchive: return "The conversation returns to your Canvas inbox."
         case .destroy: return "This removes the conversation from your Canvas inbox for you. It cannot be undone here."
         default: return "This changes the conversation in your Canvas inbox."
         }
@@ -240,7 +269,7 @@ private struct BulkActionsView: View {
     var scope: InboxScope
     var isWorking: Bool
     var error: String?
-    var perform: (ConversationBatchEvent) -> Void
+    var perform: (InboxEvent) -> Void
     var clear: () -> Void
 
     var body: some View {
@@ -259,7 +288,7 @@ private struct BulkActionsView: View {
                     if rows.contains(where: { !$0.isUnread }) { action("Mark as unread", "envelope.badge", .markAsUnread) }
                     if rows.contains(where: { $0.starred != true }) { action("Star", "star", .star) }
                     if rows.contains(where: { $0.starred == true }) { action("Unstar", "star.slash", .unstar) }
-                    if scope != .archived { action("Archive…", "archivebox", .archive) }
+                    if scope == .archived { action("Unarchive…", "tray.and.arrow.up", .unarchive) } else { action("Archive…", "archivebox", .archive) }
                     action("Delete…", "trash", .destroy)
                 }
                 if isWorking { ProgressView().controlSize(.small) }
@@ -288,7 +317,7 @@ private struct BulkActionsView: View {
         return parts.isEmpty ? "All read, none starred." : parts.joined(separator: " · ")
     }
 
-    private func action(_ label: String, _ symbol: String, _ event: ConversationBatchEvent) -> some View {
+    private func action(_ label: String, _ symbol: String, _ event: InboxEvent) -> some View {
         Button {
             perform(event)
         } label: {
@@ -314,7 +343,7 @@ private struct ConversationList: View {
     var scope: InboxScope
     var search: String
     @Binding var selection: InboxSelection
-    var perform: (ConversationBatchEvent, Set<CanvasID>) -> Void
+    var perform: (InboxEvent, Set<CanvasID>) -> Void
     @FocusState private var listFocused: Bool
 
     var body: some View {
@@ -431,7 +460,7 @@ private struct ConversationList: View {
                 Button(conversation.starred == true ? "Remove star" : "Star") { perform(conversation.starred == true ? .unstar : .star, ids) }
             }
             Divider()
-            if scope != .archived { Button("Archive…") { perform(.archive, ids) } }
+            if scope == .archived { Button("Unarchive…") { perform(.unarchive, ids) } } else { Button("Archive…") { perform(.archive, ids) } }
             Button("Delete…", role: .destructive) { perform(.destroy, ids) }
             Divider()
         }
