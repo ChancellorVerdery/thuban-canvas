@@ -205,4 +205,23 @@ final class ModelDecodingTests: XCTestCase {
         let sparse = try JSONFile.decoder.decode(AppSettings.self, from: Data("{}".utf8))
         XCTAssertEqual(sparse.defaultCredits, 3)
     }
+
+    func testPastSemesterClassesAndLegacyDecoding() throws {
+        let semester = PastSemester(name: "Spring 2026", classes: [
+            PastClass(name: "Physics", credits: 4, letter: "A-"),
+            PastClass(name: "Writing", credits: 3, letter: "B+"),
+            PastClass(name: "Lab", credits: 1, letter: ""),
+        ], scale: .plusMinus)
+        XCTAssertEqual(semester.credits, 7)
+        XCTAssertEqual(try XCTUnwrap(semester.gpa), (3.7 * 4 + 3.3 * 3) / 7, accuracy: 1e-9)
+        XCTAssertEqual(semester.unlettered, 1)
+        let legacy = try JSONFile.decoder.decode(PastSemester.self, from: Data(#"{"id":"6F9619FF-8B86-D011-B42D-00C04FC964FF","name":"Fall 2025","gpa":3.5,"credits":15}"#.utf8))
+        XCTAssertFalse(legacy.usesClasses)
+        XCTAssertEqual(legacy.gpa, 3.5)
+        XCTAssertEqual(legacy.credits, 15)
+        let roundTrip = try JSONFile.decoder.decode(PastSemester.self, from: JSONFile.encoder.encode(semester))
+        XCTAssertEqual(roundTrip, semester)
+        let result = GPACalculator.compute(courses: [], past: [semester, legacy])
+        XCTAssertEqual(result.cumulativeCredits, 22)
+    }
 }

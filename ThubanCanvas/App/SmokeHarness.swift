@@ -82,6 +82,21 @@ enum SmokeHarness {
             let settings = try await waitForWindow(timeout: 5) { $0.title == "Settings" }
             await sleep(1.0)
             _ = try await capture(window: settings, name: "80-settings", in: directory)
+            // Grades & GPA pane with a seeded transcript semester (the first row expands in smoke mode).
+            app.settings.pastSemesters = [
+                PastSemester(name: "Spring 2026", classes: [
+                    PastClass(name: "Physics II", credits: 4, letter: "A-"),
+                    PastClass(name: "Technical Writing", credits: 3, letter: "B+"),
+                    PastClass(name: "Statics Lab", credits: 1, letter: ""),
+                ], scale: .plusMinus),
+                PastSemester(name: "Fall 2025", gpa: 3.62, credits: 16),
+            ]
+            app.openSettings(pane: "Grades & GPA")
+            settings.setContentSize(NSSize(width: 880, height: 1200))
+            await sleep(0.8)
+            app.settingsScrollAnchor = SettingsAnchor.pastSemesters
+            await sleep(1.0)
+            _ = try await capture(window: settings, name: "81-settings-grades", in: directory)
         } catch {
             logger.error("smoke failed: \(error.localizedDescription, privacy: .public)")
             fputs("smoke: FAILED: \(error.localizedDescription)\n", stderr)

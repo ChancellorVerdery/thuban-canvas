@@ -50,6 +50,8 @@ final class AppModel {
     var settingsRequest = 0
     /// Pane to show when Settings opens next (a `SettingsPane` raw value); consumed by `SettingsView`.
     var settingsPane: String?
+    /// A `SettingsAnchor` id to scroll to once the pane is shown; consumed by `SettingsView`.
+    var settingsScrollAnchor: String?
 
     /// Opens the Settings window on a pane.
     func openSettings(pane: String? = nil) {

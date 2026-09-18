@@ -19,19 +19,80 @@ public struct GPACourse: Identifiable, Equatable, Sendable {
     public var points: Double? { letter.flatMap(GradePoints.points) }
 }
 
-/// A semester the user typed in by hand (Canvas has no transcript API).
+/// One class in a past semester: name, credit hours and the letter earned.
+public struct PastClass: Codable, Identifiable, Equatable, Sendable {
+    public var id: UUID
+    public var name: String
+    public var credits: Double
+    /// Letter as shown on the transcript ("A-", "B+"); empty until chosen.
+    public var letter: String
+
+    public init(id: UUID = UUID(), name: String = "", credits: Double = 3, letter: String = "") {
+        self.id = id
+        self.name = name
+        self.credits = credits
+        self.letter = letter
+    }
+
+    public var points: Double? { GradePoints.points(for: letter) }
+    /// Counts toward the semester GPA only with a recognised letter and positive credits.
+    public var counts: Bool { points != nil && credits > 0 }
+}
+
+/// A semester the user typed in by hand (Canvas has no transcript API). Either lists its classes — the GPA and
+/// credits are then computed — or, with no classes, carries a GPA and credit total typed directly.
 public struct PastSemester: Codable, Identifiable, Equatable, Sendable {
     public var id: UUID
     public var name: String
-    public var gpa: Double
-    public var credits: Double
+    public var classes: [PastClass]
+    /// Which letters the class picker offers (plus/minus or plain letters).
+    public var scale: LetterScale
+    /// Typed totals, used only when `classes` is empty.
+    public var manualGPA: Double
+    public var manualCredits: Double
 
-    public init(id: UUID = UUID(), name: String, gpa: Double, credits: Double) {
+    public init(id: UUID = UUID(), name: String, gpa: Double = 0, credits: Double = 0, classes: [PastClass] = [], scale: LetterScale = .plusMinus) {
         self.id = id
         self.name = name
-        self.gpa = gpa
-        self.credits = credits
+        self.classes = classes
+        self.scale = scale
+        manualGPA = gpa
+        manualCredits = credits
     }
+
+    // Stored as `gpa` / `credits` so files written before classes existed still load.
+    enum CodingKeys: String, CodingKey { case id, name, classes, scale, manualGPA = "gpa", manualCredits = "credits" }
+
+    public init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        id = try c.decodeIfPresent(UUID.self, forKey: .id) ?? UUID()
+        name = try c.decodeIfPresent(String.self, forKey: .name) ?? ""
+        classes = try c.decodeIfPresent([PastClass].self, forKey: .classes) ?? []
+        scale = try c.decodeIfPresent(LetterScale.self, forKey: .scale) ?? .plusMinus
+        manualGPA = try c.decodeIfPresent(Double.self, forKey: .manualGPA) ?? 0
+        manualCredits = try c.decodeIfPresent(Double.self, forKey: .manualCredits) ?? 0
+    }
+
+    public var usesClasses: Bool { !classes.isEmpty }
+
+    /// Credits that count: the sum over classes with a letter, or the typed total.
+    public var credits: Double {
+        usesClasses ? classes.filter(\.counts).reduce(0) { $0 + $1.credits } : manualCredits
+    }
+
+    /// Semester GPA; nil when nothing counts yet.
+    public var gpa: Double? {
+        if usesClasses {
+            let counted = classes.filter(\.counts)
+            let credits = counted.reduce(0) { $0 + $1.credits }
+            guard credits > 0 else { return nil }
+            return counted.reduce(0) { $0 + ($1.points ?? 0) * $1.credits } / credits
+        }
+        return manualCredits > 0 ? manualGPA : nil
+    }
+
+    /// Classes without a letter yet (they are left out of the GPA).
+    public var unlettered: Int { classes.filter { !$0.counts }.count }
 }
 
 public struct GPAResult: Equatable, Sendable {
@@ -59,8 +120,9 @@ public enum GPACalculator {
         let term = credits > 0 ? qualityPoints / credits : nil
         var allPoints = qualityPoints
         var allCredits = credits
-        for semester in past where semester.credits > 0 {
-            allPoints += semester.gpa * semester.credits
+        for semester in past {
+            guard let gpa = semester.gpa, semester.credits > 0 else { continue }
+            allPoints += gpa * semester.credits
             allCredits += semester.credits
         }
         let cumulative = allCredits > 0 ? allPoints / allCredits : nil

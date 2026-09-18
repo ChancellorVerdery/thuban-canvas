@@ -119,11 +119,18 @@ private struct SettingsNavRow: View {
     }
 }
 
+/// Scroll anchors other screens can request (`AppModel.settingsScrollAnchor`).
+enum SettingsAnchor {
+    static let pastSemesters = "settings.pastSemesters"
+}
+
 private struct SettingsContent: View {
+    @Environment(AppModel.self) private var app
     @Environment(\.thubanTheme) private var theme
     var pane: SettingsPane
 
     var body: some View {
+        ScrollViewReader { proxy in
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
                 VStack(alignment: .leading, spacing: 4) {
@@ -147,6 +154,12 @@ private struct SettingsContent: View {
             .padding(28)
             .frame(maxWidth: 680, alignment: .leading)
             .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .onChange(of: app.settingsScrollAnchor) { _, anchor in
+            guard let anchor else { return }
+            withAnimation { proxy.scrollTo(anchor, anchor: .top) }
+            app.settingsScrollAnchor = nil
+        }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }

@@ -22,6 +22,8 @@ public enum LetterScale: String, Codable, CaseIterable, Sendable {
     case plusMinus, plain
     public var label: String { self == .plusMinus ? "Plus / minus" : "Letters only" }
     public var scheme: GradingScheme { self == .plusMinus ? .plusMinus : .plain }
+    /// The letters a transcript on this scale can show, best first.
+    public var letters: [String] { scheme.cutoffs.map(\.letter) }
 }
 
 public struct NotificationPreferences: Codable, Equatable, Sendable {

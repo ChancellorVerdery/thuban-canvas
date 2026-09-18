@@ -55,9 +55,10 @@ struct GradesSettings: View {
                 }
             }
 
-            SettingsGroup("Past semesters", caption: "Canvas has no transcript, so type each finished semester’s GPA and credits to get a cumulative figure.") {
+            SettingsGroup("Past semesters", caption: "Canvas has no transcript. Add each finished semester with its classes, credits and letters — or just its GPA — for a cumulative figure.") {
                 GradesPastSemesters()
             }
+            .id(SettingsAnchor.pastSemesters)
         }
     }
 
