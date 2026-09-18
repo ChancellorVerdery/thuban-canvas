@@ -171,6 +171,9 @@ private struct RefreshButton: View {
     @Environment(\.thubanTheme) private var theme
     @Environment(\.accessibilityReduceMotion) private var systemReduceMotion
     @State private var hovering = false
+    /// Accumulated spin: each in-flight second adds one turn, so the icon stops exactly when the refresh does
+    /// (a `repeatForever` animation would keep looping once started).
+    @State private var rotation: Double = 0
 
     private var reduceMotion: Bool { systemReduceMotion || app.settings.reduceMotion }
 
@@ -182,8 +185,7 @@ private struct RefreshButton: View {
                 .font(.system(size: 14, weight: .medium))
                 .foregroundStyle(theme.inkDimColor)
                 .frame(width: 34, height: 34)
-                .rotationEffect(.degrees(app.isRefreshing && !reduceMotion ? 360 : 0))
-                .animation(app.isRefreshing && !reduceMotion ? .linear(duration: 1).repeatForever(autoreverses: false) : nil, value: app.isRefreshing)
+                .rotationEffect(.degrees(rotation))
                 // With motion reduced, a dimmed icon still shows that a refresh is in progress.
                 .opacity(app.isRefreshing && reduceMotion ? 0.5 : 1)
                 .background(hovering && !app.isRefreshing ? theme.panel2Color : .clear,
@@ -193,6 +195,14 @@ private struct RefreshButton: View {
         .buttonStyle(.plain)
         .onHover { hovering = $0 }
         .disabled(app.isRefreshing)
+        .task(id: app.isRefreshing) {
+            guard app.isRefreshing, !reduceMotion else { return }
+            // One full turn per second while refreshing; cancelled (and left to finish its last turn) when done.
+            while !Task.isCancelled {
+                withAnimation(.linear(duration: 1)) { rotation += 360 }
+                try? await Task.sleep(nanoseconds: 1_000_000_000)
+            }
+        }
         .accessibilityLabel("Refresh")
         .accessibilityValue(app.isRefreshing ? "Refreshing" : "")
         .help(app.lastRefresh.map { "Refreshed \(DueFormatter.countdown($0))" } ?? "Refresh")
