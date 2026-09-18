@@ -252,6 +252,11 @@ final class AppModel {
         }
     }
 
+    /// Nudges the unread badge immediately after a local read-state change (the next refresh corrects it).
+    func adjustUnreadCount(by delta: Int) {
+        unreadInbox = max(0, unreadInbox + delta)
+    }
+
     func refreshUnreadCount() async {
         guard let client else { return }
         if let count = try? await client.unreadConversationCount() { unreadInbox = count }

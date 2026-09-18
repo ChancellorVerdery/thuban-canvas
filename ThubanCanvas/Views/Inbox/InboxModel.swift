@@ -45,16 +45,24 @@ final class InboxModel {
         await app.refreshUnreadCount()
     }
 
-    /// Fetches the full conversation (messages, attachments) unless it is already cached.
+    /// Fetches the full conversation (messages, attachments) unless it is already cached. Opening a conversation
+    /// marks it read in Canvas (as the web inbox does) whenever sending is enabled; the local rows follow at once.
     func loadDetail(_ id: CanvasID, app: AppModel, force: Bool = false) async {
-        guard force || details[id] == nil, !loadingDetails.contains(id) else { return }
+        let wasUnread = rows(id)?.isUnread ?? details[id]?.isUnread ?? false
+        let markRead = app.settings.writesEnabled && wasUnread
+        guard force || details[id] == nil || markRead, !loadingDetails.contains(id) else { return }
         guard let client = app.client else { return }
         loadingDetails.insert(id)
         defer { loadingDetails.remove(id) }
         do {
-            let conversation = try await client.conversation(id)
+            var conversation = try await client.conversation(id, markAsRead: markRead)
+            if markRead { conversation.workflowState = "read" }
             details[id] = conversation
             detailErrors[id] = nil
+            if markRead {
+                update(id, app: app) { $0.workflowState = "read" }
+                app.adjustUnreadCount(by: -1)
+            }
         } catch let error as ThubanError {
             if case .unauthorized = error { app.noteUnauthorized() }
             detailErrors[id] = error.localizedDescription
@@ -85,6 +93,23 @@ final class InboxModel {
             row.messageCount = updated.messageCount ?? row.messageCount
             list[index] = row
             resource.replace(list, app: app)
+        }
+    }
+
+    /// The list row for a conversation from whichever scope holds it.
+    func rows(_ id: CanvasID) -> Conversation? {
+        for (_, resource) in scopes { if let row = resource.value?.first(where: { $0.id == id }) { return row } }
+        return nil
+    }
+
+    /// Drops conversations from every cached scope (after archive / delete) and the detail cache.
+    func remove(_ ids: Set<CanvasID>, app: AppModel) {
+        for id in ids { details[id] = nil }
+        for (_, resource) in scopes {
+            guard var list = resource.value else { continue }
+            let before = list.count
+            list.removeAll { ids.contains($0.id) }
+            if list.count != before { resource.replace(list, app: app) }
         }
     }
 

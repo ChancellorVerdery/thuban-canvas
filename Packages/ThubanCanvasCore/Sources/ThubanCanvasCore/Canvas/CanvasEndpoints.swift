@@ -133,10 +133,10 @@ public extension CanvasClient {
         return try await getAll("conversations", query: query)
     }
 
-    /// Canvas marks a conversation read on GET by default (`auto_mark_as_read`); viewing must not be a silent write,
-    /// so opt out here and let the confirmed `markConversation` path do it.
-    func conversation(_ id: CanvasID) async throws -> Conversation {
-        try await get("conversations/\(id)", query: [q("auto_mark_as_read", "false")])
+    /// One conversation with its messages. Canvas marks it read as a side effect of the GET unless
+    /// `markAsRead` is false (the app passes the user's "sending" setting).
+    func conversation(_ id: CanvasID, markAsRead: Bool = false) async throws -> Conversation {
+        try await get("conversations/\(id)", query: [q("auto_mark_as_read", markAsRead ? "true" : "false")])
     }
 
     func unreadConversationCount() async throws -> Int {
@@ -263,6 +263,18 @@ public extension CanvasClient {
         try await sendIgnoringResponse(.put, "conversations/\(id)", body: .form([("conversation[starred]", starred ? "true" : "false")]))
     }
 
+    /// Bulk inbox management (`PUT /conversations` with `event`): mark read/unread, star/unstar, archive, delete.
+    func batchUpdateConversations(_ ids: [CanvasID], event: ConversationBatchEvent) async throws {
+        guard !ids.isEmpty else { return }
+        let pairs = ids.map { ("conversation_ids[]", String($0)) } + [("event", event.rawValue)]
+        try await sendIgnoringResponse(.put, "conversations", body: .form(pairs))
+    }
+
+    /// Restores an archived conversation to the inbox.
+    func unarchiveConversation(_ id: CanvasID) async throws {
+        try await sendIgnoringResponse(.put, "conversations/\(id)", body: .form([("conversation[workflow_state]", "read")]))
+    }
+
     /// Top-level reply on a discussion topic.
     func postDiscussionEntry(course: CanvasID, topic: CanvasID, message: String) async throws -> DiscussionEntry {
         try await send(.post, "courses/\(course)/discussion_topics/\(topic)/entries", body: .form([("message", message)]))
@@ -310,6 +322,11 @@ public extension CanvasClient {
         default: return "application/octet-stream"
         }
     }
+}
+
+/// Events accepted by the conversations batch endpoint.
+public enum ConversationBatchEvent: String, Sendable {
+    case markAsRead = "mark_as_read", markAsUnread = "mark_as_unread", star, unstar, archive, destroy
 }
 
 /// A JSON string/number/bool leaf (upload params are strings, occasionally numbers).

@@ -49,9 +49,11 @@ scripts/   build.sh (DERIVED=… for a private DerivedData), test.sh, regen.sh, 
 
 ## Writes to Canvas
 
-`CanvasEndpoints` has submit (text / URL / files), conversation reply / create, discussion entry / reply, planner
-mark-done, todo ignore, favorite. Rules: (1) a `ConfirmWriteSheet` ALWAYS precedes the call; (2) `app.settings.writesEnabled`
-gates the buttons; (3) NEVER invoke a write endpoint during development, smoke tests or tests — the account is real.
+`CanvasEndpoints` has submit (text / URL / files), conversation reply / create / batch (read, unread, star, archive,
+delete), discussion entry / reply, planner mark-done, todo ignore, favorite. Rules: (1) irreversible writes (submit,
+post, send, archive, delete) ALWAYS go through a `ConfirmWriteSheet`; reversible inbox state (read/unread, star) and
+mark-read-on-open run immediately, as the web inbox does; (2) `app.settings.writesEnabled` gates every write;
+(3) NEVER invoke a write endpoint during development, smoke tests or tests — the account is real.
 Write paths are shipped untested against the live server; keep them simple and follow the documented API.
 
 ## Design rules (from Thuban's brief)
