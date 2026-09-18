@@ -256,6 +256,7 @@ struct CardRow<Content: View>: View {
 /// A subtle meta text used in dense rows.
 struct MetaText: View {
     @Environment(\.thubanTheme) private var theme
+    @Environment(\.thubanTextScale) private var textScale
     var text: String
     var faint: Bool = false
 
@@ -266,7 +267,7 @@ struct MetaText: View {
 
     var body: some View {
         Text(text)
-            .font(ThubanFont.small)
+            .font(ThubanFont.scaled(13, scale: textScale))
             .foregroundStyle(faint ? theme.inkFaintColor : theme.inkDimColor)
             .lineLimit(1)
             .monospacedDigit()

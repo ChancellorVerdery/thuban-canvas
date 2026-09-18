@@ -37,8 +37,8 @@ public struct GradingScheme: Codable, Equatable, Sendable {
         var cutoffs: [Cutoff] = []
         for piece in pieces {
             let parts = piece.split(whereSeparator: { $0 == " " || $0 == ":" || $0 == "=" }).map { $0.trimmingCharacters(in: .whitespaces) }.filter { !$0.isEmpty }
-            guard parts.count == 2, let minimum = Double(parts[1].replacingOccurrences(of: "%", with: "")) else { continue }
-            cutoffs.append(Cutoff(parts[0].uppercased(), minimum))
+            guard parts.count == 2, let raw = Double(parts[1].replacingOccurrences(of: "%", with: "")), raw.isFinite else { continue }
+            cutoffs.append(Cutoff(parts[0].uppercased(), min(max(raw, 0), 1000)))
         }
         guard !cutoffs.isEmpty else { return nil }
         if !cutoffs.contains(where: { $0.minimum == 0 }) { cutoffs.append(Cutoff("F", 0)) }
@@ -63,7 +63,8 @@ public struct GradingScheme: Codable, Equatable, Sendable {
     }
 
     static func format(_ value: Double) -> String {
-        value == value.rounded() ? String(Int(value)) : String(format: "%.1f", value)
+        guard abs(value) < 1e15 else { return String(format: "%.0f", value) }
+        return value == value.rounded() ? String(Int(value)) : String(format: "%.1f", value)
     }
 }
 

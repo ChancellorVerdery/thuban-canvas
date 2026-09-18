@@ -126,6 +126,9 @@ private struct GradeSummaryCard: View {
 
     private var nextCutoffLine: String? {
         guard let score = session.displayScore else { return nil }
+        if !session.hasCourseScheme, session.canvasLetter != nil, session.displayLetter == session.canvasLetter {
+            return "Canvas’s letter comes from a scheme the app can’t read; cutoffs aren’t shown."
+        }
         let scheme = session.gradingScheme
         guard let cutoff = scheme.nextCutoff(above: score) else {
             return "Top of the scale."
@@ -186,6 +189,7 @@ private struct GradeSummaryCard: View {
 /// Name · weight · earned / possible · percent · dropped, one row per assignment group.
 private struct GroupBreakdown: View {
     @Environment(\.thubanTheme) private var theme
+    @Environment(\.thubanTextScale) private var textScale
     var grade: CourseGrade
 
     var body: some View {
@@ -210,7 +214,7 @@ private struct GroupBreakdown: View {
     private func row(_ name: String, _ weight: String, _ earned: String, _ percent: String, _ dropped: String, header: Bool = false, dim: Bool = false) -> some View {
         HStack(spacing: 12) {
             Text(header ? name.uppercased() : name)
-                .font(header ? ThubanFont.micro : ThubanFont.body(13.5, weight: .semibold))
+                .font(header ? ThubanFont.micro : ThubanFont.scaled(13.5, scale: textScale, weight: .semibold))
                 .kerning(header ? 0.5 : 0)
                 .foregroundStyle(header ? theme.inkDimColor : (dim ? theme.inkFaintColor : theme.inkColor))
                 .lineLimit(1)
@@ -227,7 +231,7 @@ private struct GroupBreakdown: View {
 
     private func cell(_ text: String, header: Bool, dim: Bool) -> some View {
         Text(header ? text.uppercased() : text)
-            .font(header ? ThubanFont.micro : ThubanFont.body(13.5))
+            .font(header ? ThubanFont.micro : ThubanFont.scaled(13.5, scale: textScale))
             .kerning(header ? 0.5 : 0)
             .monospacedDigit()
             .foregroundStyle(header ? theme.inkDimColor : (dim ? theme.inkFaintColor : theme.inkColor))
@@ -307,6 +311,7 @@ private struct GradeTableHeader: View {
 
     private func label(_ text: String) -> some View {
         Text(text.uppercased()).font(ThubanFont.micro).kerning(0.5).foregroundStyle(theme.inkDimColor).lineLimit(1)
+            .accessibilityAddTraits(.isHeader)
     }
 }
 
@@ -324,9 +329,9 @@ private struct GradeRow: View {
     private var override: WhatIfScore? { session.whatIf.scores[assignment.id] }
     private var excused: Bool { submission?.excused == true }
     private var graded: Bool { submission?.isGraded == true }
+    private var item: WorkItem { WorkItem(assignment: assignment, courseId: session.id, courseName: session.displayName) }
 
     var body: some View {
-        let item = WorkItem(assignment: assignment, courseId: session.id, courseName: session.displayName)
         HStack(spacing: GradeColumns.spacing) {
             Button {
                 session.path.append(.assignment(assignment.id))
@@ -349,6 +354,9 @@ private struct GradeRow: View {
             .accessibilityLabel("Open \(assignment.name)")
             .frame(maxWidth: .infinity, alignment: .leading)
 
+            // The read-only cells are one VoiceOver element that names the assignment, so the numbers
+            // never read as unrelated strings; the name button and what-if field stay separately focusable.
+            Group {
             Text(assignment.dueAt.map { WorkText.day($0) } ?? "—")
                 .font(ThubanFont.scaled(13, scale: textScale))
                 .foregroundStyle(item.status == .overdue ? theme.negTextColor : theme.inkDimColor)
@@ -375,13 +383,12 @@ private struct GradeRow: View {
             }
 
             HStack(spacing: 4) {
-                if dropped { Chip("Dropped", kind: .neutral) }
-                else if excused { Chip("Excused", kind: .neutral) }
-                else if let chip = Chip.status(item) { chip }
-                else if submission?.workflowState == "pending_review" { Chip("Awaiting grade", kind: .signal) }
-                else if assignment.lockedForUser == true { Chip("Locked", kind: .neutral) }
+                if let status = statusText { Chip(status.text, kind: status.kind) }
             }
             .frame(width: GradeColumns.status, alignment: .leading)
+            }
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel(rowSummary)
 
             Group {
                 if assignment.countsTowardGrade, !excused {
@@ -391,13 +398,14 @@ private struct GradeRow: View {
                         session.whatIf = whatIf
                     }
                 } else {
-                    Text(excused ? "EX" : "—").font(ThubanFont.mono(12.5)).foregroundStyle(theme.inkFaintColor).frame(width: 66)
+                    Text(excused ? "EX" : "—").font(ThubanFont.mono(12.5 * textScale)).foregroundStyle(theme.inkFaintColor).frame(width: 66)
+                        .accessibilityLabel(excused ? "What-if not applicable, excused" : "What-if not applicable")
                 }
             }
             .frame(width: GradeColumns.whatIf, alignment: .leading)
         }
         .padding(.horizontal, 14)
-        .frame(height: 40)
+        .frame(minHeight: 40 * textScale)
         .opacity(dropped ? 0.6 : 1)
         .background(override != nil ? theme.accentTintColor.opacity(0.35) : .clear)
     }
@@ -410,7 +418,7 @@ private struct GradeRow: View {
             HStack(spacing: 2) {
                 ScoreText(score: score, possible: assignment.pointsPossible)
                 if let grade = submission?.grade, assignment.gradingType == "letter_grade" || assignment.gradingType == "pass_fail" || assignment.gradingType == "gpa_scale" {
-                    Text(grade).font(ThubanFont.small).foregroundStyle(theme.brassInkColor).padding(.leading, 4)
+                    Text(grade).font(ThubanFont.scaled(13, scale: textScale)).foregroundStyle(theme.brassInkColor).padding(.leading, 4)
                 }
             }
         } else {
@@ -421,5 +429,28 @@ private struct GradeRow: View {
     private var percentText: String {
         guard !excused, graded, let score = submission?.score else { return "—" }
         return WorkText.percent(score: score, possible: assignment.pointsPossible) ?? "—"
+    }
+
+    /// The status chip's text and kind (nil → no chip). Shared by the chip and the spoken row summary.
+    private var statusText: (text: String, kind: ChipKind)? {
+        if dropped { return ("Dropped", .neutral) }
+        if excused { return ("Excused", .neutral) }
+        if let chip = Chip.status(item) { return (chip.text, chip.kind) }
+        if submission?.workflowState == "pending_review" { return ("Awaiting grade", .signal) }
+        if assignment.lockedForUser == true { return ("Locked", .neutral) }
+        return nil
+    }
+
+    private var rowSummary: String {
+        var parts: [String] = [assignment.name]
+        parts.append(assignment.dueAt.map { "due \(WorkText.day($0))" } ?? "no due date")
+        if excused { parts.append("excused") }
+        else if graded, let score = submission?.score {
+            parts.append("\(DueFormatter.points(score)) of \(DueFormatter.points(assignment.pointsPossible ?? 0))")
+            if percentText != "—" { parts.append(percentText) }
+        } else { parts.append("not graded") }
+        if showAverages, let mean = assignment.scoreStatistics?.mean { parts.append("class mean \(ScoreRangeBar.number(mean))") }
+        if let status = statusText, status.text.lowercased() != "excused" { parts.append(status.text.lowercased()) }
+        return parts.joined(separator: ", ")
     }
 }

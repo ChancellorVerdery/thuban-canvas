@@ -43,36 +43,27 @@ struct QuizDetailView: View {
         let assignment = quiz.assignmentId.flatMap { session.assignment($0) }
         let submission = assignment?.submission
         return VStack(spacing: 0) {
-            VStack(alignment: .leading, spacing: 14) {
-                HStack(alignment: .top, spacing: 16) {
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text(eyebrow(quiz)).font(ThubanFont.micro).kerning(0.5).foregroundStyle(theme.inkDimColor)
-                        Text(quiz.title)
-                            .font(ThubanFont.display(26))
-                            .foregroundStyle(theme.inkColor)
-                            .lineLimit(3)
-                            .fixedSize(horizontal: false, vertical: true)
-                        HStack(spacing: 6) {
-                            if let assignment, let chip = Chip.status(WorkItem(assignment: assignment, courseId: session.id, courseName: session.displayName)) { chip }
-                            if quiz.published == false { Chip("Unpublished", kind: .warn) }
-                            if quiz.lockedForUser == true { Chip("Locked", kind: .neutral) }
-                            if let score = submission?.score, submission?.isGraded == true {
-                                Chip("Score " + DueFormatter.points(score) + " / " + DueFormatter.points(quiz.pointsPossible ?? assignment?.pointsPossible), kind: .pos)
-                            }
-                        }
-                    }
-                    Spacer(minLength: 16)
-                    HStack(spacing: 8) {
-                        Button(quiz.lockedForUser == true ? "Open in Canvas" : "Take quiz in Canvas") { CanvasBrowser.open(quiz.htmlUrl) }
-                            .buttonStyle(.thubanPrimary)
-                            .disabled(quiz.htmlUrl == nil)
-                            .accessibilityLabel(quiz.lockedForUser == true ? "Open in Canvas (opens your browser)" : "Take quiz in Canvas (opens your browser)")
-                        if let assignment {
-                            Button("Assignment details") { session.path.append(.assignment(assignment.id)) }
-                                .buttonStyle(.thubanGhostTinted)
-                        }
+            DetailHeader(eyebrow: eyebrow(quiz), title: quiz.title, titleLineLimit: 3) {
+                HStack(spacing: 6) {
+                    if let assignment, let chip = Chip.status(WorkItem(assignment: assignment, courseId: session.id, courseName: session.displayName)) { chip }
+                    if quiz.published == false { Chip("Unpublished", kind: .warn) }
+                    if quiz.lockedForUser == true { Chip("Locked", kind: .neutral) }
+                    if let score = submission?.score, submission?.isGraded == true {
+                        Chip("Score " + DueFormatter.points(score) + " / " + DueFormatter.points(quiz.pointsPossible ?? assignment?.pointsPossible), kind: .pos)
                     }
                 }
+            } actions: {
+                HStack(spacing: 8) {
+                    Button(quiz.lockedForUser == true ? "Open in Canvas" : "Take quiz in Canvas") { CanvasBrowser.open(quiz.htmlUrl) }
+                        .buttonStyle(.thubanPrimary)
+                        .disabled(quiz.htmlUrl == nil)
+                        .accessibilityLabel(quiz.lockedForUser == true ? "Open in Canvas (opens your browser)" : "Take quiz in Canvas (opens your browser)")
+                    if let assignment {
+                        Button("Assignment details") { session.path.append(.assignment(assignment.id)) }
+                            .buttonStyle(.thubanGhostTinted)
+                    }
+                }
+            } below: {
                 HStack(alignment: .top, spacing: 28) {
                     MetaField(label: "Due", value: quiz.dueAt.map { WorkText.full($0) + " · " + DueFormatter.countdown($0) } ?? "No due date",
                               tone: quiz.dueAt.map { $0 < Date() && submission?.isSubmitted != true } == true ? .neg : .normal)
@@ -89,11 +80,6 @@ struct QuizDetailView: View {
                     InlineNote(symbol: "arrow.up.right.square", text: "Quizzes run on the Canvas website; your score shows here once it is graded.")
                 }
             }
-            .padding(.horizontal, 24)
-            .padding(.top, 18)
-            .padding(.bottom, 16)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .thubanHairline(.bottom, color: theme.lineColor)
             if let html = quiz.description, !CanvasHTML.plainText(html, limit: 4).isEmpty || html.contains("<img") {
                 CanvasHTMLView(html: html).frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {

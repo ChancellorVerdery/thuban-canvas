@@ -46,7 +46,9 @@ private struct DiscussionRow: View {
     var topic: DiscussionTopic
     var action: () -> Void
 
-    private var unread: Int { topic.unreadCount ?? (topic.readState == "unread" ? 1 : 0) }
+    /// Canvas sends `read_state: "unread"` with `unread_count: 0` for a never-opened topic without replies.
+    private var unreadReplies: Int { topic.unreadCount ?? 0 }
+    private var isUnread: Bool { unreadReplies > 0 || topic.readState == "unread" }
     private var isLocked: Bool { topic.locked == true || topic.lockedForUser == true }
 
     var body: some View {
@@ -54,7 +56,7 @@ private struct DiscussionRow: View {
             HStack(alignment: .center, spacing: 12) {
                 Image(systemName: topic.pinned == true ? "pin" : "bubble.left.and.bubble.right")
                     .font(.system(size: 14, weight: .semibold))
-                    .foregroundStyle(unread > 0 ? theme.brassInkColor : theme.inkFaintColor)
+                    .foregroundStyle(isUnread ? theme.brassInkColor : theme.inkFaintColor)
                     .frame(width: 20)
                     .accessibilityHidden(true)
                 VStack(alignment: .leading, spacing: 3) {
@@ -76,7 +78,8 @@ private struct DiscussionRow: View {
                     }
                 }
                 Spacer(minLength: 12)
-                if unread > 0 { Chip(unread == 1 && topic.unreadCount == nil ? "Unread" : "\(unread) unread", kind: .accent) }
+                if unreadReplies > 0 { Chip("\(unreadReplies) unread", kind: .accent) }
+                else if isUnread { Chip("Unread", kind: .accent) }
                 if topic.assignmentId != nil { Chip("Graded", kind: .signal) }
                 if let count = topic.discussionSubentryCount {
                     Text(WorkText.count(count, "reply", "replies"))
@@ -103,7 +106,7 @@ private struct DiscussionRow: View {
     private var accessibilityText: String {
         var parts = [topic.pinned == true ? "Pinned discussion" : "Discussion", topic.title, activityText]
         if let count = topic.discussionSubentryCount { parts.append(WorkText.count(count, "reply", "replies")) }
-        if unread > 0 { parts.append("\(unread) unread") }
+        if unreadReplies > 0 { parts.append("\(unreadReplies) unread") } else if isUnread { parts.append("unread") }
         if topic.assignmentId != nil { parts.append("graded") }
         if isLocked { parts.append("locked") }
         return parts.joined(separator: ", ")

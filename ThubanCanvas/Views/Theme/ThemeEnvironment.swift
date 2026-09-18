@@ -162,12 +162,13 @@ enum ChipKind: String, CaseIterable {
 /// Chip chrome: soft fill, 6 px radius, 12 pt semibold text in the kind's text color.
 struct ThubanChipModifier: ViewModifier {
     @Environment(\.thubanTheme) private var theme
+    @Environment(\.thubanTextScale) private var textScale
     var kind: ChipKind
 
     func body(content: Content) -> some View {
         let colors = kind.colors(theme)
         content
-            .font(.system(size: 12, weight: .semibold))
+            .font(.system(size: 12 * textScale, weight: .semibold))
             .foregroundStyle(colors.text)
             .padding(.horizontal, 8)
             .frame(height: 22)

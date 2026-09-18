@@ -46,11 +46,6 @@ struct AssignmentDetailView: View {
     private func content(_ assignment: Assignment) -> some View {
         VStack(spacing: 0) {
             header(assignment)
-                .padding(.horizontal, 24)
-                .padding(.top, 18)
-                .padding(.bottom, 16)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .thubanHairline(.bottom, color: theme.lineColor)
             HStack(spacing: 0) {
                 description(assignment)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -78,27 +73,17 @@ struct AssignmentDetailView: View {
 
     private func header(_ assignment: Assignment) -> some View {
         let item = WorkItem(assignment: assignment, courseId: session.id, courseName: session.displayName)
-        return VStack(alignment: .leading, spacing: 14) {
-            HStack(alignment: .top, spacing: 16) {
-                VStack(alignment: .leading, spacing: 6) {
-                    Text(eyebrow(for: assignment))
-                        .font(ThubanFont.micro).kerning(0.5).foregroundStyle(theme.inkDimColor)
-                    Text(assignment.name)
-                        .font(ThubanFont.display(26))
-                        .foregroundStyle(theme.inkColor)
-                        .lineLimit(3)
-                        .fixedSize(horizontal: false, vertical: true)
-                    HStack(spacing: 6) {
-                        if let chip = Chip.status(item) { chip }
-                        if assignment.published == false { Chip("Unpublished", kind: .warn) }
-                        if assignment.lockedForUser == true { Chip("Locked", kind: .neutral) }
-                        ForEach(WorkText.submissionTypes(assignment), id: \.self) { Chip($0, kind: .neutral) }
-                        if assignment.omitFromFinalGrade == true { Chip("Not in final grade", kind: .neutral) }
-                    }
-                }
-                Spacer(minLength: 16)
-                actions(assignment)
+        return DetailHeader(eyebrow: eyebrow(for: assignment), title: assignment.name, titleLineLimit: 3) {
+            HStack(spacing: 6) {
+                if let chip = Chip.status(item) { chip }
+                if assignment.published == false { Chip("Unpublished", kind: .warn) }
+                if assignment.lockedForUser == true { Chip("Locked", kind: .neutral) }
+                ForEach(WorkText.submissionTypes(assignment), id: \.self) { Chip($0, kind: .neutral) }
+                if assignment.omitFromFinalGrade == true { Chip("Not in final grade", kind: .neutral) }
             }
+        } actions: {
+            actions(assignment)
+        } below: {
             HStack(alignment: .top, spacing: 28) {
                 MetaField(label: "Due", value: dueText(assignment), tone: item.status == .overdue ? .neg : .normal)
                 MetaField(label: "Points", value: assignment.pointsPossible.map { DueFormatter.points($0) } ?? "Ungraded", tone: assignment.pointsPossible == nil ? .dim : .normal)
@@ -314,8 +299,8 @@ private struct GradePanel: View {
 
     private func detail(_ label: String, _ value: String, neg: Bool = false) -> some View {
         HStack(alignment: .firstTextBaseline, spacing: 8) {
-            Text(label).font(ThubanFont.small).foregroundStyle(theme.inkFaintColor).frame(width: 84, alignment: .leading)
-            Text(value).font(ThubanFont.small).foregroundStyle(neg ? theme.negTextColor : theme.inkDimColor).monospacedDigit()
+            Text(label).font(ThubanFont.small).foregroundStyle(theme.inkDimColor).frame(width: 84, alignment: .leading)
+            Text(value).font(ThubanFont.small).foregroundStyle(neg ? theme.negTextColor : theme.inkColor).monospacedDigit()
         }
         .accessibilityElement(children: .combine)
     }
