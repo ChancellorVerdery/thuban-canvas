@@ -228,7 +228,11 @@ private struct CanvasWebView: NSViewRepresentable {
         [style*="width"] { max-width: 100% !important; }
         .dp-wrapper, [class^="dp-"] { background: transparent !important; box-shadow: none !important; }
         \(reduceMotion ? "*, *::before, *::after { animation: none !important; transition: none !important; }" : "")
-        ::selection { background: var(--accent-tint); }
+        /* Find matches and text selection: the scheme's accent fill with its on-accent ink, so a match stands out in
+           every scheme and in both modes (the tint was too close to the page). */
+        ::selection { background: var(--accent); color: var(--on-accent); }
+        a::selection, a *::selection { color: var(--on-accent); border-bottom-color: transparent; }
+        img::selection { background: var(--accent); }
         </style></head><body>\(heading)\(body)</body></html>
         """
     }
