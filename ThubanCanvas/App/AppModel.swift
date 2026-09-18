@@ -52,6 +52,10 @@ final class AppModel {
     var settingsPane: String?
     /// A `SettingsAnchor` id to scroll to once the pane is shown; consumed by `SettingsView`.
     var settingsScrollAnchor: String?
+    /// ⌘F: bumps once per press. A visible `CanvasHTMLView` opens its find bar; otherwise the screen's `SearchField` takes focus.
+    var findRequest = 0
+    /// How many `CanvasHTMLView`s are currently on screen (they claim ⌘F over list search fields).
+    var visibleWebViews = 0
 
     /// Opens the Settings window on a pane.
     func openSettings(pane: String? = nil) {

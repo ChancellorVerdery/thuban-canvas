@@ -19,6 +19,10 @@ struct ThubanCanvasApp: App {
         .defaultSize(width: 1320, height: 860)
         .commands {
             CommandGroup(replacing: .newItem) {}
+            CommandGroup(after: .pasteboard) {
+                Button("Find…") { appModel.findRequest += 1 }
+                    .keyboardShortcut("f", modifiers: .command)
+            }
             CommandGroup(replacing: .appSettings) {
                 SettingsCommandButton().environment(appModel)
             }

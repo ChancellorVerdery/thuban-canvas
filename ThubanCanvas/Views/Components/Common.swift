@@ -171,14 +171,26 @@ struct ListRowCard<Content: View>: View {
 
 /// A search field in the Thuban style.
 struct SearchField: View {
+    @Environment(AppModel.self) private var app
     @Environment(\.thubanTheme) private var theme
+    @Environment(\.isEnabled) private var isEnabled
     @Binding var text: String
     var placeholder: String = "Search"
+    @FocusState private var focused: Bool
 
     var body: some View {
         HStack(spacing: 6) {
             Glyph(.search, size: 14).foregroundStyle(theme.inkFaintColor)
-            TextField(placeholder, text: $text).textFieldStyle(.plain).font(ThubanFont.body(13)).foregroundStyle(theme.inkColor)
+            TextField(placeholder, text: $text)
+                .textFieldStyle(.plain)
+                .font(ThubanFont.body(13))
+                .foregroundStyle(theme.inkColor)
+                .focused($focused)
+                // ⌘F lands here unless an HTML page is showing (its own find bar wins).
+                .onChange(of: app.findRequest) { _, _ in
+                    guard isEnabled, app.visibleWebViews == 0 else { return }
+                    focused = true
+                }
             if !text.isEmpty {
                 Button { text = "" } label: {
                     Glyph(.close, size: 12)
