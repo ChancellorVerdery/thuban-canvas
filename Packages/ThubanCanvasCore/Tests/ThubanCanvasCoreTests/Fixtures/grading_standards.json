@@ -1,0 +1,37 @@
+[
+ {
+  "id": 142784,
+  "title": "UNCC Undergraduate Scheme",
+  "context_type": "Course",
+  "context_id": 272622,
+  "scaling_factor": 1.0,
+  "points_based": false,
+  "grading_scheme": [
+   {
+    "name": "A",
+    "value": 0.9,
+    "calculated_value": 90.0
+   },
+   {
+    "name": "B",
+    "value": 0.8,
+    "calculated_value": 80.0
+   },
+   {
+    "name": "C",
+    "value": 0.7,
+    "calculated_value": 70.0
+   },
+   {
+    "name": "D",
+    "value": 0.6,
+    "calculated_value": 60.0
+   },
+   {
+    "name": "F",
+    "value": 0.0,
+    "calculated_value": 0.0
+   }
+  ]
+ }
+]

@@ -1,0 +1,674 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		024B04EA866F732CDA9C1EBD /* CourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FBFD2B921B53B59C5E6FC2 /* CourseView.swift */; };
+		059C9349DB76146C9EC06104 /* ThemeEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4039A0588EAFBD95D31B4CC3 /* ThemeEnvironment.swift */; };
+		05D0BD447EB82003058528A3 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CD29E1D197D7F78D49BD4C /* Routes.swift */; };
+		0B7CD6B04A539FFDA1EAD8FF /* GradesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1671E605CAA809D528A7A6F6 /* GradesView.swift */; };
+		13740B8DE61AFCF2A95092CB /* ExternalLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975AE89B7053009EEC6E959F /* ExternalLinkView.swift */; };
+		2A58234A0FCB6E45114EB951 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35AE1150FDC26D2D69771A7 /* ProgressBar.swift */; };
+		2CE324BCDEB8B3D50DF003D6 /* ModulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4B58B223257B07B57C1C31 /* ModulesView.swift */; };
+		2D521CDBCD571FB8D60443A0 /* ConnectionSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9497C14EB395D3D104ED4C /* ConnectionSettings.swift */; };
+		31238BE9A4F999B30A9FD71E /* ConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12599F265809537D525EBA5 /* ConnectView.swift */; };
+		343DF043ECFAFCFD2B9DC0E0 /* DiscussionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74A8944C646192D0AE7BA82 /* DiscussionDetailView.swift */; };
+		34E8AE1306B4DDC6ECEDB8C0 /* AnnouncementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D613EEF7A4BAA0F66F94141C /* AnnouncementsView.swift */; };
+		396865C8F100E47641B091B0 /* ShellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C40489CAF8801D5D1D76E9 /* ShellView.swift */; };
+		39D7F11F4B04EDD6810A82BD /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF47AB653B091E1BA3A833 /* Buttons.swift */; };
+		4295A40174F27BAFCD2D59C7 /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663E20336E80480A62F1A949 /* NotificationSettings.swift */; };
+		44261202CFCF2228FCFFFE7A /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3198A02D7C8CCFF20BC69B /* CalendarView.swift */; };
+		45C29701989FFF0E37C3E382 /* CanvasSchemeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EA5E11FF71E80A4190470E /* CanvasSchemeHandler.swift */; };
+		4B9B100AE2E4464F3A4EA95F /* AppIconRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F3EF2512B81FECA4D56200 /* AppIconRenderer.swift */; };
+		4C0CE12E2BE45623952AECEA /* Chip.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD58B2841E591DD5FBF2B3B4 /* Chip.swift */; };
+		60873D04BD4A0B115AFDA460 /* ToggleChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = B302C54482FD35D39AA5B1B9 /* ToggleChip.swift */; };
+		6941ECB0A580784D8A96C1F9 /* SegmentedPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99C3EE140C1AE3503E4EB92 /* SegmentedPicker.swift */; };
+		6F1B00587126A57190C17417 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB67A9258A6387062C748350 /* HomeView.swift */; };
+		71A4BF57F711FF2624A788D5 /* AssignmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F76B785B6CD20A838DDCD2 /* AssignmentsView.swift */; };
+		7A47F852490FBC7B9EB024B0 /* NotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E0B19E82EFE212FE697F /* NotificationScheduler.swift */; };
+		7B0A8FC3DFB2E15AF68E9023 /* FilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875982F3BAE4B9AC15ACAB40 /* FilesView.swift */; };
+		7BAC67374B40FB1D23D00A97 /* SyllabusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866BCCD51DCD6E349889A455 /* SyllabusView.swift */; };
+		7C3A028BD080285CECBE5BFC /* SmokeHarness.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66E9DC403446815D5698E39 /* SmokeHarness.swift */; };
+		8201E07F3D71552A3B318EB2 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D8394BEDDD94B4FC8455BB /* Resource.swift */; };
+		845D33E36C2C4C7268B7D518 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DA7933C35452F6437FF78E /* Icon.swift */; };
+		8728194B235BCF80FA5D373F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BE1CCA38EA2EAE3A315E8E2 /* Assets.xcassets */; };
+		8B3258664F04CBE989B274EF /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCCDC227155FD11FE6C59C6 /* MenuBarController.swift */; };
+		8CFCB4FDFF795EAB5550C9B2 /* PageDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D15FC2B5A4623373E1D1D2 /* PageDetailView.swift */; };
+		96A28B0B67A47FEAD355AD25 /* PeopleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD71EF96E6C084DE4CBDEC3A /* PeopleView.swift */; };
+		97856D0303070BFCCCCCFC8B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4463D76E8760CA584F58F12E /* SettingsView.swift */; };
+		99F18157A0A76CBBF1ED1030 /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0308AF05E6AA241918BFC2D /* InboxView.swift */; };
+		9DCF161C52F307B0010A959D /* GradesSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36521BF385FA5E6F7EAAE90 /* GradesSettings.swift */; };
+		9E6488B99C2E64EF3C5D4FDA /* CanvasHTMLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD709AE60C2A7E5E903F1C4 /* CanvasHTMLView.swift */; };
+		B91700C7A7D1B5904EE0C980 /* AssignmentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF27A2E91553DC0652B4B32 /* AssignmentDetailView.swift */; };
+		BA077E01026C4D64929DDD0C /* CourseOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97E6F0E386B4825283DABFB /* CourseOverviewView.swift */; };
+		BBF1F71F4D2105ACAE422699 /* AboutSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B1BC1BAC2368C30AEB7F5B /* AboutSettings.swift */; };
+		C8ED215D03081C6E41869698 /* AppearanceSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8918136D947CB020071E99 /* AppearanceSettings.swift */; };
+		C8F590757A5BAE565E81E609 /* DataSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8644AA8C92FCDE855604AFFA /* DataSettings.swift */; };
+		CACAA4A481771AD5B5725928 /* FileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D97648453BBB1912F39A11 /* FileDetailView.swift */; };
+		CBFBAD1239447CF22209E290 /* ThubanCanvasCore in Frameworks */ = {isa = PBXBuildFile; productRef = 0420B06F8CE68DFCBA6DAB63 /* ThubanCanvasCore */; };
+		CF49F1F474282D2936B02270 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97033B44AF1FA9CF0B55C4A /* AppModel.swift */; };
+		E302FDFAB1D9A18FAFB5004A /* CourseSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79CC1401D96ADADC4C6C20F /* CourseSession.swift */; };
+		E576330E22476EED6898085D /* CustomSchemeSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E928562BD695FA40E00CD37 /* CustomSchemeSheet.swift */; };
+		E84398E39C6F6F5E71B61388 /* QuizDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A2BFB77B22170B60AF631 /* QuizDetailView.swift */; };
+		E84C4568AD903FFA15EBD095 /* ModuleItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82AE4708C343BBBE632664 /* ModuleItemDetailView.swift */; };
+		EB776D225680DB0BC4B404F8 /* ThubanMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14751FB4DB2A4F8DDC4F8A0E /* ThubanMark.swift */; };
+		ED916A58FDD2A334CB68FBAC /* DiscussionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05063E43CFD1E79E6E34AAB /* DiscussionsView.swift */; };
+		F471288DD8DE57B2B9D1815B /* PagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5B169660CDEA68A47436D9 /* PagesView.swift */; };
+		F85AC568A1A36A683886ACF0 /* web in Resources */ = {isa = PBXBuildFile; fileRef = 4B33A5187D83634D961DD6ED /* web */; };
+		F93977C92EE12C77F9C308CB /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183576586718645D61DEFCA1 /* EmptyState.swift */; };
+		FD4BAC2A6C65A5C577A28371 /* ThubanCanvasApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22C8D9B662D058AC9651277 /* ThubanCanvasApp.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		07EA5E11FF71E80A4190470E /* CanvasSchemeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasSchemeHandler.swift; sourceTree = "<group>"; };
+		09FBFD2B921B53B59C5E6FC2 /* CourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseView.swift; sourceTree = "<group>"; };
+		0A82AE4708C343BBBE632664 /* ModuleItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleItemDetailView.swift; sourceTree = "<group>"; };
+		0E4B58B223257B07B57C1C31 /* ModulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulesView.swift; sourceTree = "<group>"; };
+		14751FB4DB2A4F8DDC4F8A0E /* ThubanMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThubanMark.swift; sourceTree = "<group>"; };
+		1671E605CAA809D528A7A6F6 /* GradesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesView.swift; sourceTree = "<group>"; };
+		183576586718645D61DEFCA1 /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
+		18F76B785B6CD20A838DDCD2 /* AssignmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentsView.swift; sourceTree = "<group>"; };
+		25F3EF2512B81FECA4D56200 /* AppIconRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconRenderer.swift; sourceTree = "<group>"; };
+		28D15FC2B5A4623373E1D1D2 /* PageDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageDetailView.swift; sourceTree = "<group>"; };
+		2E928562BD695FA40E00CD37 /* CustomSchemeSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSchemeSheet.swift; sourceTree = "<group>"; };
+		35CD29E1D197D7F78D49BD4C /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
+		3A3198A02D7C8CCFF20BC69B /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		4039A0588EAFBD95D31B4CC3 /* ThemeEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeEnvironment.swift; sourceTree = "<group>"; };
+		4463D76E8760CA584F58F12E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		44EEC1A1B14209938797D28B /* ThubanCanvas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThubanCanvas.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		46B1BC1BAC2368C30AEB7F5B /* AboutSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSettings.swift; sourceTree = "<group>"; };
+		4B33A5187D83634D961DD6ED /* web */ = {isa = PBXFileReference; lastKnownFileType = folder; name = web; path = ThubanCanvas/Resources/web; sourceTree = SOURCE_ROOT; };
+		4D5B169660CDEA68A47436D9 /* PagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesView.swift; sourceTree = "<group>"; };
+		51C40489CAF8801D5D1D76E9 /* ShellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellView.swift; sourceTree = "<group>"; };
+		663E20336E80480A62F1A949 /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
+		6B9497C14EB395D3D104ED4C /* ConnectionSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionSettings.swift; sourceTree = "<group>"; };
+		6BE1CCA38EA2EAE3A315E8E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8644AA8C92FCDE855604AFFA /* DataSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSettings.swift; sourceTree = "<group>"; };
+		866BCCD51DCD6E349889A455 /* SyllabusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyllabusView.swift; sourceTree = "<group>"; };
+		875982F3BAE4B9AC15ACAB40 /* FilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesView.swift; sourceTree = "<group>"; };
+		8FCCDC227155FD11FE6C59C6 /* MenuBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
+		96D8394BEDDD94B4FC8455BB /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		975AE89B7053009EEC6E959F /* ExternalLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalLinkView.swift; sourceTree = "<group>"; };
+		9AEF47AB653B091E1BA3A833 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		A32A2BFB77B22170B60AF631 /* QuizDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDetailView.swift; sourceTree = "<group>"; };
+		A74A8944C646192D0AE7BA82 /* DiscussionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionDetailView.swift; sourceTree = "<group>"; };
+		A97033B44AF1FA9CF0B55C4A /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		AAD709AE60C2A7E5E903F1C4 /* CanvasHTMLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasHTMLView.swift; sourceTree = "<group>"; };
+		AB21E0B19E82EFE212FE697F /* NotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduler.swift; sourceTree = "<group>"; };
+		AB67A9258A6387062C748350 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		AD8918136D947CB020071E99 /* AppearanceSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceSettings.swift; sourceTree = "<group>"; };
+		B05063E43CFD1E79E6E34AAB /* DiscussionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionsView.swift; sourceTree = "<group>"; };
+		B12599F265809537D525EBA5 /* ConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectView.swift; sourceTree = "<group>"; };
+		B22C8D9B662D058AC9651277 /* ThubanCanvasApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThubanCanvasApp.swift; sourceTree = "<group>"; };
+		B302C54482FD35D39AA5B1B9 /* ToggleChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleChip.swift; sourceTree = "<group>"; };
+		B35AE1150FDC26D2D69771A7 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		B36521BF385FA5E6F7EAAE90 /* GradesSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesSettings.swift; sourceTree = "<group>"; };
+		B97E6F0E386B4825283DABFB /* CourseOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseOverviewView.swift; sourceTree = "<group>"; };
+		C9D97648453BBB1912F39A11 /* FileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDetailView.swift; sourceTree = "<group>"; };
+		CD58B2841E591DD5FBF2B3B4 /* Chip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip.swift; sourceTree = "<group>"; };
+		D0308AF05E6AA241918BFC2D /* InboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxView.swift; sourceTree = "<group>"; };
+		D613EEF7A4BAA0F66F94141C /* AnnouncementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsView.swift; sourceTree = "<group>"; };
+		D79CC1401D96ADADC4C6C20F /* CourseSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSession.swift; sourceTree = "<group>"; };
+		E5BDD77792537E65689748C2 /* ThubanCanvasCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ThubanCanvasCore; path = Packages/ThubanCanvasCore; sourceTree = SOURCE_ROOT; };
+		E66E9DC403446815D5698E39 /* SmokeHarness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeHarness.swift; sourceTree = "<group>"; };
+		F0DA7933C35452F6437FF78E /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		F99C3EE140C1AE3503E4EB92 /* SegmentedPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedPicker.swift; sourceTree = "<group>"; };
+		FAF27A2E91553DC0652B4B32 /* AssignmentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentDetailView.swift; sourceTree = "<group>"; };
+		FD71EF96E6C084DE4CBDEC3A /* PeopleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		19B61044FB32D83C3B487C34 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBFBAD1239447CF22209E290 /* ThubanCanvasCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		01C1F3C92F3E9483020D3D21 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DC46FB985E054508683E09D3 /* Calendar */,
+				4CC473BC9EF8636A97223998 /* Components */,
+				11DBF3C073B969E439FDC71A /* Course */,
+				49739C59F15E4B03A83287BC /* Home */,
+				94FAD21EF7D3CBD875099430 /* Inbox */,
+				A44A7D1422020B745133CDE5 /* Modals */,
+				CF63F6305BFC8C12F8EBBAB5 /* Settings */,
+				FC48BFC4D3D3361ED5133218 /* Shell */,
+				3D661AE9029A7EF210370EF2 /* Theme */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		11DBF3C073B969E439FDC71A /* Course */ = {
+			isa = PBXGroup;
+			children = (
+				D613EEF7A4BAA0F66F94141C /* AnnouncementsView.swift */,
+				FAF27A2E91553DC0652B4B32 /* AssignmentDetailView.swift */,
+				18F76B785B6CD20A838DDCD2 /* AssignmentsView.swift */,
+				B97E6F0E386B4825283DABFB /* CourseOverviewView.swift */,
+				09FBFD2B921B53B59C5E6FC2 /* CourseView.swift */,
+				A74A8944C646192D0AE7BA82 /* DiscussionDetailView.swift */,
+				B05063E43CFD1E79E6E34AAB /* DiscussionsView.swift */,
+				975AE89B7053009EEC6E959F /* ExternalLinkView.swift */,
+				C9D97648453BBB1912F39A11 /* FileDetailView.swift */,
+				875982F3BAE4B9AC15ACAB40 /* FilesView.swift */,
+				1671E605CAA809D528A7A6F6 /* GradesView.swift */,
+				0A82AE4708C343BBBE632664 /* ModuleItemDetailView.swift */,
+				0E4B58B223257B07B57C1C31 /* ModulesView.swift */,
+				28D15FC2B5A4623373E1D1D2 /* PageDetailView.swift */,
+				4D5B169660CDEA68A47436D9 /* PagesView.swift */,
+				FD71EF96E6C084DE4CBDEC3A /* PeopleView.swift */,
+				A32A2BFB77B22170B60AF631 /* QuizDetailView.swift */,
+				866BCCD51DCD6E349889A455 /* SyllabusView.swift */,
+			);
+			path = Course;
+			sourceTree = "<group>";
+		};
+		2F4D759E4D72705B72AA8FCF /* App */ = {
+			isa = PBXGroup;
+			children = (
+				25F3EF2512B81FECA4D56200 /* AppIconRenderer.swift */,
+				A97033B44AF1FA9CF0B55C4A /* AppModel.swift */,
+				D79CC1401D96ADADC4C6C20F /* CourseSession.swift */,
+				AB21E0B19E82EFE212FE697F /* NotificationScheduler.swift */,
+				96D8394BEDDD94B4FC8455BB /* Resource.swift */,
+				35CD29E1D197D7F78D49BD4C /* Routes.swift */,
+				E66E9DC403446815D5698E39 /* SmokeHarness.swift */,
+				B22C8D9B662D058AC9651277 /* ThubanCanvasApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		3D661AE9029A7EF210370EF2 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				4039A0588EAFBD95D31B4CC3 /* ThemeEnvironment.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		49739C59F15E4B03A83287BC /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				AB67A9258A6387062C748350 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		4CC473BC9EF8636A97223998 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				9AEF47AB653B091E1BA3A833 /* Buttons.swift */,
+				CD58B2841E591DD5FBF2B3B4 /* Chip.swift */,
+				183576586718645D61DEFCA1 /* EmptyState.swift */,
+				F0DA7933C35452F6437FF78E /* Icon.swift */,
+				B35AE1150FDC26D2D69771A7 /* ProgressBar.swift */,
+				F99C3EE140C1AE3503E4EB92 /* SegmentedPicker.swift */,
+				14751FB4DB2A4F8DDC4F8A0E /* ThubanMark.swift */,
+				B302C54482FD35D39AA5B1B9 /* ToggleChip.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		65265346077BEC624B146281 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				E5BDD77792537E65689748C2 /* ThubanCanvasCore */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
+		75096D169CB873D239B04472 /* MenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				8FCCDC227155FD11FE6C59C6 /* MenuBarController.swift */,
+			);
+			path = MenuBar;
+			sourceTree = "<group>";
+		};
+		90A34A6E186B8B7A6347523E /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				AAD709AE60C2A7E5E903F1C4 /* CanvasHTMLView.swift */,
+				07EA5E11FF71E80A4190470E /* CanvasSchemeHandler.swift */,
+			);
+			path = Web;
+			sourceTree = "<group>";
+		};
+		94FAD21EF7D3CBD875099430 /* Inbox */ = {
+			isa = PBXGroup;
+			children = (
+				D0308AF05E6AA241918BFC2D /* InboxView.swift */,
+			);
+			path = Inbox;
+			sourceTree = "<group>";
+		};
+		A44A7D1422020B745133CDE5 /* Modals */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Modals;
+			sourceTree = "<group>";
+		};
+		AB720D7CBE155755DEE5226B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6BE1CCA38EA2EAE3A315E8E2 /* Assets.xcassets */,
+				4B33A5187D83634D961DD6ED /* web */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B315CA887DF8041A0C51A395 = {
+			isa = PBXGroup;
+			children = (
+				65265346077BEC624B146281 /* Packages */,
+				CE63F81B00DF39856140E7A5 /* ThubanCanvas */,
+				B7E52AAC369A2C6045972F92 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B7E52AAC369A2C6045972F92 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				44EEC1A1B14209938797D28B /* ThubanCanvas.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CE63F81B00DF39856140E7A5 /* ThubanCanvas */ = {
+			isa = PBXGroup;
+			children = (
+				2F4D759E4D72705B72AA8FCF /* App */,
+				75096D169CB873D239B04472 /* MenuBar */,
+				AB720D7CBE155755DEE5226B /* Resources */,
+				01C1F3C92F3E9483020D3D21 /* Views */,
+				90A34A6E186B8B7A6347523E /* Web */,
+			);
+			path = ThubanCanvas;
+			sourceTree = "<group>";
+		};
+		CF63F6305BFC8C12F8EBBAB5 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				46B1BC1BAC2368C30AEB7F5B /* AboutSettings.swift */,
+				AD8918136D947CB020071E99 /* AppearanceSettings.swift */,
+				6B9497C14EB395D3D104ED4C /* ConnectionSettings.swift */,
+				2E928562BD695FA40E00CD37 /* CustomSchemeSheet.swift */,
+				8644AA8C92FCDE855604AFFA /* DataSettings.swift */,
+				B36521BF385FA5E6F7EAAE90 /* GradesSettings.swift */,
+				663E20336E80480A62F1A949 /* NotificationSettings.swift */,
+				4463D76E8760CA584F58F12E /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		DC46FB985E054508683E09D3 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				3A3198A02D7C8CCFF20BC69B /* CalendarView.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		FC48BFC4D3D3361ED5133218 /* Shell */ = {
+			isa = PBXGroup;
+			children = (
+				B12599F265809537D525EBA5 /* ConnectView.swift */,
+				51C40489CAF8801D5D1D76E9 /* ShellView.swift */,
+			);
+			path = Shell;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CDD0046F0F1C32FD27617257 /* ThubanCanvas */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BDBA10F4F2AB85FCD4CAD371 /* Build configuration list for PBXNativeTarget "ThubanCanvas" */;
+			buildPhases = (
+				CF4402846FCD5BD013B804E2 /* Sources */,
+				ABC0CC66499ED89735B75CE2 /* Resources */,
+				19B61044FB32D83C3B487C34 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ThubanCanvas;
+			packageProductDependencies = (
+				0420B06F8CE68DFCBA6DAB63 /* ThubanCanvasCore */,
+			);
+			productName = ThubanCanvas;
+			productReference = 44EEC1A1B14209938797D28B /* ThubanCanvas.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F6077F7D2E3D68C865A93579 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					CDD0046F0F1C32FD27617257 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = CC9D3715B5277CCC8989E4C5 /* Build configuration list for PBXProject "ThubanCanvas" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = B315CA887DF8041A0C51A395;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				5FC91886CE973989B343BE2A /* XCLocalSwiftPackageReference "Packages/ThubanCanvasCore" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = B7E52AAC369A2C6045972F92 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CDD0046F0F1C32FD27617257 /* ThubanCanvas */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ABC0CC66499ED89735B75CE2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8728194B235BCF80FA5D373F /* Assets.xcassets in Resources */,
+				F85AC568A1A36A683886ACF0 /* web in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CF4402846FCD5BD013B804E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBF1F71F4D2105ACAE422699 /* AboutSettings.swift in Sources */,
+				34E8AE1306B4DDC6ECEDB8C0 /* AnnouncementsView.swift in Sources */,
+				4B9B100AE2E4464F3A4EA95F /* AppIconRenderer.swift in Sources */,
+				CF49F1F474282D2936B02270 /* AppModel.swift in Sources */,
+				C8ED215D03081C6E41869698 /* AppearanceSettings.swift in Sources */,
+				B91700C7A7D1B5904EE0C980 /* AssignmentDetailView.swift in Sources */,
+				71A4BF57F711FF2624A788D5 /* AssignmentsView.swift in Sources */,
+				39D7F11F4B04EDD6810A82BD /* Buttons.swift in Sources */,
+				44261202CFCF2228FCFFFE7A /* CalendarView.swift in Sources */,
+				9E6488B99C2E64EF3C5D4FDA /* CanvasHTMLView.swift in Sources */,
+				45C29701989FFF0E37C3E382 /* CanvasSchemeHandler.swift in Sources */,
+				4C0CE12E2BE45623952AECEA /* Chip.swift in Sources */,
+				31238BE9A4F999B30A9FD71E /* ConnectView.swift in Sources */,
+				2D521CDBCD571FB8D60443A0 /* ConnectionSettings.swift in Sources */,
+				BA077E01026C4D64929DDD0C /* CourseOverviewView.swift in Sources */,
+				E302FDFAB1D9A18FAFB5004A /* CourseSession.swift in Sources */,
+				024B04EA866F732CDA9C1EBD /* CourseView.swift in Sources */,
+				E576330E22476EED6898085D /* CustomSchemeSheet.swift in Sources */,
+				C8F590757A5BAE565E81E609 /* DataSettings.swift in Sources */,
+				343DF043ECFAFCFD2B9DC0E0 /* DiscussionDetailView.swift in Sources */,
+				ED916A58FDD2A334CB68FBAC /* DiscussionsView.swift in Sources */,
+				F93977C92EE12C77F9C308CB /* EmptyState.swift in Sources */,
+				13740B8DE61AFCF2A95092CB /* ExternalLinkView.swift in Sources */,
+				CACAA4A481771AD5B5725928 /* FileDetailView.swift in Sources */,
+				7B0A8FC3DFB2E15AF68E9023 /* FilesView.swift in Sources */,
+				9DCF161C52F307B0010A959D /* GradesSettings.swift in Sources */,
+				0B7CD6B04A539FFDA1EAD8FF /* GradesView.swift in Sources */,
+				6F1B00587126A57190C17417 /* HomeView.swift in Sources */,
+				845D33E36C2C4C7268B7D518 /* Icon.swift in Sources */,
+				99F18157A0A76CBBF1ED1030 /* InboxView.swift in Sources */,
+				8B3258664F04CBE989B274EF /* MenuBarController.swift in Sources */,
+				E84C4568AD903FFA15EBD095 /* ModuleItemDetailView.swift in Sources */,
+				2CE324BCDEB8B3D50DF003D6 /* ModulesView.swift in Sources */,
+				7A47F852490FBC7B9EB024B0 /* NotificationScheduler.swift in Sources */,
+				4295A40174F27BAFCD2D59C7 /* NotificationSettings.swift in Sources */,
+				8CFCB4FDFF795EAB5550C9B2 /* PageDetailView.swift in Sources */,
+				F471288DD8DE57B2B9D1815B /* PagesView.swift in Sources */,
+				96A28B0B67A47FEAD355AD25 /* PeopleView.swift in Sources */,
+				2A58234A0FCB6E45114EB951 /* ProgressBar.swift in Sources */,
+				E84398E39C6F6F5E71B61388 /* QuizDetailView.swift in Sources */,
+				8201E07F3D71552A3B318EB2 /* Resource.swift in Sources */,
+				05D0BD447EB82003058528A3 /* Routes.swift in Sources */,
+				6941ECB0A580784D8A96C1F9 /* SegmentedPicker.swift in Sources */,
+				97856D0303070BFCCCCCFC8B /* SettingsView.swift in Sources */,
+				396865C8F100E47641B091B0 /* ShellView.swift in Sources */,
+				7C3A028BD080285CECBE5BFC /* SmokeHarness.swift in Sources */,
+				7BAC67374B40FB1D23D00A97 /* SyllabusView.swift in Sources */,
+				059C9349DB76146C9EC06104 /* ThemeEnvironment.swift in Sources */,
+				FD4BAC2A6C65A5C577A28371 /* ThubanCanvasApp.swift in Sources */,
+				EB776D225680DB0BC4B404F8 /* ThubanMark.swift in Sources */,
+				60873D04BD4A0B115AFDA460 /* ToggleChip.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		005A948F8F432B14AA1A7CAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		70D4CACC04AFB31C4A0A1911 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AC8D60ED17E5F0BE0E0AAA0B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ThubanCanvas/Resources/ThubanCanvas.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
+				INFOPLIST_FILE = ThubanCanvas/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.thuban.canvas;
+				PRODUCT_NAME = "Thuban Canvas";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+			};
+			name = Release;
+		};
+		D7F3DE73726549E1E7D6510B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ThubanCanvas/Resources/ThubanCanvas.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
+				INFOPLIST_FILE = ThubanCanvas/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.thuban.canvas;
+				PRODUCT_NAME = "Thuban Canvas";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BDBA10F4F2AB85FCD4CAD371 /* Build configuration list for PBXNativeTarget "ThubanCanvas" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7F3DE73726549E1E7D6510B /* Debug */,
+				AC8D60ED17E5F0BE0E0AAA0B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		CC9D3715B5277CCC8989E4C5 /* Build configuration list for PBXProject "ThubanCanvas" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				70D4CACC04AFB31C4A0A1911 /* Debug */,
+				005A948F8F432B14AA1A7CAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		5FC91886CE973989B343BE2A /* XCLocalSwiftPackageReference "Packages/ThubanCanvasCore" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/ThubanCanvasCore;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0420B06F8CE68DFCBA6DAB63 /* ThubanCanvasCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ThubanCanvasCore;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = F6077F7D2E3D68C865A93579 /* Project object */;
+}

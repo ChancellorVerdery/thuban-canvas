@@ -1,0 +1,70 @@
+import SwiftUI
+import ThubanCanvasCore
+
+@main
+struct ThubanCanvasApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) private var delegate
+    @State private var appModel = AppModel()
+
+    var body: some Scene {
+        WindowGroup("Thuban Canvas") {
+            ShellView()
+                .environment(appModel)
+                .frame(minWidth: 1100, minHeight: 700)
+                .task { await appModel.load() }
+        }
+        .windowStyle(.hiddenTitleBar)
+        .windowToolbarStyle(.unifiedCompact)
+        .windowResizability(.contentMinSize)
+        .defaultSize(width: 1320, height: 860)
+        .commands {
+            CommandGroup(replacing: .newItem) {}
+            CommandGroup(replacing: .appSettings) {
+                SettingsCommandButton().environment(appModel)
+            }
+            CommandMenu("Canvas") {
+                Button("Refresh") { Task { await appModel.refreshAll() } }
+                    .keyboardShortcut("r", modifiers: .command)
+                Divider()
+                Button("Home") { appModel.select(.home) }
+                    .keyboardShortcut("1", modifiers: .command)
+                ForEach(Array(appModel.orderedSessions.prefix(8).enumerated()), id: \.element.id) { index, session in
+                    Button(session.displayName) { appModel.select(.course(session.id)) }
+                        .keyboardShortcut(KeyEquivalent(Character(String(index + 2))), modifiers: .command)
+                }
+                Divider()
+                Button("Calendar") { appModel.panel = appModel.panel == .calendar ? nil : .calendar }
+                    .keyboardShortcut("k", modifiers: .command)
+                Button("Inbox") { appModel.panel = appModel.panel == .inbox ? nil : .inbox }
+                    .keyboardShortcut("i", modifiers: .command)
+            }
+        }
+
+        Window("Settings", id: "settings") {
+            SettingsView()
+                .environment(appModel)
+                .frame(minWidth: 780, minHeight: 580)
+        }
+        .windowResizability(.contentMinSize)
+        .defaultSize(width: 880, height: 660)
+    }
+}
+
+/// "Settings… ⌘," — lives in the App menu; opens the Settings window scene.
+private struct SettingsCommandButton: View {
+    @Environment(\.openWindow) private var openWindow
+
+    var body: some View {
+        Button("Settings…") { openWindow(id: "settings") }
+            .keyboardShortcut(",", modifiers: .command)
+    }
+}
+
+/// Hosts the menu bar item and notification delegate (both implemented in MenuBar/ and App/Notifications).
+final class AppDelegate: NSObject, NSApplicationDelegate {
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        NSApplication.shared.setActivationPolicy(.regular)
+    }
+
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool { false }
+}

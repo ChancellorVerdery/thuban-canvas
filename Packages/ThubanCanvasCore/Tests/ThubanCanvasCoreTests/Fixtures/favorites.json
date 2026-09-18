@@ -1,0 +1,1737 @@
+[
+ {
+  "id": 272622,
+  "name": "Foundations of Math and Science for Engineering",
+  "course_code": "202680-ENGR-1301-005:ENGR-1301-006:ENGR-1301-007:ENGR-1301-010-XLS2060202680_Combined-Moss",
+  "account_id": 112,
+  "created_at": "2026-07-23T14:29:23Z",
+  "start_at": null,
+  "default_view": "wiki",
+  "enrollment_term_id": 312,
+  "is_public": false,
+  "grading_standard_id": 413,
+  "root_account_id": 1,
+  "uuid": "88mAECKEZxSF1oW6z1JSAGxSsBRqtK9kfC5Loahr",
+  "license": "private",
+  "grade_passback_setting": null,
+  "end_at": null,
+  "public_syllabus": false,
+  "public_syllabus_to_auth": false,
+  "storage_quota_mb": 15728,
+  "is_public_to_auth_users": false,
+  "homeroom_course": false,
+  "course_color": null,
+  "friendly_name": null,
+  "term": {
+   "id": 312,
+   "name": "Fall 2026",
+   "start_at": "2026-08-10T04:00:00Z",
+   "end_at": "2026-12-20T05:00:00Z",
+   "workflow_state": "active",
+   "grading_period_group_id": null,
+   "created_at": "2026-02-12T08:07:30Z"
+  },
+  "apply_assignment_group_weights": true,
+  "teachers": [
+   {
+    "id": 376308,
+    "anonymous_id": "82d0",
+    "display_name": "Meera Joshi",
+    "avatar_image_url": "https://instructure.charlotte.edu/images/messages/avatar-50.png",
+    "html_url": "https://instructure.charlotte.edu/users/376308",
+    "pronouns": null
+   },
+   {
+    "id": 350242,
+    "anonymous_id": "7i8y",
+    "display_name": "Ryan Cole",
+    "avatar_image_url": "https://instructure.charlotte.edu/images/thumbnails/27149468/Qt1hESZbuvLZhdkjuGV9hwOQTWuckMBsF52XfnMq",
+    "html_url": "https://instructure.charlotte.edu/users/350242",
+    "pronouns": null
+   },
+   {
+    "id": 315052,
+    "anonymous_id": "6r3g",
+    "display_name": "Hannah Moss",
+    "avatar_image_url": "https://instructure.charlotte.edu/images/messages/avatar-50.png",
+    "html_url": "https://instructure.charlotte.edu/users/315052",
+    "pronouns": null
+   },
+   {
+    "id": 394314,
+    "anonymous_id": "8g96",
+    "display_name": "Lin Chao",
+    "avatar_image_url": "https://instructure.charlotte.edu/images/messages/avatar-50.png",
+    "html_url": "https://instructure.charlotte.edu/users/394314",
+    "pronouns": null
+   }
+  ],
+  "tabs": [
+   {
+    "id": "home",
+    "html_url": "/courses/272622",
+    "full_url": "https://instructure.charlotte.edu/courses/272622",
+    "position": 1,
+    "visibility": "public",
+    "label": "Home",
+    "type": "internal"
+   },
+   {
+    "id": "search",
+    "html_url": "/courses/272622/search",
+    "full_url": "https://instructure.charlotte.edu/courses/272622/search",
+    "position": 2,
+    "visibility": "public",
+    "label": "IgniteAI Search",
+    "type": "internal"
+   },
+   {
+    "id": "syllabus",
+    "html_url": "/courses/272622/assignments/syllabus",
+    "full_url": "https://instructure.charlotte.edu/courses/272622/assignments/syllabus",
+    "position": 3,
+    "visibility": "public",
+    "label": "Syllabus",
+    "type": "internal"
+   },
+   {
+    "id": "announcements",
+    "html_url": "/courses/272622/announcements",
+    "full_url": "https://instructure.charlotte.edu/courses/272622/announcements",
+    "position": 4,
+    "visibility": "public",
+    "label": "Announcements",
+    "type": "internal"
+   },
+   {
+    "id": "modules",
+    "html_url": "/courses/272622/modules",
+    "full_url": "https://instructure.charlotte.edu/courses/272622/modules",
+    "position": 5,
+    "visibility": "public",
+    "label": "Modules",
+    "type": "internal"
+   },
+   {
+    "id": "assignments",
+    "html_url": "/courses/272622/assignments",
+    "full_url": "https://instructure.charlotte.edu/courses/272622/assignments",
+    "position": 6,
+    "visibility": "public",
+    "label": "Assignments",
+    "type": "internal"
+   },
+   {
+    "id": "people",
+    "html_url": "/courses/272622/users",
+    "full_url": "https://instructure.charlotte.edu/courses/272622/users",
+    "position": 7,
+    "visibility": "public",
+    "label": "People",
+    "type": "internal"
+   },
+   {
+    "id": "grades",
+    "html_url": "/courses/272622/grades",
+    "full_url": "https://instructure.charlotte.edu/courses/272622/grades",
+    "position": 8,
+    "visibility": "public",
+    "label": "Grades",
+    "type": "internal"
+   },
+   {
+    "id": "discussions",
+    "html_url": "/courses/272622/discussion_topics",
+    "full_url": "https://instructure.charlotte.edu/courses/272622/discussion_topics",
+    "position": 9,
+    "visibility": "public",
+    "label": "Discussions",
+    "type": "internal"
+   },
+   {
+    "id": "quizzes",
+    "html_url": "/courses/272622/quizzes",
+    "full_url": "https://instructure.charlotte.edu/courses/272622/quizzes",
+    "position": 10,
+    "visibility": "public",
+    "label": "Quizzes",
+    "type": "internal"
+   },
+   {
+    "id": "context_external_tool_17046",
+    "html_url": "/courses/272622/external_tools/17046",
+    "full_url": "https://instructure.charlotte.edu/courses/272622/external_tools/17046",
+    "position": 11,
+    "visibility": "public",
+    "label": "Poll Everywhere",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/external_tools/sessionless_launch?id=17046&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_15930",
+    "html_url": "/courses/272622/external_tools/15930",
+    "full_url": "https://instructure.charlotte.edu/courses/272622/external_tools/15930",
+    "position": 12,
+    "visibility": "public",
+    "label": "Gradescope",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/external_tools/sessionless_launch?id=15930&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_17738",
+    "html_url": "/courses/272622/external_tools/17738",
+    "full_url": "https://instructure.charlotte.edu/courses/272622/external_tools/17738",
+    "position": 13,
+    "visibility": "public",
+    "label": "Google Gemini",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/external_tools/sessionless_launch?id=17738&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_9240",
+    "html_url": "/courses/272622/external_tools/9240",
+    "full_url": "https://instructure.charlotte.edu/courses/272622/external_tools/9240",
+    "position": 14,
+    "visibility": "public",
+    "label": "Accessibility Checker",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/external_tools/sessionless_launch?id=9240&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_3033",
+    "html_url": "/courses/272622/external_tools/3033",
+    "full_url": "https://instructure.charlotte.edu/courses/272622/external_tools/3033",
+    "position": 15,
+    "visibility": "public",
+    "label": "Canvas to Banner Grade Submission",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/external_tools/sessionless_launch?id=3033&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_11485",
+    "html_url": "/courses/272622/external_tools/11485",
+    "full_url": "https://instructure.charlotte.edu/courses/272622/external_tools/11485",
+    "position": 16,
+    "visibility": "public",
+    "label": "Purchase Course Materials",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/external_tools/sessionless_launch?id=11485&launch_type=course_navigation"
+   },
+   {
+    "id": "notebook",
+    "html_url": "/courses/272622/notebook",
+    "full_url": "https://instructure.charlotte.edu/courses/272622/notebook",
+    "position": 17,
+    "visibility": "members",
+    "label": "Notebook",
+    "type": "internal"
+   }
+  ],
+  "calendar": {
+   "ics": "https://instructure.charlotte.edu/feeds/calendars/course_88mAECKEZxSF1oW6z1JSAGxSsBRqtK9kfC5Loahr.ics"
+  },
+  "time_zone": "America/New_York",
+  "original_name": "202680-Fall 2026-ENGR-1301-005:ENGR-1301-006:ENGR-1301-007:ENGR-1301-010_Combined-Moss",
+  "image_download_url": "https://inst-fs-iad-prod.inscloudgate.net/files/beff96a1-fe3b-4030-bc50-18f4039400c3/ENGR%201301.png?download=1&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3ODk2NjI5NDcsInVzZXJfaWQiOm51bGwsInJlc291cmNlIjoiL2ZpbGVzL2JlZmY5NmExLWZlM2ItNDAzMC1iYzUwLTE4ZjQwMzk0MDBjMy9FTkdSJTIwMTMwMS5wbmciLCJob3N0IjpudWxsLCJleHAiOjE3OTAyNjc3NDd9.u-AQEAcdiKU7oriqvyBhaNJcu7fIPV1_Hh9uy1vfAoe3YOpELYvU3o6qYaeErvxVtjwdhDkxqz-b6Kvvx4KpJw",
+  "blueprint": false,
+  "template": false,
+  "enrollments": [
+   {
+    "type": "student",
+    "role": "StudentEnrollment",
+    "role_id": 3,
+    "user_id": 389293,
+    "enrollment_state": "active",
+    "limit_privileges_to_course_section": false,
+    "current_grading_period_id": null,
+    "current_grading_period_title": null,
+    "has_grading_periods": false,
+    "multiple_grading_periods_enabled": false,
+    "computed_current_grade": "A",
+    "computed_current_score": 98.09,
+    "computed_current_letter_grade": "A",
+    "computed_final_grade": "A",
+    "computed_final_score": 98.09,
+    "totals_for_all_grading_periods_option": false,
+    "current_period_computed_current_score": null,
+    "current_period_computed_final_score": null,
+    "current_period_computed_current_grade": null,
+    "current_period_computed_final_grade": null
+   }
+  ],
+  "hide_final_grades": false,
+  "workflow_state": "available",
+  "restrict_enrollments_to_course_dates": false,
+  "has_grading_periods": false,
+  "multiple_grading_periods_enabled": false,
+  "has_weighted_grading_periods": false
+ },
+ {
+  "id": 265402,
+  "name": "Differential Equations",
+  "course_code": "202680-MATH-2171-005-10500",
+  "account_id": 176,
+  "created_at": "2026-03-30T07:18:35Z",
+  "start_at": "2026-08-12T04:00:00Z",
+  "default_view": "modules",
+  "enrollment_term_id": 312,
+  "is_public": false,
+  "grading_standard_id": 141626,
+  "root_account_id": 1,
+  "uuid": "WGpnSVVyX8fpqTqP9H3K0dlVqZ0byh5T3cvqF5ei",
+  "license": "private",
+  "grade_passback_setting": null,
+  "end_at": "2026-12-12T05:00:00Z",
+  "public_syllabus": false,
+  "public_syllabus_to_auth": false,
+  "storage_quota_mb": 15728,
+  "is_public_to_auth_users": false,
+  "homeroom_course": false,
+  "course_color": null,
+  "friendly_name": null,
+  "term": {
+   "id": 312,
+   "name": "Fall 2026",
+   "start_at": "2026-08-10T04:00:00Z",
+   "end_at": "2026-12-20T05:00:00Z",
+   "workflow_state": "active",
+   "grading_period_group_id": null,
+   "created_at": "2026-02-12T08:07:30Z"
+  },
+  "apply_assignment_group_weights": true,
+  "teachers": [
+   {
+    "id": 6796,
+    "anonymous_id": "58s",
+    "display_name": "Daniel Ortiz",
+    "avatar_image_url": "https://instructure.charlotte.edu/images/messages/avatar-50.png",
+    "html_url": "https://instructure.charlotte.edu/users/6796",
+    "pronouns": null
+   }
+  ],
+  "tabs": [
+   {
+    "id": "home",
+    "html_url": "/courses/265402",
+    "full_url": "https://instructure.charlotte.edu/courses/265402",
+    "position": 1,
+    "visibility": "public",
+    "label": "Home",
+    "type": "internal"
+   },
+   {
+    "id": "search",
+    "html_url": "/courses/265402/search",
+    "full_url": "https://instructure.charlotte.edu/courses/265402/search",
+    "position": 2,
+    "visibility": "public",
+    "label": "IgniteAI Search",
+    "type": "internal"
+   },
+   {
+    "id": "grades",
+    "html_url": "/courses/265402/grades",
+    "full_url": "https://instructure.charlotte.edu/courses/265402/grades",
+    "position": 3,
+    "visibility": "public",
+    "label": "Grades",
+    "type": "internal"
+   },
+   {
+    "id": "assignments",
+    "html_url": "/courses/265402/assignments",
+    "full_url": "https://instructure.charlotte.edu/courses/265402/assignments",
+    "position": 4,
+    "visibility": "public",
+    "label": "Assignments",
+    "type": "internal"
+   },
+   {
+    "id": "discussions",
+    "html_url": "/courses/265402/discussion_topics",
+    "full_url": "https://instructure.charlotte.edu/courses/265402/discussion_topics",
+    "position": 5,
+    "visibility": "public",
+    "label": "Discussions",
+    "type": "internal"
+   },
+   {
+    "id": "context_external_tool_2",
+    "html_url": "/courses/265402/external_tools/2",
+    "full_url": "https://instructure.charlotte.edu/courses/265402/external_tools/2",
+    "position": 6,
+    "visibility": "members",
+    "label": "Chat",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/265402/external_tools/sessionless_launch?id=2&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_11485",
+    "html_url": "/courses/265402/external_tools/11485",
+    "full_url": "https://instructure.charlotte.edu/courses/265402/external_tools/11485",
+    "position": 7,
+    "visibility": "public",
+    "label": "Purchase Course Materials",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/265402/external_tools/sessionless_launch?id=11485&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_11338",
+    "html_url": "/courses/265402/external_tools/11338",
+    "full_url": "https://instructure.charlotte.edu/courses/265402/external_tools/11338",
+    "position": 8,
+    "visibility": "public",
+    "label": "Library Resources ",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/265402/external_tools/sessionless_launch?id=11338&launch_type=course_navigation"
+   },
+   {
+    "id": "announcements",
+    "html_url": "/courses/265402/announcements",
+    "full_url": "https://instructure.charlotte.edu/courses/265402/announcements",
+    "position": 9,
+    "visibility": "public",
+    "label": "Announcements",
+    "type": "internal"
+   },
+   {
+    "id": "notebook",
+    "html_url": "/courses/265402/notebook",
+    "full_url": "https://instructure.charlotte.edu/courses/265402/notebook",
+    "position": 10,
+    "visibility": "members",
+    "label": "Notebook",
+    "type": "internal"
+   }
+  ],
+  "calendar": {
+   "ics": "https://instructure.charlotte.edu/feeds/calendars/course_WGpnSVVyX8fpqTqP9H3K0dlVqZ0byh5T3cvqF5ei.ics"
+  },
+  "time_zone": "America/New_York",
+  "original_name": "202680-Fall 2026-MATH-2171-005-Differential Equations",
+  "image_download_url": null,
+  "blueprint": false,
+  "template": false,
+  "enrollments": [
+   {
+    "type": "student",
+    "role": "StudentEnrollment",
+    "role_id": 3,
+    "user_id": 389293,
+    "enrollment_state": "active",
+    "limit_privileges_to_course_section": false,
+    "current_grading_period_id": null,
+    "current_grading_period_title": null,
+    "has_grading_periods": false,
+    "multiple_grading_periods_enabled": false,
+    "computed_current_grade": "A",
+    "computed_current_score": 92.97,
+    "computed_current_letter_grade": "B",
+    "computed_final_grade": "A",
+    "computed_final_score": 92.97,
+    "totals_for_all_grading_periods_option": false,
+    "current_period_computed_current_score": null,
+    "current_period_computed_final_score": null,
+    "current_period_computed_current_grade": null,
+    "current_period_computed_final_grade": null
+   }
+  ],
+  "hide_final_grades": false,
+  "workflow_state": "available",
+  "course_format": "on_campus",
+  "restrict_enrollments_to_course_dates": true,
+  "has_grading_periods": false,
+  "multiple_grading_periods_enabled": false,
+  "has_weighted_grading_periods": false
+ },
+ {
+  "id": 266407,
+  "name": "Calculus III",
+  "course_code": "202680-MATH-2241-003-10505",
+  "account_id": 176,
+  "created_at": "2026-03-30T07:19:05Z",
+  "start_at": "2026-08-15T04:00:00Z",
+  "default_view": "syllabus",
+  "enrollment_term_id": 312,
+  "is_public": false,
+  "grading_standard_id": 413,
+  "root_account_id": 1,
+  "uuid": "kxW9nboIKUsFUYTOEhYkOVJu3KlSXKOcK2D4YbTd",
+  "license": "private",
+  "grade_passback_setting": null,
+  "end_at": null,
+  "public_syllabus": false,
+  "public_syllabus_to_auth": false,
+  "storage_quota_mb": 15728,
+  "is_public_to_auth_users": false,
+  "homeroom_course": false,
+  "course_color": null,
+  "friendly_name": null,
+  "term": {
+   "id": 312,
+   "name": "Fall 2026",
+   "start_at": "2026-08-10T04:00:00Z",
+   "end_at": "2026-12-20T05:00:00Z",
+   "workflow_state": "active",
+   "grading_period_group_id": null,
+   "created_at": "2026-02-12T08:07:30Z"
+  },
+  "apply_assignment_group_weights": true,
+  "teachers": [
+   {
+    "id": 186425,
+    "anonymous_id": "3zuh",
+    "display_name": "Mark Ellison",
+    "avatar_image_url": "https://instructure.charlotte.edu/images/thumbnails/24166666/92giZm8YIIgXr6kz53OTo4e996lPbQyUSYhCH9cx",
+    "html_url": "https://instructure.charlotte.edu/users/186425",
+    "pronouns": null
+   }
+  ],
+  "tabs": [
+   {
+    "id": "home",
+    "html_url": "/courses/266407",
+    "full_url": "https://instructure.charlotte.edu/courses/266407",
+    "position": 1,
+    "visibility": "public",
+    "label": "Home",
+    "type": "internal"
+   },
+   {
+    "id": "syllabus",
+    "html_url": "/courses/266407/assignments/syllabus",
+    "full_url": "https://instructure.charlotte.edu/courses/266407/assignments/syllabus",
+    "position": 2,
+    "visibility": "public",
+    "label": "Syllabus",
+    "type": "internal"
+   },
+   {
+    "id": "announcements",
+    "html_url": "/courses/266407/announcements",
+    "full_url": "https://instructure.charlotte.edu/courses/266407/announcements",
+    "position": 3,
+    "visibility": "public",
+    "label": "Announcements",
+    "type": "internal"
+   },
+   {
+    "id": "assignments",
+    "html_url": "/courses/266407/assignments",
+    "full_url": "https://instructure.charlotte.edu/courses/266407/assignments",
+    "position": 4,
+    "visibility": "public",
+    "label": "Assignments",
+    "type": "internal"
+   },
+   {
+    "id": "grades",
+    "html_url": "/courses/266407/grades",
+    "full_url": "https://instructure.charlotte.edu/courses/266407/grades",
+    "position": 5,
+    "visibility": "public",
+    "label": "Grades",
+    "type": "internal"
+   },
+   {
+    "id": "context_external_tool_15930",
+    "html_url": "/courses/266407/external_tools/15930",
+    "full_url": "https://instructure.charlotte.edu/courses/266407/external_tools/15930",
+    "position": 6,
+    "visibility": "public",
+    "label": "Gradescope",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/266407/external_tools/sessionless_launch?id=15930&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_16556",
+    "html_url": "/courses/266407/external_tools/16556",
+    "full_url": "https://instructure.charlotte.edu/courses/266407/external_tools/16556",
+    "position": 7,
+    "visibility": "public",
+    "label": "Course Materials",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/266407/external_tools/sessionless_launch?id=16556&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_14983",
+    "html_url": "/courses/266407/external_tools/14983?display=borderless",
+    "full_url": "https://instructure.charlotte.edu/courses/266407/external_tools/14983?display=borderless",
+    "position": 8,
+    "visibility": "public",
+    "label": "Tutor.com",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/266407/external_tools/sessionless_launch?id=14983&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_17046",
+    "html_url": "/courses/266407/external_tools/17046",
+    "full_url": "https://instructure.charlotte.edu/courses/266407/external_tools/17046",
+    "position": 9,
+    "visibility": "public",
+    "label": "Poll Everywhere",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/266407/external_tools/sessionless_launch?id=17046&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_3033",
+    "html_url": "/courses/266407/external_tools/3033",
+    "full_url": "https://instructure.charlotte.edu/courses/266407/external_tools/3033",
+    "position": 10,
+    "visibility": "public",
+    "label": "Canvas to Banner Grade Submission",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/266407/external_tools/sessionless_launch?id=3033&launch_type=course_navigation"
+   },
+   {
+    "id": "search",
+    "html_url": "/courses/266407/search",
+    "full_url": "https://instructure.charlotte.edu/courses/266407/search",
+    "position": 11,
+    "visibility": "public",
+    "label": "IgniteAI Search",
+    "type": "internal"
+   },
+   {
+    "id": "notebook",
+    "html_url": "/courses/266407/notebook",
+    "full_url": "https://instructure.charlotte.edu/courses/266407/notebook",
+    "position": 12,
+    "hidden": true,
+    "visibility": "admins",
+    "label": "Notebook",
+    "type": "internal"
+   }
+  ],
+  "calendar": {
+   "ics": "https://instructure.charlotte.edu/feeds/calendars/course_kxW9nboIKUsFUYTOEhYkOVJu3KlSXKOcK2D4YbTd.ics"
+  },
+  "time_zone": "America/New_York",
+  "original_name": "202680-Fall 2026-MATH-2241-003-Calculus III",
+  "image_download_url": "https://inst-fs-iad-prod.inscloudgate.net/files/fe58d880-d8c5-4aae-a2b4-4491d33000ab/SpaceTime.jpeg?download=1&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3ODk1MjE2ODUsInVzZXJfaWQiOm51bGwsInJlc291cmNlIjoiL2ZpbGVzL2ZlNThkODgwLWQ4YzUtNGFhZS1hMmI0LTQ0OTFkMzMwMDBhYi9TcGFjZVRpbWUuanBlZyIsImhvc3QiOm51bGwsImV4cCI6MTc5MDEyNjQ4NX0.V9MXe7JLK9eOeybS0fsCP3khZmQZk7OIIaekpIkVFQ1Z2qNNRG19KRJhQrA5I-aweUJin_UeZ3H4TlTulOWXeA",
+  "blueprint": false,
+  "template": false,
+  "enrollments": [
+   {
+    "type": "student",
+    "role": "StudentEnrollment",
+    "role_id": 3,
+    "user_id": 389293,
+    "enrollment_state": "active",
+    "limit_privileges_to_course_section": false,
+    "current_grading_period_id": null,
+    "current_grading_period_title": null,
+    "has_grading_periods": false,
+    "multiple_grading_periods_enabled": false,
+    "computed_current_grade": "A",
+    "computed_current_score": 98.88,
+    "computed_current_letter_grade": "A",
+    "computed_final_grade": "A",
+    "computed_final_score": 98.88,
+    "totals_for_all_grading_periods_option": false,
+    "current_period_computed_current_score": null,
+    "current_period_computed_final_score": null,
+    "current_period_computed_current_grade": null,
+    "current_period_computed_final_grade": null
+   }
+  ],
+  "hide_final_grades": false,
+  "workflow_state": "available",
+  "course_format": "on_campus",
+  "restrict_enrollments_to_course_dates": true,
+  "has_grading_periods": false,
+  "multiple_grading_periods_enabled": false,
+  "has_weighted_grading_periods": false
+ },
+ {
+  "id": 272933,
+  "name": "Engineering Mechanics I",
+  "course_code": "202680-MEGR-2141-Engineering Mechanics I-005-006-XLS2112202680_Combined",
+  "account_id": 113,
+  "created_at": "2026-08-10T20:39:05Z",
+  "start_at": null,
+  "default_view": "syllabus",
+  "enrollment_term_id": 312,
+  "is_public": null,
+  "grading_standard_id": 413,
+  "root_account_id": 1,
+  "uuid": "zkPeOGiery9IEz77d9nzahoDcO4ijydW2X8aUyy2",
+  "license": null,
+  "grade_passback_setting": null,
+  "end_at": null,
+  "public_syllabus": false,
+  "public_syllabus_to_auth": false,
+  "storage_quota_mb": 15728,
+  "is_public_to_auth_users": false,
+  "homeroom_course": false,
+  "course_color": null,
+  "friendly_name": null,
+  "term": {
+   "id": 312,
+   "name": "Fall 2026",
+   "start_at": "2026-08-10T04:00:00Z",
+   "end_at": "2026-12-20T05:00:00Z",
+   "workflow_state": "active",
+   "grading_period_group_id": null,
+   "created_at": "2026-02-12T08:07:30Z"
+  },
+  "apply_assignment_group_weights": false,
+  "teachers": [
+   {
+    "id": 437235,
+    "anonymous_id": "9ddf",
+    "display_name": "Julia Reed",
+    "avatar_image_url": "https://instructure.charlotte.edu/images/messages/avatar-50.png",
+    "html_url": "https://instructure.charlotte.edu/users/437235",
+    "pronouns": null
+   }
+  ],
+  "tabs": [
+   {
+    "id": "home",
+    "html_url": "/courses/272933",
+    "full_url": "https://instructure.charlotte.edu/courses/272933",
+    "position": 1,
+    "visibility": "public",
+    "label": "Home",
+    "type": "internal"
+   },
+   {
+    "id": "search",
+    "html_url": "/courses/272933/search",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/search",
+    "position": 2,
+    "visibility": "public",
+    "label": "IgniteAI Search",
+    "type": "internal"
+   },
+   {
+    "id": "announcements",
+    "html_url": "/courses/272933/announcements",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/announcements",
+    "position": 3,
+    "visibility": "public",
+    "label": "Announcements",
+    "type": "internal"
+   },
+   {
+    "id": "assignments",
+    "html_url": "/courses/272933/assignments",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/assignments",
+    "position": 4,
+    "visibility": "public",
+    "label": "Assignments",
+    "type": "internal"
+   },
+   {
+    "id": "discussions",
+    "html_url": "/courses/272933/discussion_topics",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/discussion_topics",
+    "position": 5,
+    "visibility": "public",
+    "label": "Discussions",
+    "type": "internal"
+   },
+   {
+    "id": "grades",
+    "html_url": "/courses/272933/grades",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/grades",
+    "position": 6,
+    "visibility": "public",
+    "label": "Grades",
+    "type": "internal"
+   },
+   {
+    "id": "people",
+    "html_url": "/courses/272933/users",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/users",
+    "position": 7,
+    "visibility": "public",
+    "label": "People",
+    "type": "internal"
+   },
+   {
+    "id": "files",
+    "html_url": "/courses/272933/files",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/files",
+    "position": 8,
+    "visibility": "public",
+    "label": "Files",
+    "type": "internal"
+   },
+   {
+    "id": "syllabus",
+    "html_url": "/courses/272933/assignments/syllabus",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/assignments/syllabus",
+    "position": 9,
+    "visibility": "public",
+    "label": "Syllabus",
+    "type": "internal"
+   },
+   {
+    "id": "modules",
+    "html_url": "/courses/272933/modules",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/modules",
+    "position": 10,
+    "visibility": "public",
+    "label": "Modules",
+    "type": "internal"
+   },
+   {
+    "id": "conferences",
+    "html_url": "/courses/272933/conferences",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/conferences",
+    "position": 11,
+    "visibility": "public",
+    "label": "BigBlueButton",
+    "type": "internal"
+   },
+   {
+    "id": "collaborations",
+    "html_url": "/courses/272933/collaborations",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/collaborations",
+    "position": 12,
+    "visibility": "public",
+    "label": "Collaborations",
+    "type": "internal"
+   },
+   {
+    "id": "notebook",
+    "html_url": "/courses/272933/notebook",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/notebook",
+    "position": 13,
+    "visibility": "members",
+    "label": "Notebook",
+    "type": "internal"
+   },
+   {
+    "id": "context_external_tool_2",
+    "html_url": "/courses/272933/external_tools/2",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/external_tools/2",
+    "position": 14,
+    "visibility": "members",
+    "label": "Chat",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272933/external_tools/sessionless_launch?id=2&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_1277",
+    "html_url": "/courses/272933/external_tools/1277",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/external_tools/1277",
+    "position": 15,
+    "visibility": "public",
+    "label": "My Career",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272933/external_tools/sessionless_launch?id=1277&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_1612",
+    "html_url": "/courses/272933/external_tools/1612",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/external_tools/1612",
+    "position": 16,
+    "visibility": "public",
+    "label": "Activity Logs",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272933/external_tools/sessionless_launch?id=1612&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_1840",
+    "html_url": "/courses/272933/external_tools/1840",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/external_tools/1840",
+    "position": 17,
+    "visibility": "public",
+    "label": "Piazza",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272933/external_tools/sessionless_launch?id=1840&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_3033",
+    "html_url": "/courses/272933/external_tools/3033",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/external_tools/3033",
+    "position": 18,
+    "visibility": "public",
+    "label": "Canvas to Banner Grade Submission",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272933/external_tools/sessionless_launch?id=3033&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_6996",
+    "html_url": "/courses/272933/external_tools/6996",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/external_tools/6996",
+    "position": 19,
+    "visibility": "public",
+    "label": "Academic Support",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272933/external_tools/sessionless_launch?id=6996&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_8235",
+    "html_url": "/courses/272933/external_tools/8235",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/external_tools/8235",
+    "position": 20,
+    "visibility": "public",
+    "label": "Q & A",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272933/external_tools/sessionless_launch?id=8235&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_8778",
+    "html_url": "/courses/272933/external_tools/8778",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/external_tools/8778",
+    "position": 21,
+    "visibility": "public",
+    "label": "Zoom",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272933/external_tools/sessionless_launch?id=8778&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_9240",
+    "html_url": "/courses/272933/external_tools/9240",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/external_tools/9240",
+    "position": 22,
+    "visibility": "public",
+    "label": "Accessibility Checker",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272933/external_tools/sessionless_launch?id=9240&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_9875",
+    "html_url": "/courses/272933/external_tools/9875",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/external_tools/9875",
+    "position": 23,
+    "visibility": "public",
+    "label": "School of Professional Studies",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272933/external_tools/sessionless_launch?id=9875&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_11333",
+    "html_url": "/courses/272933/external_tools/11333",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/external_tools/11333",
+    "position": 24,
+    "visibility": "public",
+    "label": "Niner Needs",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272933/external_tools/sessionless_launch?id=11333&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_11338",
+    "html_url": "/courses/272933/external_tools/11338",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/external_tools/11338",
+    "position": 25,
+    "visibility": "public",
+    "label": "Library Resources ",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272933/external_tools/sessionless_launch?id=11338&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_11485",
+    "html_url": "/courses/272933/external_tools/11485",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/external_tools/11485",
+    "position": 26,
+    "visibility": "public",
+    "label": "Purchase Course Materials",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272933/external_tools/sessionless_launch?id=11485&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_12710",
+    "html_url": "/courses/272933/external_tools/12710?display=borderless",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/external_tools/12710?display=borderless",
+    "position": 27,
+    "visibility": "public",
+    "label": "Kritik-USA",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272933/external_tools/sessionless_launch?id=12710&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_13436",
+    "html_url": "/courses/272933/external_tools/13436",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/external_tools/13436",
+    "position": 28,
+    "visibility": "members",
+    "label": "Course Analytics",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272933/external_tools/sessionless_launch?id=13436&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_14983",
+    "html_url": "/courses/272933/external_tools/14983?display=borderless",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/external_tools/14983?display=borderless",
+    "position": 29,
+    "visibility": "public",
+    "label": "Tutor.com",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272933/external_tools/sessionless_launch?id=14983&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_15930",
+    "html_url": "/courses/272933/external_tools/15930",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/external_tools/15930",
+    "position": 30,
+    "visibility": "public",
+    "label": "Gradescope",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272933/external_tools/sessionless_launch?id=15930&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_16084",
+    "html_url": "/courses/272933/external_tools/16084",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/external_tools/16084",
+    "position": 31,
+    "visibility": "public",
+    "label": "Lucid (Whiteboard)",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272933/external_tools/sessionless_launch?id=16084&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_16556",
+    "html_url": "/courses/272933/external_tools/16556",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/external_tools/16556",
+    "position": 32,
+    "visibility": "public",
+    "label": "Course Materials",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272933/external_tools/sessionless_launch?id=16556&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_8492",
+    "html_url": "/courses/272933/external_tools/8492?display=borderless",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/external_tools/8492?display=borderless",
+    "position": 33,
+    "visibility": "public",
+    "label": "Wiley Course Resources",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272933/external_tools/sessionless_launch?id=8492&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_17046",
+    "html_url": "/courses/272933/external_tools/17046",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/external_tools/17046",
+    "position": 34,
+    "visibility": "public",
+    "label": "Poll Everywhere",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272933/external_tools/sessionless_launch?id=17046&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_17738",
+    "html_url": "/courses/272933/external_tools/17738",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/external_tools/17738",
+    "position": 35,
+    "visibility": "public",
+    "label": "Google Gemini",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272933/external_tools/sessionless_launch?id=17738&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_17743",
+    "html_url": "/courses/272933/external_tools/17743",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/external_tools/17743",
+    "position": 36,
+    "visibility": "public",
+    "label": "ALEKS",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272933/external_tools/sessionless_launch?id=17743&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_17761",
+    "html_url": "/courses/272933/external_tools/17761",
+    "full_url": "https://instructure.charlotte.edu/courses/272933/external_tools/17761",
+    "position": 37,
+    "visibility": "public",
+    "label": "Parchment Badges",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272933/external_tools/sessionless_launch?id=17761&launch_type=course_navigation"
+   }
+  ],
+  "calendar": {
+   "ics": "https://instructure.charlotte.edu/feeds/calendars/course_zkPeOGiery9IEz77d9nzahoDcO4ijydW2X8aUyy2.ics"
+  },
+  "time_zone": "America/New_York",
+  "original_name": "202680-Fall 2026-MEGR-2141-Engineering Mechanics I-005-006_Combined",
+  "image_download_url": null,
+  "blueprint": false,
+  "template": false,
+  "enrollments": [
+   {
+    "type": "student",
+    "role": "StudentEnrollment",
+    "role_id": 3,
+    "user_id": 389293,
+    "enrollment_state": "active",
+    "limit_privileges_to_course_section": false,
+    "current_grading_period_id": null,
+    "current_grading_period_title": null,
+    "has_grading_periods": false,
+    "multiple_grading_periods_enabled": false,
+    "computed_current_grade": "A",
+    "computed_current_score": 93.62,
+    "computed_current_letter_grade": "A",
+    "computed_final_grade": "A",
+    "computed_final_score": 93.62,
+    "totals_for_all_grading_periods_option": false,
+    "current_period_computed_current_score": null,
+    "current_period_computed_final_score": null,
+    "current_period_computed_current_grade": null,
+    "current_period_computed_final_grade": null
+   }
+  ],
+  "hide_final_grades": false,
+  "workflow_state": "available",
+  "restrict_enrollments_to_course_dates": false,
+  "has_grading_periods": false,
+  "multiple_grading_periods_enabled": false,
+  "has_weighted_grading_periods": false
+ },
+ {
+  "id": 265302,
+  "name": "Thermodynamics I",
+  "course_code": "202680-MEGR-3111-004-14239",
+  "account_id": 113,
+  "created_at": "2026-03-30T07:18:31Z",
+  "start_at": null,
+  "default_view": "syllabus",
+  "enrollment_term_id": 312,
+  "is_public": null,
+  "grading_standard_id": null,
+  "root_account_id": 1,
+  "uuid": "VUD6kRXCc3rJclFNIjKzbCqRGUnDcluJYHeArZoV",
+  "license": null,
+  "grade_passback_setting": null,
+  "end_at": null,
+  "public_syllabus": false,
+  "public_syllabus_to_auth": false,
+  "storage_quota_mb": 15728,
+  "is_public_to_auth_users": false,
+  "homeroom_course": false,
+  "course_color": null,
+  "friendly_name": null,
+  "term": {
+   "id": 312,
+   "name": "Fall 2026",
+   "start_at": "2026-08-10T04:00:00Z",
+   "end_at": "2026-12-20T05:00:00Z",
+   "workflow_state": "active",
+   "grading_period_group_id": null,
+   "created_at": "2026-02-12T08:07:30Z"
+  },
+  "apply_assignment_group_weights": true,
+  "teachers": [
+   {
+    "id": 306922,
+    "anonymous_id": "6ktm",
+    "display_name": "Wei Tan",
+    "avatar_image_url": "https://instructure.charlotte.edu/images/messages/avatar-50.png",
+    "html_url": "https://instructure.charlotte.edu/users/306922",
+    "pronouns": null
+   }
+  ],
+  "tabs": [
+   {
+    "id": "home",
+    "html_url": "/courses/265302",
+    "full_url": "https://instructure.charlotte.edu/courses/265302",
+    "position": 1,
+    "visibility": "public",
+    "label": "Home",
+    "type": "internal"
+   },
+   {
+    "id": "search",
+    "html_url": "/courses/265302/search",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/search",
+    "position": 2,
+    "visibility": "public",
+    "label": "IgniteAI Search",
+    "type": "internal"
+   },
+   {
+    "id": "announcements",
+    "html_url": "/courses/265302/announcements",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/announcements",
+    "position": 3,
+    "visibility": "public",
+    "label": "Announcements",
+    "type": "internal"
+   },
+   {
+    "id": "files",
+    "html_url": "/courses/265302/files",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/files",
+    "position": 4,
+    "visibility": "public",
+    "label": "Files",
+    "type": "internal"
+   },
+   {
+    "id": "assignments",
+    "html_url": "/courses/265302/assignments",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/assignments",
+    "position": 5,
+    "visibility": "public",
+    "label": "Assignments",
+    "type": "internal"
+   },
+   {
+    "id": "grades",
+    "html_url": "/courses/265302/grades",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/grades",
+    "position": 6,
+    "visibility": "public",
+    "label": "Grades",
+    "type": "internal"
+   },
+   {
+    "id": "people",
+    "html_url": "/courses/265302/users",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/users",
+    "position": 7,
+    "visibility": "public",
+    "label": "People",
+    "type": "internal"
+   },
+   {
+    "id": "pages",
+    "html_url": "/courses/265302/wiki",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/wiki",
+    "position": 8,
+    "visibility": "public",
+    "label": "Pages",
+    "type": "internal"
+   },
+   {
+    "id": "discussions",
+    "html_url": "/courses/265302/discussion_topics",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/discussion_topics",
+    "position": 9,
+    "visibility": "public",
+    "label": "Discussions",
+    "type": "internal"
+   },
+   {
+    "id": "syllabus",
+    "html_url": "/courses/265302/assignments/syllabus",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/assignments/syllabus",
+    "position": 10,
+    "visibility": "public",
+    "label": "Syllabus",
+    "type": "internal"
+   },
+   {
+    "id": "modules",
+    "html_url": "/courses/265302/modules",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/modules",
+    "position": 11,
+    "visibility": "public",
+    "label": "Modules",
+    "type": "internal"
+   },
+   {
+    "id": "conferences",
+    "html_url": "/courses/265302/conferences",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/conferences",
+    "position": 12,
+    "visibility": "public",
+    "label": "BigBlueButton",
+    "type": "internal"
+   },
+   {
+    "id": "collaborations",
+    "html_url": "/courses/265302/collaborations",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/collaborations",
+    "position": 13,
+    "visibility": "public",
+    "label": "Collaborations",
+    "type": "internal"
+   },
+   {
+    "id": "context_external_tool_2",
+    "html_url": "/courses/265302/external_tools/2",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/external_tools/2",
+    "position": 14,
+    "visibility": "members",
+    "label": "Chat",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/265302/external_tools/sessionless_launch?id=2&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_1277",
+    "html_url": "/courses/265302/external_tools/1277",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/external_tools/1277",
+    "position": 15,
+    "visibility": "public",
+    "label": "My Career",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/265302/external_tools/sessionless_launch?id=1277&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_1612",
+    "html_url": "/courses/265302/external_tools/1612",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/external_tools/1612",
+    "position": 16,
+    "visibility": "public",
+    "label": "Activity Logs",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/265302/external_tools/sessionless_launch?id=1612&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_1840",
+    "html_url": "/courses/265302/external_tools/1840",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/external_tools/1840",
+    "position": 17,
+    "visibility": "public",
+    "label": "Piazza",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/265302/external_tools/sessionless_launch?id=1840&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_3033",
+    "html_url": "/courses/265302/external_tools/3033",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/external_tools/3033",
+    "position": 18,
+    "visibility": "public",
+    "label": "Canvas to Banner Grade Submission",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/265302/external_tools/sessionless_launch?id=3033&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_6996",
+    "html_url": "/courses/265302/external_tools/6996",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/external_tools/6996",
+    "position": 19,
+    "visibility": "public",
+    "label": "Academic Support",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/265302/external_tools/sessionless_launch?id=6996&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_8235",
+    "html_url": "/courses/265302/external_tools/8235",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/external_tools/8235",
+    "position": 20,
+    "visibility": "public",
+    "label": "Q & A",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/265302/external_tools/sessionless_launch?id=8235&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_8778",
+    "html_url": "/courses/265302/external_tools/8778",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/external_tools/8778",
+    "position": 21,
+    "visibility": "public",
+    "label": "Zoom",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/265302/external_tools/sessionless_launch?id=8778&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_9240",
+    "html_url": "/courses/265302/external_tools/9240",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/external_tools/9240",
+    "position": 22,
+    "visibility": "public",
+    "label": "Accessibility Checker",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/265302/external_tools/sessionless_launch?id=9240&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_9875",
+    "html_url": "/courses/265302/external_tools/9875",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/external_tools/9875",
+    "position": 23,
+    "visibility": "public",
+    "label": "School of Professional Studies",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/265302/external_tools/sessionless_launch?id=9875&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_11333",
+    "html_url": "/courses/265302/external_tools/11333",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/external_tools/11333",
+    "position": 24,
+    "visibility": "public",
+    "label": "Niner Needs",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/265302/external_tools/sessionless_launch?id=11333&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_11338",
+    "html_url": "/courses/265302/external_tools/11338",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/external_tools/11338",
+    "position": 25,
+    "visibility": "public",
+    "label": "Library Resources ",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/265302/external_tools/sessionless_launch?id=11338&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_11485",
+    "html_url": "/courses/265302/external_tools/11485",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/external_tools/11485",
+    "position": 26,
+    "visibility": "public",
+    "label": "Purchase Course Materials",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/265302/external_tools/sessionless_launch?id=11485&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_12710",
+    "html_url": "/courses/265302/external_tools/12710?display=borderless",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/external_tools/12710?display=borderless",
+    "position": 27,
+    "visibility": "public",
+    "label": "Kritik-USA",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/265302/external_tools/sessionless_launch?id=12710&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_14983",
+    "html_url": "/courses/265302/external_tools/14983?display=borderless",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/external_tools/14983?display=borderless",
+    "position": 28,
+    "visibility": "public",
+    "label": "Tutor.com",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/265302/external_tools/sessionless_launch?id=14983&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_13436",
+    "html_url": "/courses/265302/external_tools/13436",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/external_tools/13436",
+    "position": 29,
+    "visibility": "members",
+    "label": "Course Analytics",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/265302/external_tools/sessionless_launch?id=13436&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_15930",
+    "html_url": "/courses/265302/external_tools/15930",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/external_tools/15930",
+    "position": 30,
+    "visibility": "public",
+    "label": "Gradescope",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/265302/external_tools/sessionless_launch?id=15930&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_16084",
+    "html_url": "/courses/265302/external_tools/16084",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/external_tools/16084",
+    "position": 31,
+    "visibility": "public",
+    "label": "Lucid (Whiteboard)",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/265302/external_tools/sessionless_launch?id=16084&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_16556",
+    "html_url": "/courses/265302/external_tools/16556",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/external_tools/16556",
+    "position": 32,
+    "visibility": "public",
+    "label": "Course Materials",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/265302/external_tools/sessionless_launch?id=16556&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_17046",
+    "html_url": "/courses/265302/external_tools/17046",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/external_tools/17046",
+    "position": 33,
+    "visibility": "public",
+    "label": "Poll Everywhere",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/265302/external_tools/sessionless_launch?id=17046&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_17738",
+    "html_url": "/courses/265302/external_tools/17738",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/external_tools/17738",
+    "position": 34,
+    "visibility": "public",
+    "label": "Google Gemini",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/265302/external_tools/sessionless_launch?id=17738&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_17743",
+    "html_url": "/courses/265302/external_tools/17743",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/external_tools/17743",
+    "position": 35,
+    "visibility": "public",
+    "label": "ALEKS",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/265302/external_tools/sessionless_launch?id=17743&launch_type=course_navigation"
+   },
+   {
+    "id": "context_external_tool_17761",
+    "html_url": "/courses/265302/external_tools/17761",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/external_tools/17761",
+    "position": 36,
+    "visibility": "public",
+    "label": "Parchment Badges",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/265302/external_tools/sessionless_launch?id=17761&launch_type=course_navigation"
+   },
+   {
+    "id": "notebook",
+    "html_url": "/courses/265302/notebook",
+    "full_url": "https://instructure.charlotte.edu/courses/265302/notebook",
+    "position": 37,
+    "visibility": "members",
+    "label": "Notebook",
+    "type": "internal"
+   }
+  ],
+  "calendar": {
+   "ics": "https://instructure.charlotte.edu/feeds/calendars/course_VUD6kRXCc3rJclFNIjKzbCqRGUnDcluJYHeArZoV.ics"
+  },
+  "time_zone": "America/New_York",
+  "original_name": "202680-Fall 2026-MEGR-3111-004-Thermodynamics I",
+  "image_download_url": null,
+  "blueprint": false,
+  "template": false,
+  "enrollments": [
+   {
+    "type": "student",
+    "role": "StudentEnrollment",
+    "role_id": 3,
+    "user_id": 389293,
+    "enrollment_state": "active",
+    "limit_privileges_to_course_section": false,
+    "current_grading_period_id": null,
+    "current_grading_period_title": null,
+    "has_grading_periods": false,
+    "multiple_grading_periods_enabled": false,
+    "computed_current_grade": null,
+    "computed_current_score": 97.33,
+    "computed_current_letter_grade": null,
+    "computed_final_grade": null,
+    "computed_final_score": 97.33,
+    "totals_for_all_grading_periods_option": false,
+    "current_period_computed_current_score": null,
+    "current_period_computed_final_score": null,
+    "current_period_computed_current_grade": null,
+    "current_period_computed_final_grade": null
+   }
+  ],
+  "hide_final_grades": false,
+  "workflow_state": "available",
+  "course_format": "on_campus",
+  "restrict_enrollments_to_course_dates": false,
+  "has_grading_periods": false,
+  "multiple_grading_periods_enabled": false,
+  "has_weighted_grading_periods": false
+ },
+ {
+  "id": 195554,
+  "name": "Training - MEES Pre-Registration Academic Advising",
+  "course_code": "Training - MEES Pre-Registration Academic Advising",
+  "account_id": 223,
+  "created_at": "2023-01-27T15:57:36Z",
+  "start_at": null,
+  "default_view": "modules",
+  "enrollment_term_id": 1,
+  "is_public": false,
+  "grading_standard_id": null,
+  "root_account_id": 1,
+  "uuid": "6T2CXZtiFO3MLKln6X9Nl23RizLxb7DNnjfx0Zz6",
+  "license": "private",
+  "grade_passback_setting": null,
+  "end_at": null,
+  "public_syllabus": false,
+  "public_syllabus_to_auth": false,
+  "storage_quota_mb": 15728,
+  "is_public_to_auth_users": false,
+  "homeroom_course": false,
+  "course_color": null,
+  "friendly_name": null,
+  "term": {
+   "id": 1,
+   "name": "Default Term",
+   "start_at": null,
+   "end_at": null,
+   "workflow_state": "active",
+   "grading_period_group_id": null,
+   "created_at": "2015-10-09T18:34:44Z"
+  },
+  "apply_assignment_group_weights": false,
+  "teachers": [
+   {
+    "id": 4503,
+    "anonymous_id": "3h3",
+    "display_name": "Peter Lowe",
+    "avatar_image_url": "https://instructure.charlotte.edu/images/messages/avatar-50.png",
+    "html_url": "https://instructure.charlotte.edu/users/4503",
+    "pronouns": null
+   },
+   {
+    "id": 269300,
+    "anonymous_id": "5rsk",
+    "display_name": "Kim Lyons",
+    "avatar_image_url": "https://instructure.charlotte.edu/images/thumbnails/22111365/97Wr6CArdToHyUY40Yfq13JWmPIDhZMiQyNuYAjY",
+    "html_url": "https://instructure.charlotte.edu/users/269300",
+    "pronouns": null
+   },
+   {
+    "id": 7217,
+    "anonymous_id": "5kh",
+    "display_name": "Owen Price",
+    "avatar_image_url": "https://instructure.charlotte.edu/images/thumbnails/19941849/svE01XvTgmhaEguzyOZLwkuGBqhVH9UR0lHWJlTK",
+    "html_url": "https://instructure.charlotte.edu/users/7217",
+    "pronouns": null
+   },
+   {
+    "id": 237214,
+    "anonymous_id": "531a",
+    "display_name": "Grace Holt",
+    "avatar_image_url": "https://instructure.charlotte.edu/images/messages/avatar-50.png",
+    "html_url": "https://instructure.charlotte.edu/users/237214",
+    "pronouns": null
+   },
+   {
+    "id": 355216,
+    "anonymous_id": "7m34",
+    "display_name": "Olivia Hart",
+    "avatar_image_url": "https://instructure.charlotte.edu/images/messages/avatar-50.png",
+    "html_url": "https://instructure.charlotte.edu/users/355216",
+    "pronouns": null
+   },
+   {
+    "id": 231995,
+    "anonymous_id": "4z0b",
+    "display_name": "Tara Bell",
+    "avatar_image_url": "https://instructure.charlotte.edu/images/messages/avatar-50.png",
+    "html_url": "https://instructure.charlotte.edu/users/231995",
+    "pronouns": null
+   },
+   {
+    "id": 319526,
+    "anonymous_id": "6ujq",
+    "display_name": "Leila Haddad",
+    "avatar_image_url": "https://instructure.charlotte.edu/images/thumbnails/22974678/Trw0af4a6xc7Mm7y5tL9wJjBA6zEpW2ZRR0MCz4e",
+    "html_url": "https://instructure.charlotte.edu/users/319526",
+    "pronouns": null
+   },
+   {
+    "id": 261315,
+    "anonymous_id": "5lmr",
+    "display_name": "Clara Webb",
+    "avatar_image_url": "https://instructure.charlotte.edu/images/messages/avatar-50.png",
+    "html_url": "https://instructure.charlotte.edu/users/261315",
+    "pronouns": null
+   },
+   {
+    "id": 4371,
+    "anonymous_id": "3df",
+    "display_name": "Diana Kost",
+    "avatar_image_url": "https://instructure.charlotte.edu/images/thumbnails/22113243/nbmphdbllGnX2kI0WlqIsYKpEqng6VpJk3f8wGbf",
+    "html_url": "https://instructure.charlotte.edu/users/4371",
+    "pronouns": null
+   },
+   {
+    "id": 354519,
+    "anonymous_id": "7ljr",
+    "display_name": "Nina Park",
+    "avatar_image_url": "https://instructure.charlotte.edu/images/thumbnails/26499034/QvyuZMv75bA5PvgNA9ESJtghjOXnSxHfUXi2NdpZ",
+    "html_url": "https://instructure.charlotte.edu/users/354519",
+    "pronouns": null
+   },
+   {
+    "id": 401732,
+    "anonymous_id": "8lz8",
+    "display_name": "Erin Shaw",
+    "avatar_image_url": "https://instructure.charlotte.edu/images/messages/avatar-50.png",
+    "html_url": "https://instructure.charlotte.edu/users/401732",
+    "pronouns": null
+   }
+  ],
+  "tabs": [
+   {
+    "id": "home",
+    "html_url": "/courses/195554",
+    "full_url": "https://instructure.charlotte.edu/courses/195554",
+    "position": 1,
+    "visibility": "public",
+    "label": "Home",
+    "type": "internal"
+   },
+   {
+    "id": "discussions",
+    "html_url": "/courses/195554/discussion_topics",
+    "full_url": "https://instructure.charlotte.edu/courses/195554/discussion_topics",
+    "position": 2,
+    "visibility": "public",
+    "label": "Discussions",
+    "type": "internal"
+   },
+   {
+    "id": "modules",
+    "html_url": "/courses/195554/modules",
+    "full_url": "https://instructure.charlotte.edu/courses/195554/modules",
+    "position": 3,
+    "visibility": "public",
+    "label": "Modules",
+    "type": "internal"
+   },
+   {
+    "id": "context_external_tool_11333",
+    "html_url": "/courses/195554/external_tools/11333",
+    "full_url": "https://instructure.charlotte.edu/courses/195554/external_tools/11333",
+    "position": 4,
+    "visibility": "public",
+    "label": "Niner Needs",
+    "type": "external",
+    "url": "https://instructure.charlotte.edu/api/v1/courses/195554/external_tools/sessionless_launch?id=11333&launch_type=course_navigation"
+   },
+   {
+    "id": "notebook",
+    "html_url": "/courses/195554/notebook",
+    "full_url": "https://instructure.charlotte.edu/courses/195554/notebook",
+    "position": 5,
+    "visibility": "members",
+    "label": "Notebook",
+    "type": "internal"
+   }
+  ],
+  "calendar": {
+   "ics": "https://instructure.charlotte.edu/feeds/calendars/course_6T2CXZtiFO3MLKln6X9Nl23RizLxb7DNnjfx0Zz6.ics"
+  },
+  "time_zone": "America/New_York",
+  "image_download_url": "https://inst-fs-iad-prod.inscloudgate.net/files/2cbbfe51-85c4-4b3f-8bac-d9f6fbb5dcbe/images.jpg?download=1&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3ODkzOTM0MDcsInVzZXJfaWQiOm51bGwsInJlc291cmNlIjoiL2ZpbGVzLzJjYmJmZTUxLTg1YzQtNGIzZi04YmFjLWQ5ZjZmYmI1ZGNiZS9pbWFnZXMuanBnIiwiaG9zdCI6bnVsbCwiZXhwIjoxNzg5OTk4MjA3fQ.e6EQA6csnKiiaP5eynqD73fWnX-hoFAhT9y6s-MaocMr4yc5R8FKPF7MFLpevxIXdEUus_ujsJd8sRZAASAAbA",
+  "blueprint": false,
+  "template": false,
+  "enrollments": [
+   {
+    "type": "student",
+    "role": "StudentEnrollment",
+    "role_id": 3,
+    "user_id": 389293,
+    "enrollment_state": "active",
+    "limit_privileges_to_course_section": false,
+    "current_grading_period_id": null,
+    "current_grading_period_title": null,
+    "has_grading_periods": false,
+    "multiple_grading_periods_enabled": false,
+    "computed_current_grade": null,
+    "computed_current_score": null,
+    "computed_current_letter_grade": null,
+    "computed_final_grade": null,
+    "computed_final_score": 0.0,
+    "totals_for_all_grading_periods_option": false,
+    "current_period_computed_current_score": null,
+    "current_period_computed_final_score": null,
+    "current_period_computed_current_grade": null,
+    "current_period_computed_final_grade": null
+   }
+  ],
+  "hide_final_grades": false,
+  "workflow_state": "available",
+  "restrict_enrollments_to_course_dates": true,
+  "has_grading_periods": false,
+  "multiple_grading_periods_enabled": false,
+  "has_weighted_grading_periods": false
+ }
+]

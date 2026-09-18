@@ -1,0 +1,1766 @@
+[
+ {
+  "id": 1184889,
+  "position": 1,
+  "name": "Start Here: Course Orientation",
+  "unlock_at": null,
+  "require_sequential_progress": false,
+  "requirement_type": "one",
+  "publish_final_grade": false,
+  "prerequisite_module_ids": [],
+  "state": "completed",
+  "completed_at": "2026-08-25T16:35:51Z",
+  "items_count": 24,
+  "items_url": "https://instructure.charlotte.edu/api/v1/courses/272622/modules/1184889/items",
+  "items": [
+   {
+    "id": 8270919,
+    "position": 1,
+    "title": "Read through each of the pages below to get started with the course. You may collapse this module by clicking the down facing arrow to the left of the Module title.",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "SubHeader",
+    "module_id": 1184889,
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270920,
+    "position": 2,
+    "title": "Welcome to the Course!",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "Page",
+    "module_id": 1184889,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270920",
+    "page_url": "welcome-to-the-course",
+    "publish_at": null,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/pages/welcome-to-the-course",
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270921,
+    "position": 3,
+    "title": "Meet the Instructor!",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "Page",
+    "module_id": 1184889,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270921",
+    "page_url": "meet-the-instructor",
+    "publish_at": null,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/pages/meet-the-instructor",
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270922,
+    "position": 4,
+    "title": "Meet the Teaching Assistant! ",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "Page",
+    "module_id": 1184889,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270922",
+    "page_url": "meet-the-teaching-assistant",
+    "publish_at": null,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/pages/meet-the-teaching-assistant",
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270923,
+    "position": 5,
+    "title": "Course Overview",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "Page",
+    "module_id": 1184889,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270923",
+    "page_url": "course-overview",
+    "publish_at": null,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/pages/course-overview",
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270924,
+    "position": 6,
+    "title": "How to Upload Your Assignment to Gradescope Through Canvas",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184889,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270924",
+    "content_id": 33989901,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/33989901",
+    "content_details": {
+     "display_name": "Gradescope Document.docx",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270925,
+    "position": 7,
+    "title": "Course Navigation ",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "Page",
+    "module_id": 1184889,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270925",
+    "page_url": "course-navigation",
+    "publish_at": null,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/pages/course-navigation",
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270926,
+    "position": 8,
+    "title": "Career Competencies",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "Page",
+    "module_id": 1184889,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270926",
+    "page_url": "career-competencies",
+    "publish_at": null,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/pages/career-competencies",
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270927,
+    "position": 9,
+    "title": "Student Resources",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "Page",
+    "module_id": 1184889,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270927",
+    "page_url": "student-resources",
+    "publish_at": null,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/pages/student-resources",
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270928,
+    "position": 10,
+    "title": "Professional Development Extra Credit.pdf",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184889,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270928",
+    "content_id": 33989900,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/33989900",
+    "content_details": {
+     "display_name": "Professional Development Extra Credit.pdf",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270929,
+    "position": 11,
+    "title": "Course Policies",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "SubHeader",
+    "module_id": 1184889,
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270930,
+    "position": 12,
+    "title": "Course Policies",
+    "indent": 1,
+    "quiz_lti": false,
+    "type": "Page",
+    "module_id": 1184889,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270930",
+    "page_url": "course-policies",
+    "publish_at": null,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/pages/course-policies",
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270931,
+    "position": 13,
+    "title": "Grading",
+    "indent": 1,
+    "quiz_lti": false,
+    "type": "Page",
+    "module_id": 1184889,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270931",
+    "page_url": "grading",
+    "publish_at": null,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/pages/grading",
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270932,
+    "position": 14,
+    "title": "Required Materials and Technology",
+    "indent": 1,
+    "quiz_lti": false,
+    "type": "Page",
+    "module_id": 1184889,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270932",
+    "page_url": "required-materials-and-technology",
+    "publish_at": null,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/pages/required-materials-and-technology",
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270933,
+    "position": 15,
+    "title": "Written Assignment Submittal Policy",
+    "indent": 1,
+    "quiz_lti": false,
+    "type": "Page",
+    "module_id": 1184889,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270933",
+    "page_url": "written-assignment-submittal-policy",
+    "publish_at": null,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/pages/written-assignment-submittal-policy",
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270934,
+    "position": 16,
+    "title": "Student Communication Guidelines",
+    "indent": 1,
+    "quiz_lti": false,
+    "type": "Page",
+    "module_id": 1184889,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270934",
+    "page_url": "student-communication-guidelines",
+    "publish_at": null,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/pages/student-communication-guidelines",
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270935,
+    "position": 17,
+    "title": "University Policies (Academic Integrity, Title IX, etc.)",
+    "indent": 1,
+    "quiz_lti": false,
+    "type": "Page",
+    "module_id": 1184889,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270935",
+    "page_url": "university-policies-academic-integrity-title-ix-etc-dot",
+    "publish_at": null,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/pages/university-policies-academic-integrity-title-ix-etc-dot",
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270936,
+    "position": 18,
+    "title": "Assignments",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "SubHeader",
+    "module_id": 1184889,
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270937,
+    "position": 19,
+    "title": "Academic Integrity Page",
+    "indent": 1,
+    "quiz_lti": false,
+    "type": "Page",
+    "module_id": 1184889,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270937",
+    "page_url": "academic-integrity-page",
+    "publish_at": null,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/pages/academic-integrity-page",
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270938,
+    "position": 20,
+    "title": "Basic Math Quiz (No calculator)",
+    "indent": 1,
+    "quiz_lti": true,
+    "type": "Assignment",
+    "module_id": 1184889,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270938",
+    "content_id": 3016457,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/assignments/3016457",
+    "completion_requirement": {
+     "type": "must_submit",
+     "completed": true
+    },
+    "content_details": {
+     "due_at": "2026-09-01T03:59:59Z",
+     "unlock_at": "2026-08-17T04:00:00Z",
+     "points_possible": 7.0,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270940,
+    "position": 22,
+    "title": "Academic Integrity Quiz",
+    "indent": 1,
+    "quiz_lti": false,
+    "type": "Quiz",
+    "module_id": 1184889,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270940",
+    "content_id": 640598,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/quizzes/640598",
+    "completion_requirement": {
+     "type": "must_submit",
+     "completed": true
+    },
+    "content_details": {
+     "due_at": "2026-09-01T03:59:59Z",
+     "unlock_at": "2026-08-17T12:00:00Z",
+     "lock_at": "2026-09-01T03:59:59Z",
+     "points_possible": 13.0,
+     "locked_for_user": true,
+     "lock_info": {
+      "lock_at": "2026-09-01T03:59:59Z",
+      "can_view": true,
+      "asset_string": "quizzes:quiz_640598"
+     },
+     "lock_explanation": "This quiz was locked Aug 31 at 11:59pm."
+    }
+   },
+   {
+    "id": 8270941,
+    "position": 23,
+    "title": "Turnitin SimCheck Consent",
+    "indent": 1,
+    "quiz_lti": false,
+    "type": "Quiz",
+    "module_id": 1184889,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270941",
+    "content_id": 640597,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/quizzes/640597",
+    "completion_requirement": {
+     "type": "must_submit",
+     "completed": true
+    },
+    "content_details": {
+     "due_at": "2026-09-01T03:30:00Z",
+     "unlock_at": "2026-08-17T04:00:00Z",
+     "lock_at": "2026-09-01T03:59:59Z",
+     "points_possible": 1.0,
+     "locked_for_user": true,
+     "lock_info": {
+      "lock_at": "2026-09-01T03:59:59Z",
+      "can_view": true,
+      "asset_string": "quizzes:quiz_640597"
+     },
+     "lock_explanation": "This quiz was locked Aug 31 at 11:59pm."
+    }
+   },
+   {
+    "id": 8270942,
+    "position": 24,
+    "title": "Syllabus Quiz",
+    "indent": 1,
+    "quiz_lti": true,
+    "type": "Assignment",
+    "module_id": 1184889,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270942",
+    "content_id": 3016469,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/assignments/3016469",
+    "completion_requirement": {
+     "type": "min_score",
+     "min_score": 10.0,
+     "completed": false
+    },
+    "content_details": {
+     "due_at": "2026-09-01T03:59:59Z",
+     "unlock_at": "2026-08-17T04:00:00Z",
+     "lock_at": "2026-09-01T03:59:59Z",
+     "points_possible": 5.0,
+     "locked_for_user": true,
+     "lock_info": {
+      "lock_at": "2026-09-01T03:59:59Z",
+      "can_view": true,
+      "asset_string": "assignment_3016469"
+     },
+     "lock_explanation": "This assignment was locked Aug 31 at 11:59pm."
+    }
+   },
+   {
+    "id": 8270943,
+    "position": 25,
+    "title": "Gradescope Practice Quiz (GRADESCOPE)",
+    "indent": 1,
+    "quiz_lti": false,
+    "type": "Assignment",
+    "module_id": 1184889,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270943",
+    "content_id": 3016464,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/assignments/3016464",
+    "content_details": {
+     "due_at": "2026-09-01T03:59:59Z",
+     "unlock_at": "2026-08-17T04:00:00Z",
+     "points_possible": 5.0,
+     "locked_for_user": false
+    }
+   }
+  ]
+ },
+ {
+  "id": 1184890,
+  "position": 2,
+  "name": "Week 1 - Math Bootcamp",
+  "unlock_at": null,
+  "require_sequential_progress": false,
+  "requirement_type": "all",
+  "publish_final_grade": false,
+  "prerequisite_module_ids": [],
+  "state": "completed",
+  "completed_at": "2026-08-17T21:31:55Z",
+  "items_count": 16,
+  "items_url": "https://instructure.charlotte.edu/api/v1/courses/272622/modules/1184890/items",
+  "items": [
+   {
+    "id": 8270944,
+    "position": 1,
+    "title": "Week 1 Learning Guide",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "Page",
+    "module_id": 1184890,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270944",
+    "page_url": "week-1-learning-guide",
+    "publish_at": null,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/pages/week-1-learning-guide",
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270945,
+    "position": 2,
+    "title": "Pre-Class Activities",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "SubHeader",
+    "module_id": 1184890,
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270946,
+    "position": 3,
+    "title": "Week 1 Pre-Class Videos and Quiz",
+    "indent": 2,
+    "quiz_lti": false,
+    "type": "Page",
+    "module_id": 1184890,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270946",
+    "page_url": "week-1-pre-class-videos-and-quiz",
+    "publish_at": null,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/pages/week-1-pre-class-videos-and-quiz",
+    "content_details": {
+     "unlock_at": "2026-08-15T04:00:00Z",
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270947,
+    "position": 4,
+    "title": "Exponents Rules Quiz",
+    "indent": 2,
+    "quiz_lti": true,
+    "type": "Assignment",
+    "module_id": 1184890,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270947",
+    "content_id": 3016461,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/assignments/3016461",
+    "content_details": {
+     "due_at": "2026-08-20T12:00:00Z",
+     "unlock_at": "2026-08-17T04:00:00Z",
+     "lock_at": "2026-08-21T03:59:59Z",
+     "points_possible": 5.0,
+     "locked_for_user": true,
+     "lock_info": {
+      "lock_at": "2026-08-21T03:59:59Z",
+      "can_view": true,
+      "asset_string": "assignment_3016461"
+     },
+     "lock_explanation": "This assignment was locked Aug 20 at 11:59pm."
+    }
+   },
+   {
+    "id": 8270948,
+    "position": 5,
+    "title": "Basic Engineering Math (BEM) Section 1_Expected Prior Knowledge.pdf",
+    "indent": 2,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184890,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270948",
+    "content_id": 33989869,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/33989869",
+    "content_details": {
+     "display_name": "BEM Section 1_Expected Prior Knowledge.pdf",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270949,
+    "position": 6,
+    "title": "Professional Development Extra Credit",
+    "indent": 2,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184890,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270949",
+    "content_id": 33989900,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/33989900",
+    "content_details": {
+     "display_name": "Professional Development Extra Credit.pdf",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270950,
+    "position": 7,
+    "title": "Equation List",
+    "indent": 2,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184890,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270950",
+    "content_id": 33989876,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/33989876",
+    "content_details": {
+     "display_name": "Equation List.pdf",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270951,
+    "position": 8,
+    "title": "Class 1",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "SubHeader",
+    "module_id": 1184890,
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270952,
+    "position": 9,
+    "title": "Homework #1",
+    "indent": 2,
+    "quiz_lti": false,
+    "type": "Assignment",
+    "module_id": 1184890,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270952",
+    "content_id": 3016465,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/assignments/3016465",
+    "content_details": {
+     "due_at": "2026-08-24T03:59:59Z",
+     "unlock_at": "2026-08-17T04:00:00Z",
+     "points_possible": 100.0,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270953,
+    "position": 10,
+    "title": "Class 2",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "SubHeader",
+    "module_id": 1184890,
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270954,
+    "position": 11,
+    "title": "Week 1 Quiz  (GRADESCOPE)",
+    "indent": 2,
+    "quiz_lti": false,
+    "type": "Assignment",
+    "module_id": 1184890,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270954",
+    "content_id": 3016470,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/assignments/3016470",
+    "content_details": {
+     "points_possible": 20.0,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270955,
+    "position": 12,
+    "title": "Class 2: Classwork - Exponents Worksheet",
+    "indent": 2,
+    "quiz_lti": false,
+    "type": "Assignment",
+    "module_id": 1184890,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270955",
+    "content_id": 3016460,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/assignments/3016460",
+    "content_details": {
+     "due_at": "2026-08-21T03:59:59Z",
+     "unlock_at": "2026-08-20T14:00:00Z",
+     "points_possible": 5.0,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270956,
+    "position": 13,
+    "title": "Resources",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "SubHeader",
+    "module_id": 1184890,
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270957,
+    "position": 14,
+    "title": "Class 1_Introduction.pptx",
+    "indent": 2,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184890,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270957",
+    "content_id": 33989863,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/33989863",
+    "content_details": {
+     "display_name": "Class 1_Introduction.pptx",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270958,
+    "position": 15,
+    "title": "Class 2_Math Bootcamp.pptx",
+    "indent": 2,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184890,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270958",
+    "content_id": 34135490,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/34135490",
+    "content_details": {
+     "display_name": "Class 2_Math Bootcamp.pptx",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270959,
+    "position": 16,
+    "title": "Class 2 - Worksheet - Exponents_SOLUTIONS.pdf",
+    "indent": 2,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184890,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270959",
+    "content_id": 33989871,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/33989871",
+    "content_details": {
+     "display_name": "Class 2 - Worksheet - Exponents_SOLUTIONS.pdf",
+     "unlock_at": "2026-08-21T04:00:00Z",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   }
+  ]
+ },
+ {
+  "id": 1184891,
+  "position": 3,
+  "name": "Week 2 - Math Bootcamp (cont) and Dimensional Analysis",
+  "unlock_at": null,
+  "require_sequential_progress": false,
+  "requirement_type": "all",
+  "publish_final_grade": false,
+  "prerequisite_module_ids": [],
+  "state": "completed",
+  "completed_at": "2026-08-18T13:29:00Z",
+  "items_count": 16,
+  "items_url": "https://instructure.charlotte.edu/api/v1/courses/272622/modules/1184891/items",
+  "items": [
+   {
+    "id": 8270960,
+    "position": 1,
+    "title": "Week 2 Learning Guide",
+    "indent": 1,
+    "quiz_lti": false,
+    "type": "Page",
+    "module_id": 1184891,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270960",
+    "page_url": "week-2-learning-guide",
+    "publish_at": null,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/pages/week-2-learning-guide",
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270961,
+    "position": 2,
+    "title": "Pre-Class Activities",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "SubHeader",
+    "module_id": 1184891,
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270962,
+    "position": 3,
+    "title": "Week 2 -  Algebraic Expressions and Dimensional Analysis",
+    "indent": 2,
+    "quiz_lti": false,
+    "type": "Assignment",
+    "module_id": 1184891,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270962",
+    "content_id": 3016471,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/assignments/3016471",
+    "content_details": {
+     "due_at": "2026-08-25T12:00:00Z",
+     "unlock_at": "2026-08-22T04:00:00Z",
+     "points_possible": 5.0,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270963,
+    "position": 4,
+    "title": "Week 2 Pre-Class Video",
+    "indent": 1,
+    "quiz_lti": false,
+    "type": "Page",
+    "module_id": 1184891,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270963",
+    "page_url": "week-2-pre-class-video",
+    "publish_at": null,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/pages/week-2-pre-class-video",
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270964,
+    "position": 5,
+    "title": "Homework #2",
+    "indent": 2,
+    "quiz_lti": false,
+    "type": "Assignment",
+    "module_id": 1184891,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270964",
+    "content_id": 3016466,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/assignments/3016466",
+    "content_details": {
+     "due_at": "2026-08-31T03:59:59Z",
+     "unlock_at": "2026-08-22T04:00:00Z",
+     "lock_at": "2026-08-31T03:59:59Z",
+     "points_possible": 100.0,
+     "locked_for_user": true,
+     "lock_info": {
+      "lock_at": "2026-08-31T03:59:59Z",
+      "can_view": true,
+      "asset_string": "assignment_3016466"
+     },
+     "lock_explanation": "This assignment was locked Aug 30 at 11:59pm."
+    }
+   },
+   {
+    "id": 8270965,
+    "position": 6,
+    "title": "BEM Section 2_Problem Solving and Documentation.pdf",
+    "indent": 1,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184891,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270965",
+    "content_id": 33989878,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/33989878",
+    "content_details": {
+     "display_name": "BEM Section 2_Problem Solving and Documentation.pdf",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270966,
+    "position": 7,
+    "title": "BEM Section 3_Unit Conversions.pdf",
+    "indent": 1,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184891,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270966",
+    "content_id": 33989879,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/33989879",
+    "content_details": {
+     "display_name": "BEM Section 3_Unit Conversions.pdf",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270967,
+    "position": 8,
+    "title": "Class 3",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "SubHeader",
+    "module_id": 1184891,
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270968,
+    "position": 9,
+    "title": "CLASSWORK \u2013 Class 3 - Dimensional Analysis Practice",
+    "indent": 2,
+    "quiz_lti": false,
+    "type": "Assignment",
+    "module_id": 1184891,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270968",
+    "content_id": 3016458,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/assignments/3016458",
+    "content_details": {
+     "due_at": "2026-08-26T03:59:59Z",
+     "unlock_at": "2026-08-25T14:00:00Z",
+     "points_possible": 5.0,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270970,
+    "position": 10,
+    "title": "Class 4",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "SubHeader",
+    "module_id": 1184891,
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270971,
+    "position": 11,
+    "title": "Week 2 Quiz  (GRADESCOPE)",
+    "indent": 2,
+    "quiz_lti": false,
+    "type": "Assignment",
+    "module_id": 1184891,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270971",
+    "content_id": 3016472,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/assignments/3016472",
+    "content_details": {
+     "due_at": "2026-08-27T21:30:00Z",
+     "unlock_at": "2026-08-26T18:30:00Z",
+     "points_possible": 20.0,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270973,
+    "position": 12,
+    "title": "Resources",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "SubHeader",
+    "module_id": 1184891,
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270974,
+    "position": 13,
+    "title": "Homework 1-SOLUTIONS.pdf",
+    "indent": 2,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184891,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270974",
+    "content_id": 33989877,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/33989877",
+    "content_details": {
+     "display_name": "Homework 1-SOLUTIONS.pdf",
+     "unlock_at": "2026-08-24T04:00:00Z",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270969,
+    "position": 14,
+    "title": "Class 3_Math Bootcamp_contd.pptx",
+    "indent": 1,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184891,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270969",
+    "content_id": 34113646,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/34113646",
+    "content_details": {
+     "display_name": "Class 3_Math Bootcamp_contd.pptx",
+     "unlock_at": "2026-08-25T12:00:00Z",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270972,
+    "position": 15,
+    "title": "Class 4_Dimensional Analysis.pptx",
+    "indent": 1,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184891,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270972",
+    "content_id": 34198387,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/34198387",
+    "content_details": {
+     "display_name": "Class 4_Dimensional Analysis.pptx",
+     "unlock_at": "2026-08-27T12:00:00Z",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270975,
+    "position": 16,
+    "title": "Class 3 - SOLUTIONS_Dimensional Analysis Practice.pdf",
+    "indent": 2,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184891,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270975",
+    "content_id": 33989881,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/33989881",
+    "content_details": {
+     "display_name": "Class 3 - SOLUTIONS_Dimensional Analysis Practice.pdf",
+     "unlock_at": "2026-08-26T04:00:00Z",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   }
+  ]
+ },
+ {
+  "id": 1184892,
+  "position": 4,
+  "name": "Week 3 - Vector Basics and Vectors + Dot/Cross Product",
+  "unlock_at": null,
+  "require_sequential_progress": false,
+  "requirement_type": "all",
+  "publish_final_grade": false,
+  "prerequisite_module_ids": [],
+  "state": "completed",
+  "completed_at": "2026-08-31T14:38:36Z",
+  "items_count": 18,
+  "items_url": "https://instructure.charlotte.edu/api/v1/courses/272622/modules/1184892/items",
+  "items": [
+   {
+    "id": 8270976,
+    "position": 1,
+    "title": "Week 3 Learning Guide",
+    "indent": 1,
+    "quiz_lti": false,
+    "type": "Page",
+    "module_id": 1184892,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270976",
+    "page_url": "week-3-learning-guide",
+    "publish_at": null,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/pages/week-3-learning-guide",
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270977,
+    "position": 2,
+    "title": "Pre-Class Activities",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "SubHeader",
+    "module_id": 1184892,
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270978,
+    "position": 3,
+    "title": "F26 Week 3 Class 5 Basic Vectors Quiz",
+    "indent": 4,
+    "quiz_lti": false,
+    "type": "Assignment",
+    "module_id": 1184892,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270978",
+    "content_id": 3016462,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/assignments/3016462",
+    "content_details": {
+     "due_at": "2026-09-01T12:00:00Z",
+     "unlock_at": "2026-08-28T04:00:00Z",
+     "points_possible": 5.0,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270979,
+    "position": 4,
+    "title": "F26 Week 3 Class 6 Dot and Cross Product Quiz",
+    "indent": 4,
+    "quiz_lti": false,
+    "type": "Assignment",
+    "module_id": 1184892,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270979",
+    "content_id": 3016463,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/assignments/3016463",
+    "content_details": {
+     "due_at": "2026-09-03T12:00:00Z",
+     "unlock_at": "2026-08-29T04:00:00Z",
+     "points_possible": 5.0,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270980,
+    "position": 5,
+    "title": "Class 5",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "SubHeader",
+    "module_id": 1184892,
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270981,
+    "position": 6,
+    "title": "CLASSWORK \u2013 Class 5 - Basic Vectors",
+    "indent": 3,
+    "quiz_lti": false,
+    "type": "Assignment",
+    "module_id": 1184892,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270981",
+    "content_id": 3016459,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/assignments/3016459",
+    "content_details": {
+     "due_at": "2026-09-02T03:59:59Z",
+     "unlock_at": "2026-09-01T14:00:00Z",
+     "points_possible": 5.0,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270982,
+    "position": 7,
+    "title": "Homework #3",
+    "indent": 3,
+    "quiz_lti": false,
+    "type": "Assignment",
+    "module_id": 1184892,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270982",
+    "content_id": 3016467,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/assignments/3016467",
+    "content_details": {
+     "due_at": "2026-09-07T03:59:59Z",
+     "unlock_at": "2026-08-29T04:00:00Z",
+     "points_possible": 100.0,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270984,
+    "position": 8,
+    "title": "Class 6",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "SubHeader",
+    "module_id": 1184892,
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270985,
+    "position": 9,
+    "title": "Week 3 Quiz (GRADESCOPE)",
+    "indent": 4,
+    "quiz_lti": false,
+    "type": "Assignment",
+    "module_id": 1184892,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270985",
+    "content_id": 3016473,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/assignments/3016473",
+    "content_details": {
+     "due_at": "2026-09-03T21:30:00Z",
+     "unlock_at": "2026-09-02T18:30:00Z",
+     "points_possible": 20.0,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270987,
+    "position": 10,
+    "title": "Resources",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "SubHeader",
+    "module_id": 1184892,
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270993,
+    "position": 11,
+    "title": "Homework  2-SOLUTIONS.pdf",
+    "indent": 1,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184892,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270993",
+    "content_id": 33989899,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/33989899",
+    "content_details": {
+     "display_name": "Homework  2-SOLUTIONS.pdf",
+     "unlock_at": "2026-08-31T04:00:00Z",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270989,
+    "position": 12,
+    "title": "Math Quiz Solutions P1-4.pdf",
+    "indent": 1,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184892,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270989",
+    "content_id": 33989868,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/33989868",
+    "content_details": {
+     "display_name": "Math Quiz Solutions P1-4.pdf",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270990,
+    "position": 13,
+    "title": "Math Quiz Solutions P5-7.pdf",
+    "indent": 1,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184892,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270990",
+    "content_id": 33989894,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/33989894",
+    "content_details": {
+     "display_name": "Math Quiz Solutions P5-7.pdf",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270983,
+    "position": 14,
+    "title": "Class 5 Basic Vectors Class Slides.pdf",
+    "indent": 2,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184892,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270983",
+    "content_id": 34238695,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/34238695",
+    "content_details": {
+     "display_name": "Class 5 Basic Vectors Class Slides for Canvas Upload.pdf",
+     "unlock_at": "2026-09-01T12:00:00Z",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270988,
+    "position": 15,
+    "title": "Week_3_Basic Vectors _Worksheet_Solutions.docx",
+    "indent": 2,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184892,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270988",
+    "content_id": 34238694,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/34238694",
+    "content_details": {
+     "display_name": "Week_3_Basic Vectors _Worksheet_Solutions.docx",
+     "unlock_at": "2026-09-02T03:59:00Z",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270986,
+    "position": 16,
+    "title": "Class 6 Vector Algebra Dot and Cross Product Class Slides.pdf",
+    "indent": 2,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184892,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270986",
+    "content_id": 34238696,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/34238696",
+    "content_details": {
+     "display_name": "Class 6 Vector Algebra Dot and Cross Product for Canvas.pdf",
+     "unlock_at": "2026-09-03T12:00:00Z",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270991,
+    "position": 17,
+    "title": "Week_3_Basic_Vectors_Practice.docx",
+    "indent": 1,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184892,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270991",
+    "content_id": 33989888,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/33989888",
+    "content_details": {
+     "display_name": "Week_3_Basic_Vectors_Practice.docx",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270992,
+    "position": 18,
+    "title": "Week_3_Basic Vectors_Practice_Solutions.docx",
+    "indent": 1,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184892,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270992",
+    "content_id": 33989885,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/33989885",
+    "content_details": {
+     "display_name": "Week_3_Basic Vectors_Practice_Solutions.docx",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   }
+  ]
+ },
+ {
+  "id": 1184893,
+  "position": 5,
+  "name": "Week 4 - Unit Test 1",
+  "unlock_at": null,
+  "require_sequential_progress": false,
+  "requirement_type": "all",
+  "publish_final_grade": false,
+  "prerequisite_module_ids": [],
+  "state": "completed",
+  "completed_at": "2026-09-10T14:57:51Z",
+  "items_count": 12,
+  "items_url": "https://instructure.charlotte.edu/api/v1/courses/272622/modules/1184893/items",
+  "items": [
+   {
+    "id": 8341357,
+    "position": 1,
+    "title": "Week 4 Learning Guide",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "Page",
+    "module_id": 1184893,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8341357",
+    "page_url": "week-4-learning-guide",
+    "publish_at": null,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/pages/week-4-learning-guide",
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8341358,
+    "position": 2,
+    "title": "Pre-Class Activities",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "SubHeader",
+    "module_id": 1184893,
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8341359,
+    "position": 3,
+    "title": "Equation List.pdf",
+    "indent": 2,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184893,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8341359",
+    "content_id": 33989886,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/33989886",
+    "content_details": {
+     "display_name": "Equation List Updated 070826.pdf",
+     "unlock_at": "2026-09-05T04:00:00Z",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8341360,
+    "position": 4,
+    "title": "Labor Day - No Class Monday, 9/7 AND Tuesday, 9/8",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "SubHeader",
+    "module_id": 1184893,
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8341361,
+    "position": 5,
+    "title": "Unit 1 REVIEW - Math Bootcamp and Vectors Slides.pdf",
+    "indent": 2,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184893,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8341361",
+    "content_id": 34198391,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/34198391",
+    "content_details": {
+     "display_name": "Unit 1 REVIEW - Math Bootcamp and Vectors Slides.pdf",
+     "unlock_at": "2026-09-05T04:00:00Z",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8341363,
+    "position": 6,
+    "title": "Unit 1 REVIEW -  Vectors Review Game Slides.pdf",
+    "indent": 2,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184893,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8341363",
+    "content_id": 34345179,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/34345179",
+    "content_details": {
+     "display_name": "Unit 1 REVIEW -  Vectors Review Game Slides.pdf",
+     "unlock_at": "2026-09-05T04:00:00Z",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8341364,
+    "position": 7,
+    "title": "Unit 1 Study Guide_ Math Bootcamp, Dimensional Analysis, and Vectors.pdf",
+    "indent": 2,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184893,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8341364",
+    "content_id": 34345181,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/34345181",
+    "content_details": {
+     "display_name": "Unit 1 Study Guide_ Math Bootcamp, Dimensional Analysis, and Vectors.pdf",
+     "unlock_at": "2026-09-05T04:00:00Z",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8341366,
+    "position": 9,
+    "title": "Unit 1 Test (Gradescope)",
+    "indent": 4,
+    "quiz_lti": false,
+    "type": "Assignment",
+    "module_id": 1184893,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8341366",
+    "content_id": 3041591,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/assignments/3041591",
+    "content_details": {
+     "points_possible": 100.0,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8270994,
+    "position": 15,
+    "title": "Week_3_Homework_Vectors_Solutions.docx",
+    "indent": 2,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184893,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8270994",
+    "content_id": 33989865,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/33989865",
+    "content_details": {
+     "display_name": "Week_3_Homework_Vectors_Solutions.docx",
+     "unlock_at": "2026-09-07T04:00:00Z",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8356216,
+    "position": 16,
+    "title": "Unit 1 Study Guide_SOLUTIONS_Math Bootcamp, Dimensional Analysis, and Vectors.pdf",
+    "indent": 2,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184893,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8356216",
+    "content_id": 34345180,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/34345180",
+    "content_details": {
+     "display_name": "Unit 1 Study Guide_SOLUTIONS_Math Bootcamp, Dimensional Analysis, and Vectors.pdf",
+     "unlock_at": "2026-09-08T04:00:00Z",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8352855,
+    "position": 17,
+    "title": "ENGR1301_Science_Project__with_Assessment",
+    "indent": 2,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1184893,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8352855",
+    "content_id": 34299822,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/34299822",
+    "content_details": {
+     "display_name": "ENGR1301_Science_Project_Final__with_Assessment_Final.pdf",
+     "unlock_at": "2026-09-10T12:00:00Z",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8359330,
+    "position": 18,
+    "title": "Quiz 3 Question 4 Solution Video",
+    "indent": 2,
+    "quiz_lti": false,
+    "type": "Page",
+    "module_id": 1184893,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8359330",
+    "page_url": "quiz-3-question-4-solution-video",
+    "publish_at": null,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/pages/quiz-3-question-4-solution-video",
+    "content_details": {
+     "locked_for_user": false
+    }
+   }
+  ]
+ },
+ {
+  "id": 1194205,
+  "position": 6,
+  "name": "Week 5 - Atomic Structure and Balancing Equations",
+  "unlock_at": null,
+  "require_sequential_progress": false,
+  "requirement_type": "all",
+  "publish_final_grade": false,
+  "prerequisite_module_ids": [],
+  "state": "completed",
+  "completed_at": "2026-09-14T17:10:23Z",
+  "items_count": 14,
+  "items_url": "https://instructure.charlotte.edu/api/v1/courses/272622/modules/1194205/items",
+  "items": [
+   {
+    "id": 8341369,
+    "position": 2,
+    "title": "Week 5 Learning Guide",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "Page",
+    "module_id": 1194205,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8341369",
+    "page_url": "week-5-learning-guide",
+    "publish_at": null,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/pages/week-5-learning-guide",
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8341370,
+    "position": 3,
+    "title": "Pre-class Activities",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "SubHeader",
+    "module_id": 1194205,
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8362630,
+    "position": 4,
+    "title": "Week 5 - Atomic Structure, Balancing Equations and Limiting Reactants",
+    "indent": 3,
+    "quiz_lti": false,
+    "type": "Assignment",
+    "module_id": 1194205,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8362630",
+    "content_id": 3049314,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/assignments/3049314",
+    "content_details": {
+     "due_at": "2026-09-15T12:00:00Z",
+     "points_possible": 5.0,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8362631,
+    "position": 5,
+    "title": "Week 5 Pre-Class Video",
+    "indent": 3,
+    "quiz_lti": false,
+    "type": "Page",
+    "module_id": 1194205,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8362631",
+    "page_url": "week-5-pre-class-video",
+    "publish_at": null,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/pages/week-5-pre-class-video",
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8341371,
+    "position": 6,
+    "title": "Equation List",
+    "indent": 1,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1194205,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8341371",
+    "content_id": 34198377,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/34198377",
+    "content_details": {
+     "display_name": "Equation List Updated 070826.pdf",
+     "unlock_at": "2026-09-11T04:00:00Z",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8341372,
+    "position": 7,
+    "title": "Periodic Table",
+    "indent": 1,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1194205,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8341372",
+    "content_id": 34198375,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/34198375",
+    "content_details": {
+     "display_name": "Periodic Table.pdf",
+     "unlock_at": "2026-09-11T04:00:00Z",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8341373,
+    "position": 8,
+    "title": "Class 8",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "SubHeader",
+    "module_id": 1194205,
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8341374,
+    "position": 9,
+    "title": "CLASSWORK \u2013 Class 8 - Molar Mass",
+    "indent": 3,
+    "quiz_lti": false,
+    "type": "Assignment",
+    "module_id": 1194205,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8341374",
+    "content_id": 3041587,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/assignments/3041587",
+    "content_details": {
+     "due_at": "2026-09-16T03:59:59Z",
+     "unlock_at": "2026-09-15T14:00:00Z",
+     "points_possible": 5.0,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8341375,
+    "position": 10,
+    "title": "Homework #4 ",
+    "indent": 3,
+    "quiz_lti": false,
+    "type": "Assignment",
+    "module_id": 1194205,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8341375",
+    "content_id": 3041589,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/assignments/3041589",
+    "content_details": {
+     "due_at": "2026-09-21T03:59:59Z",
+     "points_possible": 100.0,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8341376,
+    "position": 11,
+    "title": "Class 9",
+    "indent": 0,
+    "quiz_lti": false,
+    "type": "SubHeader",
+    "module_id": 1194205,
+    "content_details": {
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8349590,
+    "position": 12,
+    "title": "Week 5 Quiz (GRADESCOPE)",
+    "indent": 4,
+    "quiz_lti": false,
+    "type": "Assignment",
+    "module_id": 1194205,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8349590",
+    "content_id": 3041592,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/assignments/3041592",
+    "content_details": {
+     "due_at": "2026-09-17T21:30:00Z",
+     "unlock_at": "2026-09-16T18:30:00Z",
+     "points_possible": 20.0,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8349591,
+    "position": 14,
+    "title": "Class 8_Atomic Structure Class Slides.pdf",
+    "indent": 1,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1194205,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8349591",
+    "content_id": 34299824,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/34299824",
+    "content_details": {
+     "display_name": "Class 8_Atomic Structure Class Slides.pdf",
+     "unlock_at": "2026-09-14T12:00:00Z",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8349592,
+    "position": 15,
+    "title": "Class 8 - Worksheet - Molar Mass_ SOLUTIONS",
+    "indent": 1,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1194205,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8349592",
+    "content_id": 34198373,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/34198373",
+    "content_details": {
+     "display_name": "Class 8 - Worksheet - Molar Mass_ SOLUTIONS.pdf",
+     "unlock_at": "2026-09-16T04:00:00Z",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   },
+   {
+    "id": 8349593,
+    "position": 16,
+    "title": "Class 9  Balancing Equations Class Slides.pdf",
+    "indent": 1,
+    "quiz_lti": false,
+    "type": "File",
+    "module_id": 1194205,
+    "html_url": "https://instructure.charlotte.edu/courses/272622/modules/items/8349593",
+    "content_id": 34198376,
+    "url": "https://instructure.charlotte.edu/api/v1/courses/272622/files/34198376",
+    "content_details": {
+     "display_name": "Class 9  Balancing Equations Class Slides.pdf",
+     "unlock_at": "2026-09-16T12:00:00Z",
+     "thumbnail_url": null,
+     "locked_for_user": false
+    }
+   }
+  ]
+ }
+]
