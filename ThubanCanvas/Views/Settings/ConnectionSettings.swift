@@ -57,18 +57,25 @@ struct ConnectionSettings: View {
                 .thubanPanel(padding: 0)
             }
 
-            SettingsGroup("Tabs", caption: "Only courses you star in Canvas (Courses → All Courses → ★) get a tab. Refresh after starring.") {
+            SettingsGroup("Tabs", caption: "Only courses you star in Canvas (Courses → All Courses → ★) get a tab. Switch one off to hide it here without un-starring it; hidden courses leave Home, Calendar, reminders and the menu bar too.") {
                 VStack(alignment: .leading, spacing: 8) {
-                    if app.orderedSessions.isEmpty {
+                    if app.allOrderedSessions.isEmpty {
                         SettingsNote(text: app.client == nil ? "Connect to see your starred courses." : "No starred courses yet.")
                     }
-                    ForEach(app.orderedSessions) { session in
+                    ForEach(app.allOrderedSessions) { session in
+                        let hidden = session.preferences.hidden
                         HStack(spacing: 10) {
                             CourseDot(tint: session.preferences.tint)
-                            Text(session.displayName).font(ThubanFont.body(14, weight: .semibold)).foregroundStyle(theme.inkColor)
+                            Text(session.displayName)
+                                .font(ThubanFont.body(14, weight: .semibold))
+                                .foregroundStyle(hidden ? theme.inkDimColor : theme.inkColor)
+                                .lineLimit(1)
                             Text(session.shortCode).font(ThubanFont.small).foregroundStyle(theme.inkDimColor)
                             Spacer()
-                            Text(session.course.term?.name ?? "").font(ThubanFont.small).foregroundStyle(theme.inkFaintColor)
+                            Text(session.course.term?.name ?? "").font(ThubanFont.small).foregroundStyle(theme.inkDimColor)
+                            if hidden { Chip("Hidden", kind: .neutral) }
+                            ThubanToggle(isOn: Binding(get: { !hidden }, set: { app.setHidden(!$0, course: session.id) }),
+                                         label: hidden ? "Show \(session.displayName)" : "Hide \(session.displayName)")
                         }
                         .padding(.horizontal, 14)
                         .frame(height: 38)

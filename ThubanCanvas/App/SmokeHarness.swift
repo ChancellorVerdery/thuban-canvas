@@ -82,6 +82,10 @@ enum SmokeHarness {
             let settings = try await waitForWindow(timeout: 5) { $0.title == "Settings" }
             await sleep(1.0)
             _ = try await capture(window: settings, name: "80-settings", in: directory)
+            // Hide the last course to show the toggle state, then capture the Tabs list.
+            if let last = app.allOrderedSessions.last { app.setHidden(true, course: last.id) }
+            await sleep(0.6)
+            _ = try await capture(window: settings, name: "80-settings-hidden", in: directory)
             // Grades & GPA pane with a seeded transcript semester (the first row expands in smoke mode).
             app.settings.pastSemesters = [
                 PastSemester(name: "Spring 2026", classes: [

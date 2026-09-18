@@ -254,7 +254,9 @@ struct TabStrip: View {
                             Button("Open in Canvas") {
                                 if let url = URL(string: "\(app.host)/courses/\(session.id)") { NSWorkspace.shared.open(url) }
                             }
-                            Button("Course settings…") { app.settingsRequest += 1 }
+                            Button("Course settings…") { app.openSettings(pane: SettingsPane.grades.rawValue) }
+                            Divider()
+                            Button("Hide course") { app.setHidden(true, course: session.id) }
                         }
                         .draggable(String(session.id))
                         .dropDestination(for: String.self) { items, _ in

@@ -8,13 +8,28 @@ public struct CoursePreferences: Codable, Equatable, Sendable {
     public var customCutoffs: String?
     public var tint: String?
     public var excludeFromGPA: Bool
+    /// Hidden courses keep their star in Canvas but get no tab and are left out of Home, Calendar, reminders and the menu bar.
+    public var hidden: Bool
 
-    public init(nickname: String? = nil, credits: Double? = nil, customCutoffs: String? = nil, tint: String? = nil, excludeFromGPA: Bool = false) {
+    public init(nickname: String? = nil, credits: Double? = nil, customCutoffs: String? = nil, tint: String? = nil, excludeFromGPA: Bool = false, hidden: Bool = false) {
         self.nickname = nickname
         self.credits = credits
         self.customCutoffs = customCutoffs
         self.tint = tint
         self.excludeFromGPA = excludeFromGPA
+        self.hidden = hidden
+    }
+
+    enum CodingKeys: String, CodingKey { case nickname, credits, customCutoffs, tint, excludeFromGPA, hidden }
+
+    public init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        nickname = try c.decodeIfPresent(String.self, forKey: .nickname)
+        credits = try c.decodeIfPresent(Double.self, forKey: .credits)
+        customCutoffs = try c.decodeIfPresent(String.self, forKey: .customCutoffs)
+        tint = try c.decodeIfPresent(String.self, forKey: .tint)
+        excludeFromGPA = try c.decodeIfPresent(Bool.self, forKey: .excludeFromGPA) ?? false
+        hidden = try c.decodeIfPresent(Bool.self, forKey: .hidden) ?? false
     }
 }
 

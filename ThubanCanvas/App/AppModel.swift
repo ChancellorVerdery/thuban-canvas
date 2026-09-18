@@ -59,8 +59,8 @@ final class AppModel {
         settingsRequest += 1
     }
 
-    /// Starred courses in the user's order (drag to reorder), one tab each.
-    var orderedSessions: [CourseSession] {
+    /// Every starred course in the user's order, hidden ones included (Settings lists these).
+    var allOrderedSessions: [CourseSession] {
         let order = settings.courseOrder
         return courses
             .sorted { a, b in
@@ -70,6 +70,20 @@ final class AppModel {
                 return a.name.localizedStandardCompare(b.name) == .orderedAscending
             }
             .compactMap { sessions[$0.id] }
+    }
+
+    /// Starred courses the user has not hidden, in their order — one tab each; the only list Home, Calendar,
+    /// reminders and the menu bar read.
+    var orderedSessions: [CourseSession] {
+        allOrderedSessions.filter { !$0.preferences.hidden }
+    }
+
+    var hiddenSessions: [CourseSession] { allOrderedSessions.filter { $0.preferences.hidden } }
+
+    /// Hides or shows a course locally (its star in Canvas is untouched).
+    func setHidden(_ hidden: Bool, course: CanvasID) {
+        updatePreferences(for: course) { $0.hidden = hidden }
+        if hidden, selectedTab == .course(course) { selectedTab = .home }
     }
 
     var selectedSession: CourseSession? {
@@ -202,7 +216,7 @@ final class AppModel {
             }
         }
         sessions = next
-        if case .course(let id) = selectedTab, sessions[id] == nil { selectedTab = .home }
+        if case .course(let id) = selectedTab, sessions[id] == nil || settings.preferences(for: id).hidden { selectedTab = .home }
         if !fetched.isEmpty, coursesResource.error == nil, coursesResource.fromCache == false { lastRefresh = Date() }
     }
 
@@ -213,7 +227,7 @@ final class AppModel {
         defer { isRefreshing = false }
         await loadCourses(force: true)
         await withTaskGroup(of: Void.self) { group in
-            for session in sessions.values { group.addTask { await session.refreshLoaded() } }
+            for session in orderedSessions { group.addTask { await session.refreshLoaded() } }
             group.addTask { await self.loadHomeResources(force: true) }
         }
         // A failed refresh keeps the previous stamp so saved data is not labelled "Updated just now".
@@ -227,7 +241,7 @@ final class AppModel {
         let horizonStart = Calendar.current.date(byAdding: .day, value: -7, to: Date()) ?? Date()
         let horizonEnd = Calendar.current.date(byAdding: .day, value: 60, to: Date()) ?? Date()
         await withTaskGroup(of: Void.self) { group in
-            for session in sessions.values { group.addTask { await session.loadForHome(force: force) } }
+            for session in orderedSessions { group.addTask { await session.loadForHome(force: force) } }
             group.addTask { await self.todo.load(app: self, force: force) { try await $0.todo() } }
             group.addTask { await self.missing.load(app: self, force: force) { try await $0.missingSubmissions() } }
             group.addTask { await self.planner.load(app: self, force: force) { try await $0.plannerItems(from: horizonStart, to: horizonEnd) } }
@@ -268,6 +282,7 @@ final class AppModel {
     /// Opens a course tab at a section, optionally pushing a detail route.
     func open(course: CanvasID, section: CourseSection? = nil, route: CourseRoute? = nil) {
         guard let session = sessions[course] else { return }
+        if session.preferences.hidden { setHidden(false, course: course) }
         if let section { session.section = section }
         if let route { session.path = [route] } else if section != nil { session.path = [] }
         select(.course(course))
