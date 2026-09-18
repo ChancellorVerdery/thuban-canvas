@@ -109,13 +109,13 @@ struct TitleBar: View {
             Button {
                 openWindow(id: "settings")
             } label: {
-                HStack(spacing: 6) {
-                    Image(systemName: "slider.horizontal.3").font(.system(size: 13, weight: .semibold))
-                    Text("Settings")
-                }
+                Image(systemName: "slider.horizontal.3")
+                    .font(.system(size: 15, weight: .medium))
+                    .frame(width: 34, height: 34)
             }
-            .buttonStyle(GhostButtonStyle(height: 34))
+            .buttonStyle(GhostButtonStyle(height: 34, horizontalPadding: 0))
             .accessibilityLabel("Settings")
+            .help("Settings (⌘,)")
         }
         .padding(.horizontal, 16)
         .frame(height: ThubanMetrics.titleBarHeight)
@@ -206,7 +206,11 @@ struct ConnectionChip: View {
 
     private var state: (text: String, kind: ChipKind) {
         if app.authenticationFailed { return ("Token rejected", .neg) }
-        if app.client != nil { return (app.user?.shortName ?? "Connected", .pos) }
+        if app.client != nil {
+            // First name only: the title bar shares its width with one tab per starred course.
+            let first = app.user?.shortName?.split(separator: " ").first.map(String.init)
+            return (first ?? "Connected", .pos)
+        }
         return ("Not connected", .neutral)
     }
 
