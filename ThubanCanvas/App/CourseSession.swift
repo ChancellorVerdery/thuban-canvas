@@ -68,7 +68,12 @@ final class CourseSession: Identifiable {
         let code = shortCode
         if !code.isEmpty, code != course.courseCode { return code }
         let name = course.name.trimmingCharacters(in: .whitespaces)
-        return name.count <= 16 ? name : String(name.prefix(14)).trimmingCharacters(in: .whitespaces) + "…"
+        if name.count <= 14 { return name }
+        // "Training - MEES Pre-Registration …" → "Training"; otherwise the first 12 characters.
+        if let first = name.split(whereSeparator: { $0 == " " || $0 == "-" || $0 == ":" }).first, first.count >= 4 {
+            return String(first)
+        }
+        return String(name.prefix(12)).trimmingCharacters(in: .whitespaces) + "…"
     }
 
     /// "MATH 2241" pulled out of codes like "202680-MATH-2241-003-10505".

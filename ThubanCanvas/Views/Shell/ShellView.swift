@@ -224,7 +224,8 @@ struct TabStrip: View {
                     ForEach(app.orderedSessions) { session in
                         ShellTab(title: app.orderedSessions.count > 4 ? session.compactTitle : session.tabTitle, symbol: nil,
                                  isActive: app.selectedTab == .course(session.id) && app.panel == nil,
-                                 tint: session.preferences.tint.map { Color(hex: $0) }) {
+                                 tint: session.preferences.tint.map { Color(hex: $0) },
+                                 compact: app.orderedSessions.count > 4) {
                             app.select(.course(session.id))
                         }
                         .help("\(session.course.name) · \(session.shortCode)")
@@ -255,6 +256,7 @@ struct ShellTab: View {
     var symbol: String?
     var isActive: Bool
     var tint: Color?
+    var compact: Bool = false
     var action: () -> Void
     @State private var hovering = false
 
@@ -271,7 +273,7 @@ struct ShellTab: View {
             }
             .font(.system(size: 14, weight: .semibold))
             .foregroundStyle(isActive ? theme.inkColor : theme.inkDimColor)
-            .padding(.horizontal, 14)
+            .padding(.horizontal, compact ? 10 : 14)
             .frame(height: 34)
             .background(
                 isActive ? theme.panel2Color : (hovering ? theme.panel2Color.opacity(0.6) : .clear),
