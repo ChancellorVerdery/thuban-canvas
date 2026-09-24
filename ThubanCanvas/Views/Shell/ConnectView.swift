@@ -14,7 +14,7 @@ struct ConnectView: View {
             Spacer()
             VStack(alignment: .leading, spacing: 20) {
                 HStack(spacing: 12) {
-                    ThubanMarkView(size: 36, color: theme.brassInkColor)
+                    AppArtView(size: 36, theme: theme)
                     VStack(alignment: .leading, spacing: 2) {
                         Text("Connect to Canvas")
                             .font(ThubanFont.display(28))

@@ -83,7 +83,7 @@ struct TitleBar: View {
         HStack(spacing: 12) {
             Spacer().frame(width: ThubanMetrics.trafficLightInset - 16)
             HStack(spacing: 8) {
-                ThubanMarkView(size: 20, color: theme.brassInkColor)
+                AppArtView(size: 20, theme: theme)
                 Text("Thuban Canvas")
                     .font(ThubanFont.display(16))
                     .foregroundStyle(theme.inkColor)

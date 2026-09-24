@@ -54,6 +54,7 @@
 		8EA6C0113FABBE13BFD0A6A8 /* HomeAnnouncementsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113AB38FB65AA67AC10732F1 /* HomeAnnouncementsCard.swift */; };
 		9217440571C1BFE88DC4FF10 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDD45B8B02A45F966CB818 /* CalendarModel.swift */; };
 		92F7B4E8B4EB73AD9479A1B7 /* HomeGPACard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88DEB851AAF867148100177 /* HomeGPACard.swift */; };
+		955F598BCF85CBBE451763F1 /* AppArtSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A7F77F06F59811F2D9C5FF /* AppArtSource.swift */; };
 		968DA01A6B89E536B386C141 /* ContentSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6A327F2BDDF7A7AA4960D /* ContentSupport.swift */; };
 		96A28B0B67A47FEAD355AD25 /* PeopleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD71EF96E6C084DE4CBDEC3A /* PeopleView.swift */; };
 		96E04DD59D6895161354DF8A /* InboxModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6918637C324107C624BA9F /* InboxModel.swift */; };
@@ -61,6 +62,7 @@
 		99F18157A0A76CBBF1ED1030 /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0308AF05E6AA241918BFC2D /* InboxView.swift */; };
 		9DCF161C52F307B0010A959D /* GradesSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36521BF385FA5E6F7EAAE90 /* GradesSettings.swift */; };
 		9E6488B99C2E64EF3C5D4FDA /* CanvasHTMLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD709AE60C2A7E5E903F1C4 /* CanvasHTMLView.swift */; };
+		A1F61E98C13EABEC3AE158DF /* AppArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AF6FCAC96F1CF379A38F35 /* AppArt.swift */; };
 		A43F0B20647453F9BB370C09 /* AssignmentRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAD17DB42AAC34F8BA22BA7 /* AssignmentRow.swift */; };
 		B079C6AA1D22FB7BC0CB1CDF /* ComposeMessageSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9FCC64B7126480FBA8755F /* ComposeMessageSheet.swift */; };
 		B91700C7A7D1B5904EE0C980 /* AssignmentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF27A2E91553DC0652B4B32 /* AssignmentDetailView.swift */; };
@@ -104,6 +106,7 @@
 		18F76B785B6CD20A838DDCD2 /* AssignmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentsView.swift; sourceTree = "<group>"; };
 		23B80C893C5316A30C8F19B4 /* GradesCourseEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesCourseEditor.swift; sourceTree = "<group>"; };
 		25F3EF2512B81FECA4D56200 /* AppIconRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconRenderer.swift; sourceTree = "<group>"; };
+		26A7F77F06F59811F2D9C5FF /* AppArtSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppArtSource.swift; sourceTree = "<group>"; };
 		26DDD45B8B02A45F966CB818 /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
 		28D15FC2B5A4623373E1D1D2 /* PageDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageDetailView.swift; sourceTree = "<group>"; };
 		2AAD17DB42AAC34F8BA22BA7 /* AssignmentRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentRow.swift; sourceTree = "<group>"; };
@@ -160,6 +163,7 @@
 		B83699E6F48C84AA055E3967 /* NotificationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationState.swift; sourceTree = "<group>"; };
 		B88DEB851AAF867148100177 /* HomeGPACard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGPACard.swift; sourceTree = "<group>"; };
 		B97E6F0E386B4825283DABFB /* CourseOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseOverviewView.swift; sourceTree = "<group>"; };
+		C7AF6FCAC96F1CF379A38F35 /* AppArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppArt.swift; sourceTree = "<group>"; };
 		C9D97648453BBB1912F39A11 /* FileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDetailView.swift; sourceTree = "<group>"; };
 		CD58B2841E591DD5FBF2B3B4 /* Chip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip.swift; sourceTree = "<group>"; };
 		CE8051D4CB8E1AB9879DB80A /* CourseContentSmoke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseContentSmoke.swift; sourceTree = "<group>"; };
@@ -195,7 +199,6 @@
 				11DBF3C073B969E439FDC71A /* Course */,
 				49739C59F15E4B03A83287BC /* Home */,
 				94FAD21EF7D3CBD875099430 /* Inbox */,
-				A44A7D1422020B745133CDE5 /* Modals */,
 				CF63F6305BFC8C12F8EBBAB5 /* Settings */,
 				FC48BFC4D3D3361ED5133218 /* Shell */,
 				3D661AE9029A7EF210370EF2 /* Theme */,
@@ -273,6 +276,8 @@
 		4CC473BC9EF8636A97223998 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C7AF6FCAC96F1CF379A38F35 /* AppArt.swift */,
+				26A7F77F06F59811F2D9C5FF /* AppArtSource.swift */,
 				9AEF47AB653B091E1BA3A833 /* Buttons.swift */,
 				CD58B2841E591DD5FBF2B3B4 /* Chip.swift */,
 				43621D67FA26297E274C4B46 /* Common.swift */,
@@ -332,13 +337,6 @@
 				D0308AF05E6AA241918BFC2D /* InboxView.swift */,
 			);
 			path = Inbox;
-			sourceTree = "<group>";
-		};
-		A44A7D1422020B745133CDE5 /* Modals */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Modals;
 			sourceTree = "<group>";
 		};
 		AB720D7CBE155755DEE5226B /* Resources */ = {
@@ -514,6 +512,8 @@
 			files = (
 				BBF1F71F4D2105ACAE422699 /* AboutSettings.swift in Sources */,
 				34E8AE1306B4DDC6ECEDB8C0 /* AnnouncementsView.swift in Sources */,
+				A1F61E98C13EABEC3AE158DF /* AppArt.swift in Sources */,
+				955F598BCF85CBBE451763F1 /* AppArtSource.swift in Sources */,
 				4B9B100AE2E4464F3A4EA95F /* AppIconRenderer.swift in Sources */,
 				CF49F1F474282D2936B02270 /* AppModel.swift in Sources */,
 				C8ED215D03081C6E41869698 /* AppearanceSettings.swift in Sources */,

@@ -75,17 +75,14 @@ final class MenuBarController: NSObject, NSMenuDelegate {
         button.setAccessibilityLabel("Thuban Canvas, \(summary)")
     }
 
-    /// The Thuban mark stroked as a 16 pt template image (tints with the menu bar).
+    /// The app's mark as a 16 pt template image (tints with the menu bar; knockouts punch through).
     static let markImage: NSImage = {
         let size: CGFloat = 16
         let image = NSImage(size: NSSize(width: size, height: size), flipped: true) { rect in
             guard let context = NSGraphicsContext.current?.cgContext else { return false }
-            context.addPath(ThubanMark().path(in: rect).cgPath)
-            context.setStrokeColor(NSColor.black.cgColor)
-            context.setLineWidth(1.75 * size / 24)
-            context.setLineCap(.round)
-            context.setLineJoin(.round)
-            context.strokePath()
+            AppArt.draw(in: context, rect: rect) { role in
+                role == .panelFill || role == .bgFill ? nil : NSColor.black.cgColor
+            }
             return true
         }
         image.isTemplate = true

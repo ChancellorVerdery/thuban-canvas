@@ -9,7 +9,7 @@ struct AboutSettings: View {
             SettingsGroup("Thuban Canvas") {
                 VStack(alignment: .leading, spacing: 10) {
                     HStack(spacing: 12) {
-                        ThubanMarkView(size: 28, color: theme.brassInkColor)
+                        AppArtView(size: 28, theme: theme)
                         Text("A calmer Canvas: the same layout for every course, grades and due dates in one place, files that open in the app.")
                             .font(ThubanFont.body(14))
                             .foregroundStyle(theme.inkDimColor)
