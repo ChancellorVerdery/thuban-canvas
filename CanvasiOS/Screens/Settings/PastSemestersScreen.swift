@@ -39,7 +39,7 @@ struct PastSemestersScreen: View {
             .gutter()
         }
         .sheet(item: $editing) { semester in
-            SemesterEditor(semester: semester) { saved in
+            SemesterEditor(semester: semester, isNew: !app.settings.pastSemesters.contains { $0.id == semester.id }) { saved in
                 if let index = app.settings.pastSemesters.firstIndex(where: { $0.id == saved.id }) {
                     app.settings.pastSemesters[index] = saved
                 } else {
@@ -100,6 +100,9 @@ private struct SemesterEditor: View {
     @Environment(\.thubanTheme) private var theme
     @Environment(\.dismiss) private var dismiss
     @State var semester: PastSemester
+    /// A fresh semester starts with empty fields; an existing one shows its stored values, even a 0-credit one,
+    /// so re-saving it never zeroes a GPA the user entered.
+    var isNew: Bool
     var save: (PastSemester) -> Void
     @State private var gpaText = ""
     @State private var creditsText = ""
@@ -140,8 +143,9 @@ private struct SemesterEditor: View {
         .gutter()
         .background(theme.bgColor.ignoresSafeArea())
         .onAppear {
-            gpaText = semester.manualCredits > 0 ? String(format: "%.2f", semester.manualGPA) : ""
-            creditsText = semester.manualCredits > 0 ? PointsText.short(semester.manualCredits) : ""
+            guard !isNew else { return }
+            gpaText = String(format: "%.2f", semester.manualGPA)
+            creditsText = PointsText.short(semester.manualCredits)
         }
     }
 
