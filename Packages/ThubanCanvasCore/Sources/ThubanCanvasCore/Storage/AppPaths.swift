@@ -4,8 +4,13 @@ import Foundation
 public enum AppPaths {
     public static let homeVariable = "THUBAN_CANVAS_HOME"
 
-    /// `~/Library/Application Support/Thuban Canvas` unless overridden.
+    /// Set by the iOS smoke/demo mode to a throwaway directory so fixture runs never touch real files. Takes
+    /// precedence over `THUBAN_CANVAS_HOME`.
+    nonisolated(unsafe) public static var overrideHome: URL?
+
+    /// `~/Library/Application Support/Thuban Canvas` unless overridden (on iOS: inside the app container).
     public static var home: URL {
+        if let overrideHome { return overrideHome }
         if let raw = ProcessInfo.processInfo.environment[homeVariable]?.trimmingCharacters(in: .whitespacesAndNewlines), !raw.isEmpty {
             return URL(fileURLWithPath: (raw as NSString).expandingTildeInPath, isDirectory: true)
         }

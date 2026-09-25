@@ -38,7 +38,8 @@ public struct CanvasCredentials: Codable, Equatable, Sendable {
     }
 }
 
-/// Plain-file credential storage (mode 0600 under the app home). No Keychain by design — see `AppPaths.credentialsFile`.
+/// Plain-file credential storage (mode 0600 under the app home; on iOS also `NSFileProtectionComplete` inside the app
+/// container). No Keychain by design — see `AppPaths.credentialsFile`.
 public enum CredentialStore {
     public static func load() throws -> CanvasCredentials? {
         try JSONFile.read(CanvasCredentials.self, from: AppPaths.credentialsFile)
@@ -46,7 +47,7 @@ public enum CredentialStore {
 
     public static func save(_ credentials: CanvasCredentials) throws {
         try AppPaths.ensureDirectories()
-        try JSONFile.write(credentials, to: AppPaths.credentialsFile, permissions: 0o600)
+        try JSONFile.write(credentials, to: AppPaths.credentialsFile, permissions: 0o600, protected: true)
     }
 
     public static func clear() throws {
