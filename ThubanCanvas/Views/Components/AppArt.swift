@@ -1,4 +1,5 @@
-import AppKit
+import CoreGraphics
+import Foundation
 import SwiftUI
 #if !APPICON_TOOL
 import ThubanCanvasCore
@@ -55,6 +56,7 @@ enum AppArt {
 /// The app mark at a square size in theme colours: accent as ink for the mode, signal for the star, and knockouts in
 /// the ground colour the mark sits on.
 struct AppArtView: View {
+    @Environment(\.self) private var environment
     var size: CGFloat = 20
     var ink: Color
     var signal: Color
@@ -70,14 +72,15 @@ struct AppArtView: View {
     }
 
     var body: some View {
+        // `Color.resolve(in:)` keeps this file free of AppKit/UIKit so the Mac and iOS targets share it.
         Canvas { context, canvasSize in
             context.withCGContext { cg in
                 AppArt.draw(in: cg, rect: CGRect(origin: .zero, size: canvasSize)) { role in
                     switch role {
-                    case .accentStroke, .accentFill: return NSColor(ink).cgColor
-                    case .signalStroke, .signalFill: return NSColor(signal).cgColor
-                    case .panelFill: return NSColor(panel).cgColor
-                    case .bgFill: return NSColor(background).cgColor
+                    case .accentStroke, .accentFill: return ink.resolve(in: environment).cgColor
+                    case .signalStroke, .signalFill: return signal.resolve(in: environment).cgColor
+                    case .panelFill: return panel.resolve(in: environment).cgColor
+                    case .bgFill: return background.resolve(in: environment).cgColor
                     }
                 }
             }
