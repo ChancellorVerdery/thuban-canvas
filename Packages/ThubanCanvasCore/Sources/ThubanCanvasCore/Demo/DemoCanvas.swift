@@ -115,7 +115,11 @@ public struct DemoCanvas: Sendable {
         case "discussion_topics":
             let list = discussions.filter { $0.course == course.id }
             if rest.count == 1 { return list.map(discussionJSON) }
-            guard let tid = CanvasID(rest[1]), let topic = list.first(where: { $0.id == tid }) else { return nil }
+            guard let tid = CanvasID(rest[1]) else { return nil }
+            if let announcement = announcements.first(where: { $0.id == tid && $0.course == course.id }) {
+                return rest.count == 3 ? ["participants": [Any](), "view": [Any]()] : announcementJSON(announcement)
+            }
+            guard let topic = list.first(where: { $0.id == tid }) else { return nil }
             if rest.count == 3, rest[2] == "view" { return discussionViewJSON(topic) }
             return discussionJSON(topic)
         case "quizzes": return [Any]()

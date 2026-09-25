@@ -3,6 +3,7 @@ options:
   bundleIdPrefix: com.thuban
   deploymentTarget:
     macOS: "15.0"
+    iOS: "18.0"
   createIntermediateGroups: true
   generateEmptyDirectories: true
 packages:
@@ -56,3 +57,58 @@ targets:
         ENABLE_HARDENED_RUNTIME: false
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         SWIFT_EMIT_LOC_STRINGS: false
+  CanvasiOS:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - path: CanvasiOS
+        excludes:
+          - "Resources/Info.plist"
+      # Platform-neutral code shared with the Mac target (see ARCHITECTURE.md → iOS).
+      - path: ThubanCanvas/App/Resource.swift
+      - path: ThubanCanvas/App/CourseSession.swift
+      - path: ThubanCanvas/App/Routes.swift
+      - path: ThubanCanvas/Views/Theme/ThemeEnvironment.swift
+      - path: ThubanCanvas/Views/Components/AppArt.swift
+      - path: ThubanCanvas/Views/Components/AppArtSource.swift
+      - path: ThubanCanvas/Views/Calendar/CalendarModel.swift
+      - path: ThubanCanvas/Web/CanvasSchemeHandler.swift
+      - path: ThubanCanvas/Web/CanvasHTMLDocument.swift
+    dependencies:
+      - package: ThubanCanvasCore
+    info:
+      path: CanvasiOS/Resources/Info.plist
+      properties:
+        CFBundleName: Thuban Canvas
+        CFBundleDisplayName: Thuban Canvas
+        CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        LSApplicationCategoryType: public.app-category.education
+        ITSAppUsesNonExemptEncryption: false
+        UILaunchScreen:
+          UIColorName: LaunchBackground
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+        UIRequiresFullScreen: false
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        NSHumanReadableCopyright: "© 2026 Chancellor Verdery"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: org.thuban.canvas.ios
+        PRODUCT_NAME: Thuban Canvas
+        TARGETED_DEVICE_FAMILY: "1,2"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        SWIFT_EMIT_LOC_STRINGS: false
+        CODE_SIGN_STYLE: Automatic
+        "CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]": NO
+        "CODE_SIGNING_REQUIRED[sdk=iphonesimulator*]": NO
+        ENABLE_PREVIEWS: YES
