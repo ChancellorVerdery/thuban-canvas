@@ -42,6 +42,7 @@ targets:
         NSSupportsAutomaticTermination: false
         NSSupportsSuddenTermination: false
         NSUserNotificationAlertStyle: alert
+        ThubanSharedTheme: true
     entitlements:
       path: ThubanCanvas/Resources/ThubanCanvas.entitlements
       properties:

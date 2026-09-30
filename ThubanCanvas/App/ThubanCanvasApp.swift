@@ -68,7 +68,10 @@ private struct SettingsCommandButton: View {
 /// menu-bar-resident lifecycle in `MenuBarResidency`.
 final class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillFinishLaunching(_ notification: Notification) {
-        MainActor.assumeIsolated { MenuBarResidency.shared.willFinishLaunching() }
+        MainActor.assumeIsolated {
+            SharedTheme.handleRefreshLaunch { AppIconRenderer.render(theme: $0) }
+            MenuBarResidency.shared.willFinishLaunching()
+        }
     }
 
     func applicationDidFinishLaunching(_ notification: Notification) {

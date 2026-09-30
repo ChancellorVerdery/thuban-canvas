@@ -19,6 +19,7 @@
 		13740B8DE61AFCF2A95092CB /* ExternalLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975AE89B7053009EEC6E959F /* ExternalLinkView.swift */; };
 		13CB179738AB5394D309A659 /* DetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9559D6D5DF5C30B356C69AE1 /* DetailHeader.swift */; };
 		171000050C66A3B25509BAE3 /* HomeWorkCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304FC764A959B7DD2ED44547 /* HomeWorkCards.swift */; };
+		1EE11FE364629DBB00F7F4A4 /* SharedTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA8D356C6D81FB277F90602 /* SharedTheme.swift */; };
 		1F0710BB353389AC7A56F452 /* InboxScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4613A1B3C349F11ED59E5A80 /* InboxScreen.swift */; };
 		214150604B4E12EB11F86439 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91825256696897950E450498 /* Components.swift */; };
 		25BD57DAE1D77CCCBB7B98FB /* ScoreRangeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5480D972F1CA9DE3C4518FF1 /* ScoreRangeBar.swift */; };
@@ -159,6 +160,7 @@
 		355618D2DADC577278BFA18D /* WorkSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkSupport.swift; sourceTree = "<group>"; };
 		35CD29E1D197D7F78D49BD4C /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		3A3198A02D7C8CCFF20BC69B /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		3AA8D356C6D81FB277F90602 /* SharedTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTheme.swift; sourceTree = "<group>"; };
 		3DDD8968BC42888BD0AEEDA2 /* AssignmentScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentScreen.swift; sourceTree = "<group>"; };
 		4039A0588EAFBD95D31B4CC3 /* ThemeEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeEnvironment.swift; sourceTree = "<group>"; };
 		410E8A36E1F36E790EBFE695 /* DiscussionThreadHTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionThreadHTML.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 				AB21E0B19E82EFE212FE697F /* NotificationScheduler.swift */,
 				96D8394BEDDD94B4FC8455BB /* Resource.swift */,
 				35CD29E1D197D7F78D49BD4C /* Routes.swift */,
+				3AA8D356C6D81FB277F90602 /* SharedTheme.swift */,
 				E66E9DC403446815D5698E39 /* SmokeHarness.swift */,
 				B22C8D9B662D058AC9651277 /* ThubanCanvasApp.swift */,
 				F41D3B4C6491C92664E83F8A /* Notifications */,
@@ -871,6 +874,7 @@
 				25BD57DAE1D77CCCBB7B98FB /* ScoreRangeBar.swift in Sources */,
 				6941ECB0A580784D8A96C1F9 /* SegmentedPicker.swift in Sources */,
 				97856D0303070BFCCCCCFC8B /* SettingsView.swift in Sources */,
+				1EE11FE364629DBB00F7F4A4 /* SharedTheme.swift in Sources */,
 				396865C8F100E47641B091B0 /* ShellView.swift in Sources */,
 				7C3A028BD080285CECBE5BFC /* SmokeHarness.swift in Sources */,
 				EB32250CF097CC2EDB2D5A4E /* SubmitSheet.swift in Sources */,

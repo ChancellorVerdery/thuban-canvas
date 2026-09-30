@@ -34,5 +34,7 @@
 	<false/>
 	<key>NSUserNotificationAlertStyle</key>
 	<string>alert</string>
+	<key>ThubanSharedTheme</key>
+	<true/>
 </dict>
 </plist>
