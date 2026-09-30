@@ -388,6 +388,7 @@ enum NotificationScheduler {
 extension AppModel {
     /// Activates the app and brings the main window forward, reopening it if the user closed it.
     func bringToFront() {
+        MenuBarResidency.shared.showInDock()
         NSApplication.shared.activate(ignoringOtherApps: true)
         if let window = NSApplication.shared.windows.first(where: { $0.title != "Settings" && $0.canBecomeMain && !($0 is NSPanel) }) {
             window.makeKeyAndOrderFront(nil)

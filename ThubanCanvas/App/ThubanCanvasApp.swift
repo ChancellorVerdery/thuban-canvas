@@ -4,7 +4,7 @@ import ThubanCanvasCore
 @main
 struct ThubanCanvasApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) private var delegate
-    @State private var appModel = AppModel()
+    @State private var appModel = AppModel.shared
 
     var body: some Scene {
         WindowGroup("Thuban Canvas") {
@@ -64,11 +64,29 @@ private struct SettingsCommandButton: View {
     }
 }
 
-/// Hosts the menu bar item and notification delegate (both implemented in MenuBar/ and App/Notifications).
+/// Starts the model without waiting for a window (so the menu bar item works at login) and implements the
+/// menu-bar-resident lifecycle in `MenuBarResidency`.
 final class AppDelegate: NSObject, NSApplicationDelegate {
+    func applicationWillFinishLaunching(_ notification: Notification) {
+        MainActor.assumeIsolated { MenuBarResidency.shared.willFinishLaunching() }
+    }
+
     func applicationDidFinishLaunching(_ notification: Notification) {
-        NSApplication.shared.setActivationPolicy(.regular)
+        MainActor.assumeIsolated {
+            MenuBarResidency.shared.didFinishLaunching()
+            Task { await AppModel.shared.load() }
+        }
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool { false }
+
+    /// Opening the app again while it lives in the menu bar: bring the Dock icon back; SwiftUI reopens the window.
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        MainActor.assumeIsolated { MenuBarResidency.shared.showInDock() }
+        return true
+    }
+
+    func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
+        MainActor.assumeIsolated { MenuBarResidency.shared.shouldTerminate() }
+    }
 }

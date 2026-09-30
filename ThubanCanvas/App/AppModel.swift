@@ -116,6 +116,9 @@ final class AppModel {
 
     var themeSelection: ThemeSelection { settings.theme }
 
+    /// The one model: the App scene, the menu bar item and the delegate all use it, so the menu bar works with no window.
+    static let shared = AppModel()
+
     init() {
         settings = SettingsStore.load()
         systemIsDark = Self.currentSystemIsDark()

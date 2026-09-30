@@ -225,6 +225,6 @@ final class MenuBarController: NSObject, NSMenuDelegate {
     }
 
     @objc private func quit(_ sender: NSMenuItem) {
-        NSApplication.shared.terminate(nil)
+        MenuBarResidency.shared.quitCompletely()
     }
 }

@@ -69,6 +69,7 @@
 		845D33E36C2C4C7268B7D518 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DA7933C35452F6437FF78E /* Icon.swift */; };
 		8497B6762608DB428B66307F /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C4F85D71120F8F67E7BB9B /* Typography.swift */; };
 		8728194B235BCF80FA5D373F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BE1CCA38EA2EAE3A315E8E2 /* Assets.xcassets */; };
+		8A2A7632B2C0189EA6BB9D86 /* MenuBarResidency.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1462E17324D9531CC61838F /* MenuBarResidency.swift */; };
 		8B3258664F04CBE989B274EF /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCCDC227155FD11FE6C59C6 /* MenuBarController.swift */; };
 		8C759F4791E065DB67B895A9 /* AppArtSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A7F77F06F59811F2D9C5FF /* AppArtSource.swift */; };
 		8CFCB4FDFF795EAB5550C9B2 /* PageDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D15FC2B5A4623373E1D1D2 /* PageDetailView.swift */; };
@@ -207,6 +208,7 @@
 		AD8918136D947CB020071E99 /* AppearanceSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceSettings.swift; sourceTree = "<group>"; };
 		B05063E43CFD1E79E6E34AAB /* DiscussionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionsView.swift; sourceTree = "<group>"; };
 		B12599F265809537D525EBA5 /* ConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectView.swift; sourceTree = "<group>"; };
+		B1462E17324D9531CC61838F /* MenuBarResidency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarResidency.swift; sourceTree = "<group>"; };
 		B22C8D9B662D058AC9651277 /* ThubanCanvasApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThubanCanvasApp.swift; sourceTree = "<group>"; };
 		B302C54482FD35D39AA5B1B9 /* ToggleChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleChip.swift; sourceTree = "<group>"; };
 		B35AE1150FDC26D2D69771A7 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				11DBF3C073B969E439FDC71A /* Course */,
 				49739C59F15E4B03A83287BC /* Home */,
 				94FAD21EF7D3CBD875099430 /* Inbox */,
+				A44A7D1422020B745133CDE5 /* Modals */,
 				CF63F6305BFC8C12F8EBBAB5 /* Settings */,
 				FC48BFC4D3D3361ED5133218 /* Shell */,
 				3D661AE9029A7EF210370EF2 /* Theme */,
@@ -462,6 +465,7 @@
 			isa = PBXGroup;
 			children = (
 				8FCCDC227155FD11FE6C59C6 /* MenuBarController.swift */,
+				B1462E17324D9531CC61838F /* MenuBarResidency.swift */,
 			);
 			path = MenuBar;
 			sourceTree = "<group>";
@@ -510,6 +514,13 @@
 				FC71C90F8400247C28F6E4E7 /* ThubanCanvasApp.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		A44A7D1422020B745133CDE5 /* Modals */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Modals;
 			sourceTree = "<group>";
 		};
 		AB720D7CBE155755DEE5226B /* Resources */ = {
@@ -841,6 +852,7 @@
 				96E04DD59D6895161354DF8A /* InboxModel.swift in Sources */,
 				99F18157A0A76CBBF1ED1030 /* InboxView.swift in Sources */,
 				8B3258664F04CBE989B274EF /* MenuBarController.swift in Sources */,
+				8A2A7632B2C0189EA6BB9D86 /* MenuBarResidency.swift in Sources */,
 				E84C4568AD903FFA15EBD095 /* ModuleItemDetailView.swift in Sources */,
 				2CE324BCDEB8B3D50DF003D6 /* ModulesView.swift in Sources */,
 				08AD2A88C5F067D5F071C2F8 /* NotificationDelegate.swift in Sources */,

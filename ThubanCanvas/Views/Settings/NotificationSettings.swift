@@ -78,6 +78,13 @@ struct NotificationSettings: View {
                         set: { app.settings.menuBarEnabled = $0; MenuBarController.shared.rebuild() }
                     ), label: "Show in the menu bar")
                 }
+                SettingsRow("Keep running in the menu bar", detail: "Closing the window or pressing ⌘Q hides the Dock icon but keeps the mark. Use Quit in the mark’s menu to quit completely.") {
+                    ThubanToggle(isOn: Binding(
+                        get: { app.settings.keepInMenuBar },
+                        set: { app.settings.keepInMenuBar = $0 }
+                    ), label: "Keep running in the menu bar")
+                }
+                .disabled(!app.settings.menuBarEnabled)
                 SettingsNote(text: "Calendar and Inbox open from anywhere in the app with ⌘K and ⌘I; ⌘1 is Home and ⌘2–⌘9 are your courses.")
             }
         }

@@ -93,6 +93,8 @@ public struct AppSettings: Codable, Equatable, Sendable {
     public var dismissedOverdue: Set<String> = []
     public var notifications = NotificationPreferences()
     public var menuBarEnabled: Bool = true
+    /// Closing the window or ⌘Q leaves the app running as a menu bar item (no Dock icon) instead of quitting.
+    public var keepInMenuBar: Bool = true
     /// Minutes between background refreshes.
     public var refreshMinutes: Int = 15
     /// Write actions (submit, reply, message) are shown; each still confirms.
@@ -107,7 +109,7 @@ public struct AppSettings: Codable, Equatable, Sendable {
 
     enum CodingKeys: String, CodingKey {
         case theme, textSize, reduceMotion, dyslexiaFont, letterScale, defaultCredits, coursePreferences, pastSemesters,
-             dismissedOverdue, notifications, menuBarEnabled, refreshMinutes, writesEnabled, courseOrder, lastSelectedTab, whatIf, downloadFolder
+             dismissedOverdue, notifications, menuBarEnabled, keepInMenuBar, refreshMinutes, writesEnabled, courseOrder, lastSelectedTab, whatIf, downloadFolder
     }
 
     public init(from decoder: Decoder) throws {
@@ -123,6 +125,7 @@ public struct AppSettings: Codable, Equatable, Sendable {
         dismissedOverdue = try c.decodeIfPresent(Set<String>.self, forKey: .dismissedOverdue) ?? []
         notifications = try c.decodeIfPresent(NotificationPreferences.self, forKey: .notifications) ?? NotificationPreferences()
         menuBarEnabled = try c.decodeIfPresent(Bool.self, forKey: .menuBarEnabled) ?? true
+        keepInMenuBar = try c.decodeIfPresent(Bool.self, forKey: .keepInMenuBar) ?? true
         refreshMinutes = try c.decodeIfPresent(Int.self, forKey: .refreshMinutes) ?? 15
         writesEnabled = try c.decodeIfPresent(Bool.self, forKey: .writesEnabled) ?? true
         courseOrder = try c.decodeIfPresent([CanvasID].self, forKey: .courseOrder) ?? []
