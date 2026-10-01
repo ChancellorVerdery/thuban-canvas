@@ -4,7 +4,13 @@ import ThubanCanvasCore
 @main
 struct ThubanCanvasApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) private var delegate
-    @State private var appModel = AppModel.shared
+    @State private var appModel: AppModel
+
+    init() {
+        // Must run before anything touches NSApplication (see SharedTheme).
+        SharedTheme.refreshIconAndExitIfRequested { AppIconRenderer.render(theme: $0) }
+        _appModel = State(initialValue: AppModel.shared)
+    }
 
     var body: some Scene {
         WindowGroup("Thuban Canvas") {
@@ -69,7 +75,6 @@ private struct SettingsCommandButton: View {
 final class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillFinishLaunching(_ notification: Notification) {
         MainActor.assumeIsolated {
-            SharedTheme.handleRefreshLaunch { AppIconRenderer.render(theme: $0) }
             MenuBarResidency.shared.willFinishLaunching()
         }
     }
