@@ -15,6 +15,7 @@
 		0A933D52FC085B8CA5481089 /* CanvasSchemeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EA5E11FF71E80A4190470E /* CanvasSchemeHandler.swift */; };
 		0B29E52B129C67F1A0595222 /* WorkSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355618D2DADC577278BFA18D /* WorkSupport.swift */; };
 		0B7CD6B04A539FFDA1EAD8FF /* GradesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1671E605CAA809D528A7A6F6 /* GradesView.swift */; };
+		111C55764C8A2FC54ADB18DF /* HomeGPAHistorySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCB1E5E41F32634ADA98E5C /* HomeGPAHistorySheet.swift */; };
 		13311B262520DF2A49F2A73B /* NotificationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83699E6F48C84AA055E3967 /* NotificationState.swift */; };
 		13740B8DE61AFCF2A95092CB /* ExternalLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975AE89B7053009EEC6E959F /* ExternalLinkView.swift */; };
 		13CB179738AB5394D309A659 /* DetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9559D6D5DF5C30B356C69AE1 /* DetailHeader.swift */; };
@@ -161,6 +162,7 @@
 		35CD29E1D197D7F78D49BD4C /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		3A3198A02D7C8CCFF20BC69B /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		3AA8D356C6D81FB277F90602 /* SharedTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTheme.swift; sourceTree = "<group>"; };
+		3CCB1E5E41F32634ADA98E5C /* HomeGPAHistorySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGPAHistorySheet.swift; sourceTree = "<group>"; };
 		3DDD8968BC42888BD0AEEDA2 /* AssignmentScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentScreen.swift; sourceTree = "<group>"; };
 		4039A0588EAFBD95D31B4CC3 /* ThemeEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeEnvironment.swift; sourceTree = "<group>"; };
 		410E8A36E1F36E790EBFE695 /* DiscussionThreadHTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionThreadHTML.swift; sourceTree = "<group>"; };
@@ -391,6 +393,7 @@
 				113AB38FB65AA67AC10732F1 /* HomeAnnouncementsCard.swift */,
 				8572C28DDA63F689C07DB4B3 /* HomeCard.swift */,
 				B88DEB851AAF867148100177 /* HomeGPACard.swift */,
+				3CCB1E5E41F32634ADA98E5C /* HomeGPAHistorySheet.swift */,
 				59DEC95C3554510AFC619025 /* HomeGradeBoard.swift */,
 				AB67A9258A6387062C748350 /* HomeView.swift */,
 				304FC764A959B7DD2ED44547 /* HomeWorkCards.swift */,
@@ -848,6 +851,7 @@
 				8EA6C0113FABBE13BFD0A6A8 /* HomeAnnouncementsCard.swift in Sources */,
 				E1FA088853256671F5968BC9 /* HomeCard.swift in Sources */,
 				92F7B4E8B4EB73AD9479A1B7 /* HomeGPACard.swift in Sources */,
+				111C55764C8A2FC54ADB18DF /* HomeGPAHistorySheet.swift in Sources */,
 				F02588C4D511716B2A3D551F /* HomeGradeBoard.swift in Sources */,
 				6F1B00587126A57190C17417 /* HomeView.swift in Sources */,
 				171000050C66A3B25509BAE3 /* HomeWorkCards.swift in Sources */,

@@ -225,3 +225,22 @@ final class ModelDecodingTests: XCTestCase {
         XCTAssertEqual(result.cumulativeCredits, 22)
     }
 }
+
+final class GPAHistoryTests: XCTestCase {
+    func testOneSnapshotPerDayLatestWins() throws {
+        let now = Date(timeIntervalSince1970: Date().timeIntervalSince1970.rounded(.down)) // ISO-8601 keeps whole seconds
+        let day = GPAHistory.day(for: now)
+        let first = GPASnapshot(day: day, recordedAt: now, termName: "Fall 2026", term: 3.4, cumulative: 3.5, termCredits: 15, scores: [1: 91.7], names: [1: "Calc III"])
+        var second = first
+        second.term = 3.5
+        let yesterday = GPASnapshot(day: GPAHistory.day(for: now.addingTimeInterval(-86_400)), recordedAt: now, termName: "Fall 2026", term: 3.3, cumulative: 3.5, termCredits: 15, scores: [:], names: [:])
+        var log = GPAHistory.recording(first, into: [])
+        log = GPAHistory.recording(yesterday, into: log)
+        log = GPAHistory.recording(second, into: log)
+        XCTAssertEqual(log.count, 2)
+        XCTAssertEqual(log.last?.term, 3.5)
+        XCTAssertEqual(log.first?.day, yesterday.day)
+        let round = try JSONFile.decoder.decode([GPASnapshot].self, from: JSONFile.encoder.encode(log))
+        XCTAssertEqual(round, log)
+    }
+}

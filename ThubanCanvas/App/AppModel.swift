@@ -246,6 +246,7 @@ final class AppModel {
         }
         // A failed refresh keeps the previous stamp so saved data is not labelled "Updated just now".
         if coursesError == nil { lastRefresh = Date() }
+        recordGPASnapshot()
         NotificationCenter.default.post(name: .thubanDataRefreshed, object: nil)
     }
 
@@ -264,6 +265,7 @@ final class AppModel {
             }
             group.addTask { await self.refreshUnreadCount() }
         }
+        recordGPASnapshot()
     }
 
     /// Nudges the unread badge immediately after a local read-state change (the next refresh corrects it).
@@ -362,6 +364,46 @@ final class AppModel {
     }
 
     var gpa: GPAResult { GPACalculator.compute(courses: gpaCourses, past: settings.pastSemesters) }
+
+    // MARK: GPA history
+
+    /// One snapshot per day (see `recordGPASnapshot`); drives the GPA graph.
+    private(set) var gpaHistory: [GPASnapshot] = GPAHistory.load()
+
+    /// Records today's GPA from real grades (what-if never counts). Only after a successful refresh from Canvas, so
+    /// cached or offline data never writes a point; later refreshes the same day replace the day's point.
+    func recordGPASnapshot() {
+        guard client != nil, !authenticationFailed, coursesError == nil, lastRefresh != nil, !SmokeHarness.isEnabled else { return }
+        let sessions = orderedSessions
+        guard !sessions.isEmpty else { return }
+        let courses = sessions.map { session in
+            GPACourse(id: session.id, name: session.displayName, letter: session.actualLetter,
+                      credits: settings.credits(for: session.id), included: !session.preferences.excludeFromGPA)
+        }
+        let result = GPACalculator.compute(courses: courses, past: settings.pastSemesters)
+        var scores: [CanvasID: Double] = [:]
+        var names: [CanvasID: String] = [:]
+        for session in sessions {
+            guard let score = session.canvasScore else { continue }
+            scores[session.id] = score
+            names[session.id] = session.displayName
+        }
+        let now = Date()
+        let snapshot = GPASnapshot(day: GPAHistory.day(for: now), recordedAt: now, termName: HomeSummary.termName(for: sessions),
+                                   term: result.term, cumulative: result.cumulative, termCredits: result.termCredits,
+                                   scores: scores, names: names)
+        gpaHistory = GPAHistory.recording(snapshot, into: gpaHistory)
+        GPAHistory.save(gpaHistory)
+    }
+
+    /// Start and end of the current term from the starred courses (Canvas term dates, else course dates).
+    var termInterval: DateInterval? {
+        let sessions = orderedSessions
+        let starts = sessions.compactMap { $0.course.term?.startAt ?? $0.course.startAt }
+        let ends = sessions.compactMap { $0.course.term?.endAt ?? $0.course.endAt }
+        guard let start = starts.min(), let end = ends.max(), end > start else { return nil }
+        return DateInterval(start: start, end: end)
+    }
 
     // MARK: Refresh timer
 

@@ -245,4 +245,11 @@ final class CourseSession: Identifiable {
 
     /// The letter used for GPA (Canvas's letter when it has one, else derived).
     var gpaLetter: String? { displayLetter }
+
+    /// The letter from real grades only (no what-if) — what the daily GPA history records.
+    var actualLetter: String? {
+        if preferences.customCutoffs == nil, let letter = canvasLetter { return letter }
+        guard let score = canvasScore ?? GradeCalculator.compute(groups: groups.value ?? [], weighted: course.applyAssignmentGroupWeights ?? false).percent else { return nil }
+        return gradingScheme.letter(for: score)
+    }
 }

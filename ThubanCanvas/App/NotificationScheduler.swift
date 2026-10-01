@@ -393,7 +393,12 @@ extension AppModel {
         if let window = NSApplication.shared.windows.first(where: { $0.title != "Settings" && $0.canBecomeMain && !($0 is NSPanel) }) {
             window.makeKeyAndOrderFront(nil)
         } else {
-            _ = NSApplication.shared.delegate?.applicationShouldHandleReopen?(NSApplication.shared, hasVisibleWindows: false)
+            // No main window (closed to the menu bar). Calling the delegate's reopen hook by hand does not make
+            // SwiftUI build a window; asking LaunchServices to open this already-running app sends the real reopen
+            // event, which does — the same path as clicking the app in Finder.
+            let configuration = NSWorkspace.OpenConfiguration()
+            configuration.activates = true
+            NSWorkspace.shared.openApplication(at: Bundle.main.bundleURL, configuration: configuration)
         }
     }
 }
