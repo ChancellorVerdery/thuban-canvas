@@ -19,13 +19,16 @@ struct HomeGPACard: View {
                 Button {
                     showingHistory = true
                 } label: {
-                    HStack(alignment: .top, spacing: 24) {
-                        figure(label: "Term", value: result.term, credits: result.termCredits)
-                        figure(label: "Cumulative", value: result.cumulative, credits: result.cumulativeCredits)
-                        Spacer(minLength: 0)
+                    VStack(alignment: .leading, spacing: 10) {
+                        HStack(alignment: .top, spacing: 18) {
+                            figure(label: "Term", value: result.term, credits: result.termCredits)
+                            figure(label: "Cumulative", value: result.cumulative, credits: result.cumulativeCredits)
+                            if result.prior != nil {
+                                figure(label: "Before term", value: result.prior, credits: result.priorCredits, detail: changeText(result))
+                            }
+                            Spacer(minLength: 0)
+                        }
                         GPASparkline(points: app.gpaHistory.suffix(30).compactMap(\.term))
-                            .frame(width: 96, height: 40)
-                            .padding(.top, 14)
                     }
                     .contentShape(Rectangle())
                 }
@@ -54,17 +57,26 @@ struct HomeGPACard: View {
         }
     }
 
-    private func figure(label: String, value: Double?, credits: Double) -> some View {
+    private func figure(label: String, value: Double?, credits: Double, detail: String? = nil) -> some View {
         VStack(alignment: .leading, spacing: 2) {
-            Text(label.uppercased()).font(ThubanFont.micro).kerning(0.5).foregroundStyle(theme.inkDimColor)
+            Text(label.uppercased()).font(ThubanFont.micro).kerning(0.5).foregroundStyle(theme.inkDimColor).lineLimit(1)
             Text(GPACalculator.format(value))
                 .font(ThubanFont.display(30))
                 .foregroundStyle(value == nil ? theme.inkFaintColor : theme.inkColor)
                 .monospacedDigit()
-            Text(credits > 0 ? "\(DueFormatter.points(credits)) credits" : "no credits yet")
+            Text(detail ?? (credits > 0 ? "\(DueFormatter.points(credits)) credits" : "no credits yet"))
                 .font(ThubanFont.small)
                 .foregroundStyle(theme.inkDimColor)
+                .lineLimit(1)
         }
+        .fixedSize()
+    }
+
+    /// "+0.04 this term" — how much this term moves the cumulative GPA.
+    private func changeText(_ result: GPAResult) -> String {
+        guard let change = result.cumulativeChange else { return "\(DueFormatter.points(result.priorCredits)) credits" }
+        if abs(change) < 0.005 { return "no change yet" }
+        return (change > 0 ? "+" : "−") + String(format: "%.2f", abs(change)) + " this term"
     }
 
     private func courseLine(_ course: GPACourse) -> some View {
@@ -106,31 +118,33 @@ struct HomeGPACard: View {
     }
 }
 
-/// A tiny trend line of the last days' term GPA (just the shape; the sheet has the numbers). A dashed baseline
-/// with "Graph ›" stands in until two days are recorded.
+/// A thin trend line of the last days' term GPA (just the shape; the sheet has the numbers), with "Graph ›".
+/// A dashed baseline stands in until two days are recorded.
 private struct GPASparkline: View {
     @Environment(\.thubanTheme) private var theme
     var points: [Double]
 
     var body: some View {
-        VStack(alignment: .trailing, spacing: 4) {
-            if points.count >= 2, let low = points.min(), let high = points.max() {
-                let span = max(high - low, 0.05)
-                Path { path in
-                    for (index, value) in points.enumerated() {
-                        let x = 96 * CGFloat(index) / CGFloat(points.count - 1)
-                        let y = 26 - 24 * CGFloat((value - low) / span)
-                        if index == 0 { path.move(to: CGPoint(x: x, y: y)) } else { path.addLine(to: CGPoint(x: x, y: y)) }
+        HStack(spacing: 10) {
+            GeometryReader { proxy in
+                let width = proxy.size.width
+                if points.count >= 2, let low = points.min(), let high = points.max() {
+                    let span = max(high - low, 0.05)
+                    Path { path in
+                        for (index, value) in points.enumerated() {
+                            let x = width * CGFloat(index) / CGFloat(points.count - 1)
+                            let y = 20 - 18 * CGFloat((value - low) / span)
+                            if index == 0 { path.move(to: CGPoint(x: x, y: y)) } else { path.addLine(to: CGPoint(x: x, y: y)) }
+                        }
                     }
+                    .stroke(theme.accentColor, style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round))
+                } else {
+                    Path { path in path.move(to: CGPoint(x: 0, y: 11)); path.addLine(to: CGPoint(x: width, y: 11)) }
+                        .stroke(theme.line2Color, style: StrokeStyle(lineWidth: 1.5, dash: [3, 3]))
                 }
-                .stroke(theme.accentColor, style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round))
-                .frame(width: 96, height: 28)
-            } else {
-                Path { path in path.move(to: CGPoint(x: 0, y: 14)); path.addLine(to: CGPoint(x: 96, y: 14)) }
-                    .stroke(theme.line2Color, style: StrokeStyle(lineWidth: 1.5, dash: [3, 3]))
-                    .frame(width: 96, height: 28)
             }
-            Text("Graph ›").font(ThubanFont.small).foregroundStyle(theme.brassInkColor)
+            .frame(height: 22)
+            Text("Graph ›").font(ThubanFont.small).foregroundStyle(theme.brassInkColor).fixedSize()
         }
         .accessibilityHidden(true)
     }

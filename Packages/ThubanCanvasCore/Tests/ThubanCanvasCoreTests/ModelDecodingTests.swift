@@ -192,6 +192,10 @@ final class ModelDecodingTests: XCTestCase {
         XCTAssertEqual(try XCTUnwrap(result.term), (4.0 * 3 + 3.3 * 4) / 7, accuracy: 1e-9)
         XCTAssertEqual(result.skipped, ["C"])
         XCTAssertEqual(result.cumulativeCredits, 22)
+        XCTAssertEqual(result.prior, 3.5)
+        XCTAssertEqual(result.priorCredits, 15)
+        XCTAssertEqual(try XCTUnwrap(result.cumulativeChange), try XCTUnwrap(result.cumulative) - 3.5, accuracy: 1e-9)
+        XCTAssertNil(GPACalculator.compute(courses: [], past: []).prior)
     }
 
     func testSettingsRoundTrip() throws {

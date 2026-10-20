@@ -13,6 +13,9 @@ struct GradesSettings: View {
                 HStack(alignment: .top, spacing: 32) {
                     figure("Term GPA", value: result.term, credits: result.termCredits)
                     figure("Cumulative", value: result.cumulative, credits: result.cumulativeCredits)
+                    if result.prior != nil {
+                        figure("Before this term", value: result.prior, credits: result.priorCredits)
+                    }
                     Spacer(minLength: 0)
                     if !result.skipped.isEmpty {
                         VStack(alignment: .trailing, spacing: 4) {

@@ -80,6 +80,16 @@ struct HomeGPAHistorySheet: View {
 
     private var gpaChart: some View {
         Chart {
+            if let prior = app.gpa.prior {
+                RuleMark(y: .value("Before this term", prior))
+                    .foregroundStyle(theme.inkDimColor)
+                    .lineStyle(StrokeStyle(lineWidth: 1, dash: [2, 3]))
+                    .annotation(position: .top, alignment: .leading) {
+                        Text("Before this term · \(GPACalculator.format(prior))")
+                            .font(ThubanFont.small)
+                            .foregroundStyle(theme.inkDimColor)
+                    }
+            }
             ForEach(points) { point in
                 if let term = point.term {
                     LineMark(x: .value("Day", point.date, unit: .day), y: .value("GPA", term), series: .value("Series", "Term"))
@@ -114,7 +124,7 @@ struct HomeGPAHistorySheet: View {
     }
 
     private var gpaDomain: ClosedRange<Double> {
-        let values = points.flatMap { [$0.term, $0.cumulative].compactMap { $0 } }
+        let values = points.flatMap { [$0.term, $0.cumulative].compactMap { $0 } } + [app.gpa.prior].compactMap { $0 }
         guard let low = values.min(), let high = values.max() else { return 0...4 }
         let lower = max(0, (low - 0.3).rounded(.down))
         let upper = min(4.0, max(high + 0.2, lower + 1))

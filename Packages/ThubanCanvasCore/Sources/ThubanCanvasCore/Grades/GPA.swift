@@ -100,8 +100,28 @@ public struct GPAResult: Equatable, Sendable {
     public var termCredits: Double
     public var cumulative: Double?
     public var cumulativeCredits: Double
+    /// Cumulative GPA of the past semesters alone — where it stood before this term.
+    public var prior: Double?
+    public var priorCredits: Double
     /// Courses that could not be counted (no letter yet).
     public var skipped: [String]
+
+    public init(term: Double?, termCredits: Double, cumulative: Double?, cumulativeCredits: Double,
+                prior: Double? = nil, priorCredits: Double = 0, skipped: [String]) {
+        self.term = term
+        self.termCredits = termCredits
+        self.cumulative = cumulative
+        self.cumulativeCredits = cumulativeCredits
+        self.prior = prior
+        self.priorCredits = priorCredits
+        self.skipped = skipped
+    }
+
+    /// How far this term moves the cumulative GPA from where it stood before the term.
+    public var cumulativeChange: Double? {
+        guard let cumulative, let prior else { return nil }
+        return cumulative - prior
+    }
 }
 
 public enum GPACalculator {
@@ -118,15 +138,19 @@ public enum GPACalculator {
             credits += course.credits
         }
         let term = credits > 0 ? qualityPoints / credits : nil
-        var allPoints = qualityPoints
-        var allCredits = credits
+        var priorPoints = 0.0
+        var priorCredits = 0.0
         for semester in past {
             guard let gpa = semester.gpa, semester.credits > 0 else { continue }
-            allPoints += gpa * semester.credits
-            allCredits += semester.credits
+            priorPoints += gpa * semester.credits
+            priorCredits += semester.credits
         }
+        let allPoints = qualityPoints + priorPoints
+        let allCredits = credits + priorCredits
         let cumulative = allCredits > 0 ? allPoints / allCredits : nil
-        return GPAResult(term: term, termCredits: credits, cumulative: cumulative, cumulativeCredits: allCredits, skipped: skipped)
+        let prior = priorCredits > 0 ? priorPoints / priorCredits : nil
+        return GPAResult(term: term, termCredits: credits, cumulative: cumulative, cumulativeCredits: allCredits,
+                         prior: prior, priorCredits: priorCredits, skipped: skipped)
     }
 
     /// Two decimals, "—" when nil.
