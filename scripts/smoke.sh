@@ -2,6 +2,7 @@
 # Visual smoke test: builds (unless SKIP_BUILD=1), launches the app against a temporary THUBAN_CANVAS_HOME with the
 # real Canvas credentials (read-only) and THUBAN_CANVAS_SMOKE=<output dir>; the app walks its screens, writes PNGs
 # and exits. Credentials: pass CANVAS_HOST + CANVAS_TOKEN, or CANVAS_TOKEN_FILE (a file containing the token).
+# DEMO=1 runs on the offline demo account instead (no credentials, no network) — use it for README screenshots.
 # Usage: scripts/smoke.sh [output-dir]      (default: .build/smoke)
 set -uo pipefail
 cd "$(dirname "$0")/.."
@@ -26,7 +27,7 @@ fi
 pkill -f "$APP" 2>/dev/null
 echo "Smoke home: $HOME_DIR"
 echo "Output:     $OUT"
-THUBAN_CANVAS_SMOKE="$OUT" THUBAN_CANVAS_HOME="$HOME_DIR" "$APP" > "$LOG" 2>&1 &
+THUBAN_CANVAS_DEMO="${DEMO:-0}" THUBAN_CANVAS_SMOKE="$OUT" THUBAN_CANVAS_HOME="$HOME_DIR" "$APP" > "$LOG" 2>&1 &
 PID=$!
 for i in {1..180}; do
   kill -0 "$PID" 2>/dev/null || break

@@ -145,13 +145,22 @@ final class AppModel {
         recomputeTheme()
         try? AppPaths.ensureDirectories()
         if let key = settings.lastSelectedTab, let tab = AppTab(storageKey: key) { selectedTab = tab }
-        do {
-            if let stored = try CredentialStore.load() {
-                credentials = stored
-                client = try CanvasClient(credentials: stored)
+        // THUBAN_CANVAS_DEMO=1 (only with a THUBAN_CANVAS_HOME override, so the real home is never touched) runs on the
+        // offline demo account, as the iOS app does — for screenshots without real data.
+        let env = ProcessInfo.processInfo.environment
+        if env["THUBAN_CANVAS_DEMO"] == "1", env["THUBAN_CANVAS_HOME"] != nil {
+            DemoTransport.demo = DemoCanvas()
+            credentials = DemoCanvas.credentials
+            client = try? DemoTransport.makeClient()
+        } else {
+            do {
+                if let stored = try CredentialStore.load() {
+                    credentials = stored
+                    client = try CanvasClient(credentials: stored)
+                }
+            } catch {
+                connectionError = error.localizedDescription
             }
-        } catch {
-            connectionError = error.localizedDescription
         }
         isLoaded = true
         await loadCourses()

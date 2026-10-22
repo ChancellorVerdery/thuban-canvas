@@ -30,9 +30,11 @@ final class MenuBarResidency {
     }
 
     func didFinishLaunching() {
-        // A copy started directly (not through LaunchServices) hands over to one that is already running.
+        // A copy started directly (not through LaunchServices) hands over to one that is already running — except a
+        // smoke run, which lives in its own temporary home and may run beside the installed app.
         let me = NSRunningApplication.current
-        if let other = NSRunningApplication.runningApplications(withBundleIdentifier: "com.thuban.canvas").first(where: { $0 != me }) {
+        if !SmokeHarness.isEnabled,
+           let other = NSRunningApplication.runningApplications(withBundleIdentifier: "com.thuban.canvas").first(where: { $0 != me }) {
             if !launchedInBackground { other.activate() }
             exit(0)
         }
