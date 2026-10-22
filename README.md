@@ -122,11 +122,11 @@ The app needs your own Canvas personal access token. In Canvas, go to **Account 
 
 Thuban Canvas is one of a set of macOS apps that share one theme engine, one typography and one component style:
 
-- [Thuban Study](https://github.com/GITHUB_USER/thuban-study)
-- [Thuban Graph](https://github.com/GITHUB_USER/thuban-graph)
-- [Thuban Desk](https://github.com/GITHUB_USER/thuban-desk)
-- [Thuban Gym](https://github.com/GITHUB_USER/thuban-gym)
-- [Thuban Planner](https://github.com/GITHUB_USER/thuban-planner)
+- [Thuban Study](https://github.com/ChancellorVerdery/thuban-study)
+- [Thuban Graph](https://github.com/ChancellorVerdery/thuban-graph)
+- [Thuban Desk](https://github.com/ChancellorVerdery/thuban-desk)
+- [Thuban Gym](https://github.com/ChancellorVerdery/thuban-gym)
+- [Thuban Planner](https://github.com/ChancellorVerdery/thuban-planner)
 
 Canvas is a trademark of Instructure, Inc. This project is not affiliated with or endorsed by Instructure.
 
